@@ -1,0 +1,89 @@
+MILO GLOVE DATASET HANDOFF - PERSONAL MODEL FOR NITIN
+
+TASK
+Eight labels: come, sit, paw, spin, bang, throw_overhand, throw_underhand, background.
+Spin means point then clockwise hand rotation from wearer's view. No roll-over class.
+Treat the default bang thumb pose and gesture definitions as a protocol agreement to confirm before final data collection.
+Background includes hard negatives: fist alone, a swing with no release, already-open arm movements.
+Voice matching/Milo action execution is downstream; this package collects glove gesture data only.
+
+CANONICAL RECORDS
+Per-clip CSV retains actual ESP timestamps, sequence numbers, raw flex ADC, SI IMU values,
+raw IMU counts, true IMU validity, rail mask, drop/error counters and RSSI.
+Per-clip JSON carries class, repetition, variant, speed prompt, quality result, human accept,
+cue timing, release candidate and optional human event boundaries.
+session.json identifies participant, wear session, split role and gesture-definition hash.
+calibration.json holds open, fist, loose-grip medians and the stationary gyro bias for that session.
+Raw_stream.jsonl preserves all attempts, idle data and delayed arrivals.
+
+PRIMARY FEATURE ORDER (9 CHANNELS)
+ax, ay, az: m/s^2 (includes gravity; no unrequested orientation/sensor-fusion transform).
+gx, gy, gz: rad/s.
+thumb, index, middle: raw averaged 12-bit ADC counts.
+Hardware: MPU-6050 +/-16 g, +/-2000 deg/s, 21 Hz filter; 50 Hz host sampling.
+Flex: eight ADC readings averaged after dummy read/200 us settling, GPIO35/34/39.
+Do not feed class labels, trial numbers, session IDs, RSSI or acquisition sequence numbers as model features.
+
+TENSOR EXPORTS
+dataset.npz: load using numpy.load(..., allow_pickle=False).
+X_raw: float32 [N,100,9], full 2-second clips, physical IMU units + raw flex ADC.
+X_session_calibrated: [N,100,9], same axes/order, subtract session gyro bias, normalise flex per wear session.
+X_raw_channels_first / X_calibrated_channels_first: [N,9,100] for Conv1d/time-series tooling.
+X_action_raw / X_action_calibrated: [N,75,9], the fixed 0.5-2-second view shared by every class.
+y: int64 [N]. classes[y[i]] is the label; labels also retains strings.
+feature_names, session_ids, clip_ids, split_roles and train/validation/test indices are included.
+Independent .npy files are provided for X_raw, X_session_calibrated, y, labels and session_ids.
+all_samples.csv is long format with clip/class/participant/session/split identifiers.
+clips.jsonl contains one complete raw/calibrated series plus metadata per line.
+dataset.ts uses the sktime/UEA multivariate time-series format (9 colon-separated series, then class label).
+Optional formats:
+  py export_optional_formats.py EXPORT_FOLDER/dataset.npz --torch
+  py export_optional_formats.py EXPORT_FOLDER/dataset.npz --hdf5
+These require torch/h5py only when requested. They are not needed for canonical capture/export.
+example_load_dataset.py demonstrates layouts without imposing a model architecture.
+
+TIME ALIGNMENT AND QUALITY
+Actual acquisition timestamps remain in canonical CSV. Export resamples to a regular 20 ms grid.
+Only clips with complete counts, consecutive sequences, valid IMU, no rail readings,
+no range clipping and no new queue drops are exported. At most a 19 ms edge hold is used;
+internal missing sensor data is not silently interpolated into training samples.
+Throws: 1 second to prepare, 0.5 seconds swing with finger release, 0.5 seconds follow-through.
+Other positives: 0.5 seconds neutral, 1 second gesture/brief hold, 0.5 seconds relax.
+Swing-without-release background examples match throw timing; other negatives match other gestures.
+Come is one beckon in v2. Spin is one pointed clockwise turn; sit/paw/bang form their pose once.
+Cue timings are guidance, not exact movement/release annotations.
+Full raw two-second clips permit cropping around human-reviewed onset, release and end markers.
+Start with the full 100-sample tensor. The optional 75-sample view uses identical bounds for
+every class, avoiding label-dependent crop rules. It is a context view, not action-only ground truth.
+dataset_manifest.json records clip_ms, model_view_ms and tensor shapes.
+Legacy v1 exports remain readable at their original sizes; changed protocol hashes prevent
+silently merging v1 and v2 sessions. If training on cue-controlled clips, evaluate realistic
+continuous/uncued use too: scripted timing must not become the classifier's shortcut.
+A release candidate is NOT ground truth; annotations.source identifies human-reviewed boundaries.
+Bad/raw attempts remain available for troubleshooting but are excluded from learning.
+Warnings need signal_reviewed=true; hard-quality failures cannot be overridden by user acceptance.
+
+THROWS
+A simulated ball grip is less bent than a full fist. No threshold crossing is required for release.
+Learn continuous bend trajectories and their timing relative to acceleration/angular velocity.
+Keep overhand and underhand as separate classes. Include swing-without-release and fist-only negatives.
+Capture one throw plus natural finger opening per clip, with pre-grip and post-release context.
+Review confusing examples before deciding final window length or event-alignment method.
+
+EVALUATION AND PREPROCESSING
+All windows/crops from the same clip MUST stay together. Prefer holding out whole wear sessions.
+Personal model: reserve unseen re-wear sessions for validation and final test.
+Default split roles are unassigned; no optimistic random frame-level split is created.
+Fit any global scaler/normaliser on TRAIN only, then apply unchanged to validation/test.
+Per-wear open/fist/gyro calibration is a separate, explicit procedure that can also be performed at deployment.
+If training with X_session_calibrated, reproduce the same calibration at runtime. Do not train calibrated and infer on raw values.
+If using raw features, account for fit drift through varied wear sessions and train-only scaling.
+Range/filter/feature-order changes require consistent acquisition and inference preprocessing, or a new dataset version.
+Report held-out per-class precision/recall/confusion, especially the two throws and background false positives.
+Twenty to thirty clean TRAIN clips per gesture is a starter target, not a promise of sufficient data.
+
+REFERENCES FOR FORMAT/SPLIT DESIGN
+sktime primary documentation (channel-first multivariate time-series arrays):
+https://www.sktime.net/docs/examples/data-formats/
+Primary gesture-learning study describing keeping each gesture performance together to prevent temporal leakage:
+https://doi.org/10.1088/1741-2552/ade1f9

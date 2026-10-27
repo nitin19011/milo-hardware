@@ -1,0 +1,12 @@
+from pathlib import Path
+p=Path('work/preview_measured.py').read_text(encoding='utf-8-sig')
+p=p.replace('work/measured_enclosure_meshes.npz','work/necklace_enclosure_meshes.npz')
+p=p.replace('def render(t,centre,scale,color):','def render(t,centre,scale,color,top=False):').replace('v=np.array([.7,-1.2,1.8]);','v=np.array([.7,1.2 if top else -1.2,1.8]);')
+p=p.replace("render(m['cap'],(827,425),7,(55,153,205))","render(m['housing'],(850,425),7,(55,153,205),True)")
+p=p.replace("render(m['bat'],(1300,420),7,(66,160,161))", "")
+p=p.replace('Actual STL preview â€” microphone enclosure and revised battery cap','Updated enclosure: 18 mm mic opening + two 5 mm string holes')
+p=p.replace('Prototype dimensions: verify against your assembled electronics before printing.','Same measured enclosure dimensions; two views of the updated housing.')
+p=p.replace('Mic housing: 44.85 x 66.6 x 19.6 mm','Inside view: 18 mm microphone opening').replace('Cap: 80%-width opening','Closed top: two 5 mm string holes').replace("txt(1130,640,'Two end wire notches',22)","")
+p=p.replace('Parts shown separately in print orientation. Combined STL options include one or two battery caps.','Cap and battery caps are unchanged. Combined files include all parts in print orientation.')
+p=p.replace('outputs/measured_v2_preview.png','outputs/necklace_v3_preview.png')
+Path('work/preview_necklace.py').write_text(p,encoding='utf-8')

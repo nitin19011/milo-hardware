@@ -1,0 +1,2 @@
+{'triangles': 244, 'closed_consistent_mesh': True, 'volume_mm3': np.float64(3617.49), 'size_mm': [48.35, 70.1, 6.6]}
+5 mm external overlap; RST centre: 41 mm from module top = case Y23.3; opening reaches Y13.8, giving 9.5 mm past centre. Opening width35.88 mm. Anti-tilt stop depth pending rim-to-perfboard measurement.

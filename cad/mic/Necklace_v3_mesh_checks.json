@@ -1,0 +1,42 @@
+{
+  "Mic_housing_NECKLACE_v3.stl": {
+    "triangles": 33260,
+    "closed_consistent_mesh": true,
+    "volume_mm3": 10098.38,
+    "size_mm": [
+      44.85,
+      66.6,
+      19.6
+    ]
+  },
+  "Mic_cap_NECKLACE_v3.stl": {
+    "triangles": 404,
+    "closed_consistent_mesh": true,
+    "volume_mm3": 3235.13,
+    "size_mm": [
+      44.85,
+      66.6,
+      2.8
+    ]
+  },
+  "combined_one": {
+    "triangles": 33892,
+    "closed_consistent_mesh": true,
+    "volume_mm3": 14814.95,
+    "size_mm": [
+      137.5,
+      66.6,
+      19.6
+    ]
+  },
+  "combined_two": {
+    "triangles": 34120,
+    "closed_consistent_mesh": true,
+    "volume_mm3": 16296.39,
+    "size_mm": [
+      137.5,
+      66.6,
+      19.6
+    ]
+  }
+}

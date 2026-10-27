@@ -1,0 +1,196 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="Milo system architecture" id="0">
+    <mxGraphModel dx="2512" dy="1293" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2000" pageHeight="1180" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="imu" parent="1" style="shape=cube;size=16;verticalAlign=top;spacingTop=20;html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=22;fillColor=#f8fafc;strokeColor=#334155;strokeWidth=2;" value="«device»&#xa;MPU6050 IMU" vertex="1">
+          <mxGeometry height="120" width="190" x="60" y="214" as="geometry" />
+        </mxCell>
+        <mxCell id="flex" parent="1" style="shape=cube;size=16;verticalAlign=top;spacingTop=20;html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=22;fillColor=#f8fafc;strokeColor=#334155;strokeWidth=2;" value="«device»&#xa;3 finger sensors" vertex="1">
+          <mxGeometry height="120" width="190" x="60" y="347.5" as="geometry" />
+        </mxCell>
+        <mxCell id="motor" parent="1" style="shape=cube;size=16;verticalAlign=top;spacingTop=20;html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=22;fillColor=#f8fafc;strokeColor=#334155;strokeWidth=2;" value="«device»&#xa;Vibration motor" vertex="1">
+          <mxGeometry height="120" width="190" x="60" y="485" as="geometry" />
+        </mxCell>
+        <mxCell id="glove" parent="1" style="shape=cube;size=16;verticalAlign=top;spacingTop=20;html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=22;fillColor=#f8fafc;strokeColor=#334155;strokeWidth=2;" value="«device»&#xa;Glove ESP32" vertex="1">
+          <mxGeometry height="350" width="285" x="380" y="214" as="geometry" />
+        </mxCell>
+        <mxCell id="gAcq" parent="1" style="rounded=1;arcSize=4;verticalAlign=middle;html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=22;fillColor=#ffffff;strokeColor=#334155;strokeWidth=2;" value="Sensor acquisition" vertex="1">
+          <mxGeometry height="95" width="245" x="400" y="304" as="geometry" />
+        </mxCell>
+        <mxCell id="gMqtt" parent="1" style="rounded=1;arcSize=4;verticalAlign=middle;html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=22;fillColor=#ffffff;strokeColor=#334155;strokeWidth=2;" value="MQTT client" vertex="1">
+          <mxGeometry height="95" width="245" x="400" y="429" as="geometry" />
+        </mxCell>
+        <mxCell id="microphone" parent="1" style="shape=cube;size=16;verticalAlign=top;spacingTop=20;html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=22;fillColor=#f8fafc;strokeColor=#334155;strokeWidth=2;" value="«device»&#xa;Microphone" vertex="1">
+          <mxGeometry height="120" width="190" x="60" y="685" as="geometry" />
+        </mxCell>
+        <mxCell id="mic" parent="1" style="shape=cube;size=16;verticalAlign=top;spacingTop=20;html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=22;fillColor=#f8fafc;strokeColor=#334155;strokeWidth=2;" value="«device»&#xa;Mic ESP32" vertex="1">
+          <mxGeometry height="230" width="285" x="355" y="605" as="geometry" />
+        </mxCell>
+        <mxCell id="mCapture" parent="1" style="rounded=1;arcSize=4;verticalAlign=middle;html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=22;fillColor=#ffffff;strokeColor=#334155;strokeWidth=2;" value="Audio capture" vertex="1">
+          <mxGeometry height="60" width="245" x="375" y="685" as="geometry" />
+        </mxCell>
+        <mxCell id="mMqtt" parent="1" style="rounded=1;arcSize=4;verticalAlign=middle;html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=22;fillColor=#ffffff;strokeColor=#334155;strokeWidth=2;" value="MQTT client" vertex="1">
+          <mxGeometry height="50" width="245" x="375" y="765" as="geometry" />
+        </mxCell>
+        <mxCell id="relay" parent="1" style="shape=cube;size=16;verticalAlign=top;spacingTop=20;html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=22;fillColor=#f8fafc;strokeColor=#334155;strokeWidth=2;" value="«device»&#xa;Linux server" vertex="1">
+          <mxGeometry height="220" width="250" x="800" y="293.5" as="geometry" />
+        </mxCell>
+        <mxCell id="rapp" parent="1" style="rounded=1;arcSize=4;verticalAlign=middle;html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=22;fillColor=#ffffff;strokeColor=#334155;strokeWidth=2;" value="TLS relay" vertex="1">
+          <mxGeometry height="95" width="210" x="820" y="383.5" as="geometry" />
+        </mxCell>
+        <mxCell id="broker" parent="1" style="shape=cube;size=16;verticalAlign=top;spacingTop=20;html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=22;fillColor=#f8fafc;strokeColor=#334155;strokeWidth=2;" value="«device»&#xa;MacBook server" vertex="1">
+          <mxGeometry height="270" width="280" x="1180" y="282.5" as="geometry" />
+        </mxCell>
+        <mxCell id="brokerApp" parent="1" style="rounded=1;arcSize=4;verticalAlign=middle;html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=22;fillColor=#ffffff;strokeColor=#334155;strokeWidth=2;" value="MQTT broker" vertex="1">
+          <mxGeometry height="70" width="240" x="1200" y="372.5" as="geometry" />
+        </mxCell>
+        <mxCell id="acl" parent="1" style="rounded=1;arcSize=4;verticalAlign=middle;html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=22;fillColor=#ffffff;strokeColor=#334155;strokeWidth=2;" value="Auth + ACL" vertex="1">
+          <mxGeometry height="60" width="240" x="1200" y="467.5" as="geometry" />
+        </mxCell>
+        <mxCell id="ultra" parent="1" style="shape=cube;size=16;verticalAlign=top;spacingTop=20;html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=22;fillColor=#f8fafc;strokeColor=#334155;strokeWidth=2;" value="«device»&#xa;Ultra96 Rev1" vertex="1">
+          <mxGeometry height="520" width="375" x="1570" y="170" as="geometry" />
+        </mxCell>
+        <mxCell id="uMqtt" parent="1" style="rounded=1;arcSize=4;verticalAlign=middle;html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=22;fillColor=#ffffff;strokeColor=#334155;strokeWidth=2;" value="MQTT client" vertex="1">
+          <mxGeometry height="65" width="335" x="1590" y="262.5" as="geometry" />
+        </mxCell>
+        <mxCell id="pre" parent="1" style="rounded=1;arcSize=4;verticalAlign=middle;html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=22;fillColor=#ffffff;strokeColor=#334155;strokeWidth=2;" value="CPU preprocessing" vertex="1">
+          <mxGeometry height="65" width="335" x="1590" y="352.5" as="geometry" />
+        </mxCell>
+        <mxCell id="cnn" parent="1" style="rounded=1;arcSize=4;verticalAlign=middle;html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=22;fillColor=#ffffff;strokeColor=#334155;strokeWidth=2;" value="FPGA: gesture + voice CNNs" vertex="1">
+          <mxGeometry height="105" width="335" x="1590" y="442.5" as="geometry" />
+        </mxCell>
+        <mxCell id="dec" parent="1" style="rounded=1;arcSize=4;verticalAlign=middle;html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=22;fillColor=#ffffff;strokeColor=#334155;strokeWidth=2;" value="CPU decision logic" vertex="1">
+          <mxGeometry height="75" width="335" x="1590" y="587.5" as="geometry" />
+        </mxCell>
+        <mxCell id="phone" parent="1" style="shape=cube;size=16;verticalAlign=top;spacingTop=20;html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=22;fillColor=#f8fafc;strokeColor=#334155;strokeWidth=2;" value="«device»&#xa;Phone visualizer" vertex="1">
+          <mxGeometry height="240" width="420" x="1128" y="748" as="geometry" />
+        </mxCell>
+        <mxCell id="unity" parent="1" style="rounded=1;arcSize=4;verticalAlign=middle;html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=22;fillColor=#ffffff;strokeColor=#334155;strokeWidth=2;" value="MQTT + Unity AR" vertex="1">
+          <mxGeometry height="120" width="180" x="1148" y="833" as="geometry" />
+        </mxCell>
+        <mxCell id="anchor" parent="1" style="rounded=1;arcSize=4;verticalAlign=middle;html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=22;fillColor=#ffffff;strokeColor=light-dark(#334155,#ACB8C9);strokeWidth=2;" value="AR anchoring" vertex="1">
+          <mxGeometry height="120" width="180" x="1348" y="833" as="geometry" />
+        </mxCell>
+        <mxCell id="debug" parent="1" style="shape=cube;size=16;verticalAlign=top;spacingTop=20;html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=22;fillColor=#f8fafc;strokeColor=#334155;strokeWidth=2;" value="«device»&#xa;Browser console" vertex="1">
+          <mxGeometry height="150" width="250" x="740" y="850" as="geometry" />
+        </mxCell>
+        <mxCell id="imuG" edge="1" parent="1" source="imu" style="edgeStyle=none;html=0;endArrow=open;strokeColor=#334155;strokeWidth=2;fontFamily=Arial;fontSize=20;labelBackgroundColor=#ffffff;exitX=0;exitY=0;exitDx=190;exitDy=68;exitPerimeter=0;entryX=-0.002;entryY=0.195;entryDx=0;entryDy=0;entryPerimeter=0;" target="glove" value="I²C">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint y="-15" as="offset" />
+            <Array as="points" />
+            <mxPoint x="275" y="274" as="sourcePoint" />
+            <mxPoint x="380" y="274" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="flexG" edge="1" parent="1" source="flex" style="edgeStyle=none;html=0;endArrow=open;strokeColor=#334155;strokeWidth=2;fontFamily=Arial;fontSize=20;labelBackgroundColor=#ffffff;exitX=0;exitY=0;exitDx=190;exitDy=68;exitPerimeter=0;entryX=0.001;entryY=0.572;entryDx=0;entryDy=0;entryPerimeter=0;" target="glove" value="Sensor input">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint y="-15" as="offset" />
+            <Array as="points" />
+            <mxPoint x="275" y="416.5" as="sourcePoint" />
+            <mxPoint x="380" y="416.5" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="gMotor" edge="1" parent="1" source="glove" style="edgeStyle=none;html=0;endArrow=open;strokeColor=#334155;strokeWidth=2;fontFamily=Arial;fontSize=20;labelBackgroundColor=#ffffff;exitX=0;exitY=0;exitDx=0;exitDy=334;exitPerimeter=0;" value="GPIO / driver">
+          <mxGeometry relative="1" x="-0.071" y="-17" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points" />
+            <mxPoint x="355" y="390" as="sourcePoint" />
+            <mxPoint x="250" y="545" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="mSensor" edge="1" parent="1" style="edgeStyle=none;html=0;endArrow=open;strokeColor=#334155;strokeWidth=2;fontFamily=Arial;fontSize=20;labelBackgroundColor=#ffffff;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint y="-15" as="offset" />
+            <Array as="points" />
+            <mxPoint x="250" y="745" as="sourcePoint" />
+            <mxPoint x="355" y="745" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="gRelay" edge="1" parent="1" source="glove" style="edgeStyle=none;html=0;endArrow=open;strokeColor=#334155;strokeWidth=2;fontFamily=Arial;fontSize=20;labelBackgroundColor=#ffffff;startArrow=open;startFill=0;entryX=0;entryY=0;entryDx=0;entryDy=102;entryPerimeter=0;exitX=0;exitY=0;exitDx=285;exitDy=183;exitPerimeter=0;" target="relay" value="Wi-Fi&#xa;MQTT/TLS">
+          <mxGeometry relative="1" x="0.1212" y="37" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points" />
+            <mxPoint x="615" y="390" as="sourcePoint" />
+            <mxPoint x="740" y="390" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="micRelay" edge="1" parent="1" source="mic" style="edgeStyle=none;html=0;endArrow=open;strokeColor=#334155;strokeWidth=2;fontFamily=Arial;fontSize=20;labelBackgroundColor=#ffffff;entryX=0.001;entryY=0.672;entryDx=0;entryDy=0;entryPerimeter=0;exitX=0;exitY=0;exitDx=285;exitDy=123;exitPerimeter=0;" target="relay" value="Wi-Fi · MQTT/TLS">
+          <mxGeometry relative="1" x="0.1076" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="750" y="728" />
+              <mxPoint x="750" y="440.46" />
+            </Array>
+            <mxPoint x="615" y="930" as="sourcePoint" />
+            <mxPoint x="740" y="465" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="relayB" edge="1" parent="1" source="relay" style="edgeStyle=none;html=0;endArrow=open;startArrow=open;strokeColor=#334155;strokeWidth=2;fontFamily=Arial;fontSize=20;labelBackgroundColor=#ffffff;exitX=0;exitY=0;exitDx=250;exitDy=118;exitPerimeter=0;entryX=0;entryY=0;entryDx=0;entryDy=127;entryPerimeter=0;" target="broker" value="Tailscale&#xa;MQTT/TCP">
+          <mxGeometry relative="1" x="0.0841" y="30" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points" />
+            <mxPoint x="990" y="400" as="sourcePoint" />
+            <mxPoint x="1130" y="400" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="bUltra" edge="1" parent="1" source="broker" style="edgeStyle=none;html=0;endArrow=open;startArrow=open;strokeColor=#334155;strokeWidth=2;fontFamily=Arial;fontSize=20;labelBackgroundColor=#ffffff;exitX=0;exitY=0;exitDx=280;exitDy=143;exitPerimeter=0;entryX=0;entryY=0;entryDx=0;entryDy=257;entryPerimeter=0;" target="ultra" value="Tailscale&#xa;MQTT/TCP">
+          <mxGeometry relative="1" x="0.0049" y="35" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points" />
+            <mxPoint x="1410" y="400" as="sourcePoint" />
+            <mxPoint x="1580" y="400" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="bPhone" edge="1" parent="1" source="broker" style="edgeStyle=none;html=0;endArrow=open;dashed=1;strokeColor=#334155;strokeWidth=2;fontFamily=Arial;fontSize=20;labelBackgroundColor=#ffffff;exitX=0;exitY=0;exitDx=148;exitDy=270;exitPerimeter=0;entryX=0;entryY=0;entryDx=202;entryDy=0;entryPerimeter=0;" target="phone" value="ultra96/commands">
+          <mxGeometry relative="1" x="0.0212" y="90" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points" />
+            <mxPoint x="1319.5" y="565" as="sourcePoint" />
+            <mxPoint x="1319.5" y="820" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="bDebug" edge="1" parent="1" source="broker" style="edgeStyle=none;html=0;endArrow=open;startArrow=open;strokeColor=#334155;strokeWidth=2;fontFamily=Arial;fontSize=20;labelBackgroundColor=#ffffff;exitX=-0.002;exitY=0.765;exitDx=0;exitDy=0;exitPerimeter=0;" value="WSS">
+          <mxGeometry relative="1" x="0.0808" as="geometry">
+            <mxPoint y="-15" as="offset" />
+            <Array as="points">
+              <mxPoint x="1070" y="490" />
+              <mxPoint x="1070" y="925" />
+            </Array>
+            <mxPoint x="1130" y="490" as="sourcePoint" />
+            <mxPoint x="990" y="925" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="cpuFpga" edge="1" parent="1" style="edgeStyle=none;html=0;endArrow=open;startArrow=open;strokeColor=#334155;strokeWidth=2;fontFamily=Arial;fontSize=20;labelBackgroundColor=#ffffff;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint y="-15" as="offset" />
+            <Array as="points" />
+            <mxPoint x="1895" y="417.5" as="sourcePoint" />
+            <mxPoint x="1895" y="442.5" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="fpgaCpu" edge="1" parent="1" style="edgeStyle=none;html=0;endArrow=open;strokeColor=#334155;strokeWidth=2;fontFamily=Arial;fontSize=20;labelBackgroundColor=#ffffff;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint y="-15" as="offset" />
+            <Array as="points" />
+            <mxPoint x="1755" y="547.5" as="sourcePoint" />
+            <mxPoint x="1755" y="587.5" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="title" parent="1" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=top;fontFamily=Arial;fontSize=43;fontStyle=1;fontColor=#334155;" value="Milo — Overall System Architecture" vertex="1">
+          <mxGeometry height="65" width="1900" x="35" y="28" as="geometry" />
+        </mxCell>
+        <mxCell id="sub" parent="1" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=top;fontFamily=Arial;fontSize=23;fontStyle=0;fontColor=#334155;" value="Sensors · communications · FPGA inference · AR visualizer" vertex="1">
+          <mxGeometry height="35" width="1900" x="35" y="95" as="geometry" />
+        </mxCell>
+        <mxCell id="relayNote" parent="1" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=top;fontFamily=Arial;fontSize=19;fontStyle=0;fontColor=#334155;" value="HAProxy · TLS :8883" vertex="1">
+          <mxGeometry height="35" width="270" x="800" y="258.5" as="geometry" />
+        </mxCell>
+        <mxCell id="bNote" parent="1" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=top;fontFamily=Arial;fontSize=19;fontStyle=0;fontColor=#334155;" value="Mosquitto · Docker" vertex="1">
+          <mxGeometry height="35" width="280" x="1180" y="240" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

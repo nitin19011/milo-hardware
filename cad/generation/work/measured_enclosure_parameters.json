@@ -1,0 +1,22 @@
+{
+  "module_length_mm": 62,
+  "module_width_mm": 40.25,
+  "module_thickness_mm": 17,
+  "clearance_each_side_mm": 0.5,
+  "internal_length_mm": 63,
+  "internal_width_mm": 41.25,
+  "internal_depth_mm": 18,
+  "side_wall_mm": 1.8,
+  "floor_mm": 1.6,
+  "cap_mm": 1.6,
+  "target_external_length_mm": 66.6,
+  "target_external_width_mm": 44.85,
+  "target_assembled_depth_mm": 21.2,
+  "mic_diameter_mm": 14,
+  "mic_offset_from_top_mm": 7.5,
+  "mic_offset_from_reference_side_mm": 13.7,
+  "chip_offset_from_top_mm": 7.45,
+  "chip_offset_from_reference_side_mm": 11.1,
+  "chip_sides_mm": [18, 16],
+  "opening_reference_status": "Awaiting edge-versus-centre and chip orientation clarification"
+}

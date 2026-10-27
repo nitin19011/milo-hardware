@@ -1,0 +1,39 @@
+Thumb/index-only revision - validated 15 October 2026.
+
+New main firmware compiled and linked successfully for FireBeetle-ESP32,
+ESP32 core 3.3.11 and PubSubClient 2.8.
+953328 bytes flash (72%); 48296 bytes globals (14%).
+Windows image-packaging helpers were bypassed due to their sandbox extraction
+limitation. Upload the supplied .ino through Arduino IDE; no binary is supplied.
+
+The default 70-example collection workflow passed with simulated readings:
+- exactly ten eligible examples per action, eight features in the specified order;
+- thumb fault/warning/performer-rejected takes repeated without consuming a count;
+- stop/resume preserving accepted examples and producing PARTIAL/complete ZIPs;
+- per-class CSVs, metadata, calibrated/raw arrays, labels and hashes;
+- middle omitted from CSV columns, calibration spans and all model arrays;
+- motor confirmation stored as wearer-reported metadata, not a model feature.
+
+A local Mosquitto integration test passed for all seven gestures, using real
+MQTT messages carrying simulated thumb/index/IMU telemetry and middle=null:
+- three two-second calibration captures and two-second clips at 50 Hz;
+- ESP-stamped trial boundaries, release suggestions and wearer confirmation;
+- eight-channel exports, offline review and automatic AI handoff ZIP;
+- human annotations and deliberate faulty-clip exclusion.
+
+Additional checks passed:
+- disabled middle rail bit cannot reject an otherwise good take;
+- thumb/index rail bits still reject takes;
+- calibration uses only thumb/index and rejects an extra fake middle feature;
+- old three-finger firmware/profile is rejected;
+- empty exports retain [0,100,8] dimensions;
+- waveform viewer draws exactly two flex curves without missing/NaN channels;
+- viewer syntax, annotation limits and download behavior;
+- raw-stream append, Python syntax, package ZIP CRC and firmware change record.
+
+The motor self-test drives GPIO25 HIGH for 150 ms three times, returns LOW,
+and waits 700 ms before sensor/network tasks start. No later activation exists.
+Physical vibration has NOT been measured by these software checks: the user must
+feel the pulses after uploading. A startup-test flag is not physical feedback.
+No real training examples are included. Optional PyTorch/HDF5 conversion was not
+run; it requires the teammate's optional libraries.

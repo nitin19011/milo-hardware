@@ -1,0 +1,20 @@
+{
+  "snapshot_date": "2026-10-27",
+  "files": 978,
+  "source_bytes": 48970793,
+  "known_private_literals_checked": 6,
+  "additional_files_sanitized": [],
+  "python_sources_parsed": 217,
+  "recording_archives_included": false,
+  "hardware_reflashed": false,
+  "notes": "Copied maintained source and archived variants; prior component validation notes retained. Local recordings and derived training arrays are excluded.",
+  "verification": {
+    "candidate_detector_tests": {
+      "passed": 14,
+      "note": "Tk timer cleanup warnings occurred after UI destruction; assertions passed."
+    },
+    "wrong_action_collector_tests": {
+      "passed": 15
+    }
+  }
+}

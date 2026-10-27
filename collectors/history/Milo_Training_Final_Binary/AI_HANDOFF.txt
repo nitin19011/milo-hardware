@@ -1,0 +1,25 @@
+Milo glove training - final binary-flex protocol v6
+
+PRIMARY INPUT: export/dataset.npz key X, shape (N,100,9), float32.
+Feature order: ax ay az gx gy gz thumb index middle.
+First six are IMU physical units; last three are strictly 0=NOT_BENT / 1=BENT.
+X has session open-hand gyro bias removed; fingers are never normalised or linearly interpolated.
+X_channels_first is (N,9,100). X.npy is included. y contains class indices; classes supplies label order.
+Legacy key X_raw means uncorrected IMU + BINARY states, never flex ADC. X_session_calibrated is identical to X.
+Model CSV/JSON/JSONL/TS and NPY alternatives are included; optional PyTorch/HDF5 converters are provided.
+
+Firmware uses fixed thresholds and directional hysteresis continuously across clips.
+State transitions use zero-order hold at the regular 50Hz export grid. IMU uses linear interpolation.
+Exact state thresholds are recorded in session.json, calibration.json and dataset_manifest.json.
+Do not reset hysteresis per inference window or replace these with old 1500/1800 finger thresholds.
+
+Seven classes; 10 accepted 2-second samples each, personal positive TRAIN data only.
+Come -> Sit -> Paw -> Spin -> Bang -> Overhand throw -> Underhand throw, sequential class blocks.
+First second is preparation, second is action/follow-through. Both throws prompt Milo fetch.
+Throws include a loose grip and finger opening; the quality check requires release in at least two fingers after GO.
+No model automatically verifies the full gesture; wearer confirmation and review are still necessary.
+Speech is a prompt only; no audio or measured speech alignment. Annotations are not ground truth unless human-reviewed.
+Separate class folders have CSV + metadata JSON pairs, with manifest.csv mapping filenames.
+Fit-check poses and raw ADC troubleshooting logs are excluded from this AI handoff.
+No held-out evaluation or negative/background class is supplied. Keep clips/wear sessions together when splitting.
+Do not merge old datasets with absent middle or continuous finger inputs silently.

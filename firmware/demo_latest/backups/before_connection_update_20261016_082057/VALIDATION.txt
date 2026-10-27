@@ -1,0 +1,52 @@
+Validation - 16 October 2026
+
+Both sketches compiled AND linked for esp32:esp32:firebeetle32, ESP32 Arduino core 3.3.11,
+with ArduinoJson 7.4.3. The configured TLS/network/acquisition code paths were enabled in compile-only
+copies to avoid measuring an optimized build with missing-password branches removed.
+Those copies used clearly dummy, non-working credentials/CA markers and are NOT deployed/flashed.
+Delivered configs now contain the supplied hand/mic passwords and the existing hotspot settings.
+The CA remains empty: the supplied GitHub repository, blob and raw URLs returned HTTP 404.
+The firmware therefore deliberately refuses to connect until the public CA is installed and configs regenerated.
+
+Connection update checks:
+  TCP connection to 140.245.52.118:8883 succeeded from this computer.
+  TLS chain/hostname verification and MQTT role authentication remain untested without the CA.
+  Production receiver tests (5) and Python syntax checks passed again after the monitor credential update.
+  No firmware acquisition/transport logic changed in this connection update; the build evidence below still applies.
+
+Configured code-path build:
+  GloveDemo: flash 1,055,616 bytes (80%); static RAM 65,120 bytes (19%).
+  MicDemo:   flash 1,040,908 bytes (79%); static RAM 58,184 bytes (17%).
+  Mic additionally allocates 96,000 bytes in fifteen 6,400-byte heap blocks for the WAV PCM.
+  These are storage blocks, not MQTT chunks; one complete waveform is one QoS1 PUBLISH.
+  Driver queues, stacks, Wi-Fi, TLS and JSON use additional heap; live health reports free/minimum heap.
+  No external PSRAM is required by the implementation.
+
+Local build helper bypassed Windows flash-image-packaging hooks. C++ compilation/linking succeeded;
+normal Arduino IDE upload creates the final flash image. No prebuilt flash binary is distributed.
+
+Executed checks:
+1. Native Windows compilation of the ACTUAL shared/DemoMqtt.h with an Arduino/Client compatibility shim.
+   Against a real local Mosquitto broker, its eighteen-part scatter/gather QoS1 publication preserved
+   the complete MLW1 envelope and 96,044-byte WAV exactly, with a PUBACK.
+2. The same actual transport accepted deliberately fragmented incoming QoS1 control data and sent PUBACK.
+3. Oversized incoming messages were rejected; a past hard publication deadline sent no waveform.
+4. Production Python decoder/receiver tests: both arrival orders, duplicate suppression, capture-ID isolation,
+   wrong timing/source pairing, 150x9 binary features, exact WAV duration/format, corrupt/truncated bytes,
+   and rejection of old eight-feature/MLA1 profiles.
+5. Shared support headers in both sketch folders match their authoritative shared/ copies.
+6. No insecure TLS bypass in the shared runtime. Python syntax checked.
+
+Not yet physically tested:
+  Actual ESP32 flashing, Wi-Fi/role authentication, the repaired CA/server chain, reachable NTP,
+  true cross-device acoustic/motion alignment, motor spin-down, long-running free heap,
+  the public relay's full-size transfer, Ultra96 inference and Unity animation.
+  These depend on real provisioned settings/hardware and are not claimed as passing here.
+
+The implementation uses the requested boundary with NO extra settling delay after the first buzz.
+Its clock/DMA uncertainty fields are estimates; they do not prove sample-exact physical synchronisation.
+Missing/corrupt acquisition is rejected, not padded. A broker PUBACK is not AI/application completion.
+
+Comms must use PROTOCOL_DEMO.txt: three binary fingers, 150x9, scheduled fist/cue capture,
+MLW1 + full WAV, and required glove read access to mic/results. The old standard draft is not sufficient.
+No installed glove/collar main sketches, training datasets or frozen handoff ZIP were modified.

@@ -1,0 +1,7 @@
+demo_settings.local.json
+certs/
+GloveDemo/DemoConfig.h
+MicDemo/DemoConfig.h
+received/
+__pycache__/
+.test_output/

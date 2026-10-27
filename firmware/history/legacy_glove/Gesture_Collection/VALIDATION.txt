@@ -1,0 +1,28 @@
+Validated 12 October 2026.
+
+Final main firmware C++ compilation and linking passed for FireBeetle-ESP32, ESP32 core 3.3.11 and PubSubClient 2.8.
+Local Windows image-packaging helpers were bypassed due their sandbox extraction limitation.
+No flashable binary is supplied; upload the .ino using Arduino IDE.
+
+Local Mosquitto integration test with simulated main-mode data passed:
+- open/fist/ball-grip calibration;
+- two labelled throw clips with ESP acquisition timing;
+- quality checking, continuous finger normalisation and release candidate generation;
+- CSV/JSON capture, [N,100,9] / [N,9,100] / [N,75,9] tensor export for the two-second v2 protocol;
+- assigned session roles and class IDs;
+- human release-annotation application;
+- rail-fault exclusion even if metadata is manually marked accepted;
+- session ZIP and offline reviewer generation.
+
+Quality/calibration unit checks passed for valid data, rail faults, incomplete clips and partial-grip normalisation.
+Reviewer JavaScript syntax plus waveform drawing, release marking and annotation-download checks passed.
+Python syntax checks passed for the collection/export/review scripts.
+Optional PyTorch/HDF5 conversion helpers require the teammate's optional libraries and were not run here.
+Physical gesture consistency and real throw-release curves still need the user's pilot collection.
+
+Two-second revision: full local MQTT capture/export/review test passed with two simulated
+throws and three independent four-second calibration poses. All positive and background
+variant cue timings, empty dataset shapes, two-second annotation limits, legacy six-second
+export compatibility and rejection of mixed protocol versions were also checked.
+The main firmware is unchanged by this revision; a further board upload is unnecessary
+if the collection-capable firmware is already installed on the glove.

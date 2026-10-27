@@ -1,0 +1,13 @@
+USB flex calibration - suggested thresholds only; no demo files changed.
+12-bit ADC, 11 dB attenuation, 8-read average; GPIO35/34/39.
+Repeat measurements do not rule out an intermittent wiring/sensor fault.
+
+THUMB: relaxed 1440..1489; fist 1866..1978
+  Suggested bend=1696, release=1583; increases=True
+  Separation=379.0 ADC counts; repeat gaps=[440.56, 405.56, 443.34]
+INDEX: relaxed 1490..1631; fist 2156..2302
+  Suggested bend=1920, release=1762; increases=True
+  Separation=527.38 ADC counts; repeat gaps=[771.56, 539.56, 583.56]
+MIDDLE: relaxed 3451..3461; fist 3569..3595
+  Suggested bend=3520, release=3487; increases=True
+  Separation=109.38 ADC counts; repeat gaps=[116.56, 109.0, 118.12]

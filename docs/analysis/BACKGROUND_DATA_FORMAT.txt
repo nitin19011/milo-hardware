@@ -1,0 +1,53 @@
+MILO - BACKGROUND / NO-COMMAND NEGATIVE DATA
+25 October 2026
+
+ONLY explicitly accepted mixed_everyday intervals were extracted. The original
+first ZIP also contains positive command gestures; those are NOT in this export.
+Two labelled recordings: about 10 minutes + about 2 minutes, same wearer Nitin.
+
+MODEL INPUT FEATURES (9, exact order):
+ax, ay, az, gx, gy, gz, thumb, index, middle
+Acceleration: m/s^2, gravity included. Gyro: rad/s, bias NOT subtracted.
+Fingers: exactly 0 NOT_BENT / 1 BENT; all three fingers active.
+Raw ADC and prior detector scores appear only in diagnostics, NOT model tensors.
+
+FILES
+continuous/<recording>/model_features.csv: full labelled interval, with sequence
+and device-time columns. Select ONLY the nine named features as model inputs.
+continuous/<recording>/diagnostics.csv: original diagnostic columns, sorted by
+source sequence. No missing values were synthesized. Missing sequence positions
+are gaps, not zeros. Reordered received packets were placed in source order.
+clips/background/: valid non-overlapping 3-second CSVs, exactly 150 rows x9.
+background_3s.npz: X shape (N,150,9), y string labels 'background', recording_group,
+feature_names, sample_id, sample_offsets_us and binary is_command=0.
+manifest.csv: per-clip provenance. dataset_info.json: counts and recording bounds.
+excluded_windows.json: windows rejected for gaps/health/timing problems.
+
+LABEL MAPPING
+No numeric multiclass ID is imposed. Add 'background' / 'no_command' to your own
+class mapping. Do not assume zero is the multiclass background ID: an existing
+positive dataset may use zero for Come. is_command=0 is explicitly binary only.
+
+PREPROCESSING
+X is RAW PHYSICAL IMU plus BINARY fingers. Existing positive collection exports
+may have gyro-bias-corrected X and uncorrected X_raw: use X_raw for a direct match,
+or apply the same intended bias correction consistently to both datasets.
+No normalization/resampling/interpolation was applied. Do not normalize binary
+states as continuous flex angles. Timestamps/diagnostics are not model features.
+Calibration ID: nitin-20261023-usb-relaxed-fist-v3. Earlier positive datasets can
+use different thresholds or disabled fingers: check their metadata when combining.
+
+DATA SPLITS
+Preserve recording groups; avoid random splits of neighbouring/overlapping
+windows across train/test. Keep a genuinely separate recording for final testing.
+Both recordings have been used for local glove-trigger development. They are
+not an untouched test of the complete system, and do not establish 99% recall.
+Unlabelled portions and uncertain positive actions were not relabelled negative.
+
+LOAD
+import numpy as np
+z=np.load('background_3s.npz', allow_pickle=False)
+X=z['X']                       # (N,150,9)
+y=z['y']                       # string 'background'
+groups=z['recording_group']
+# If your model requires channels first: X.transpose(0,2,1)

@@ -1,0 +1,244 @@
+{
+  "selected": {
+    "name": "forest_depth7_features45",
+    "nfeatures": 45,
+    "threshold": 0.31307188305522066,
+    "development_brackets": 54,
+    "development_hits": 54,
+    "calibration_background": {
+      "original": {
+        "valid_seconds": 117.1,
+        "proposals": 0,
+        "proposals_per_minute": 0.0,
+        "window_fraction_above": 0.0
+      },
+      "hard_negative": {
+        "valid_seconds": 22.6,
+        "proposals": 1,
+        "proposals_per_minute": 2.654867256637168,
+        "window_fraction_above": 0.035398230088495575
+      }
+    },
+    "worst_calibration_proposals_per_minute": 2.654867256637168,
+    "nodes": 2090
+  },
+  "comparisons": [
+    {
+      "name": "forest_depth5_features39",
+      "nfeatures": 39,
+      "threshold": 0.23176860665873467,
+      "development_brackets": 54,
+      "development_hits": 54,
+      "calibration_background": {
+        "original": {
+          "valid_seconds": 117.1,
+          "proposals": 2,
+          "proposals_per_minute": 1.0247651579846284,
+          "window_fraction_above": 0.010247651579846286
+        },
+        "hard_negative": {
+          "valid_seconds": 22.6,
+          "proposals": 7,
+          "proposals_per_minute": 18.584070796460175,
+          "window_fraction_above": 0.18584070796460178
+        }
+      },
+      "worst_calibration_proposals_per_minute": 18.584070796460175,
+      "nodes": 1318
+    },
+    {
+      "name": "forest_depth5_features45",
+      "nfeatures": 45,
+      "threshold": 0.3284131394983628,
+      "development_brackets": 54,
+      "development_hits": 54,
+      "calibration_background": {
+        "original": {
+          "valid_seconds": 117.1,
+          "proposals": 0,
+          "proposals_per_minute": 0.0,
+          "window_fraction_above": 0.0
+        },
+        "hard_negative": {
+          "valid_seconds": 22.6,
+          "proposals": 3,
+          "proposals_per_minute": 7.9646017699115035,
+          "window_fraction_above": 0.0752212389380531
+        }
+      },
+      "worst_calibration_proposals_per_minute": 7.9646017699115035,
+      "nodes": 1316
+    },
+    {
+      "name": "forest_depth7_features39",
+      "nfeatures": 39,
+      "threshold": 0.23989708323121564,
+      "development_brackets": 54,
+      "development_hits": 54,
+      "calibration_background": {
+        "original": {
+          "valid_seconds": 117.1,
+          "proposals": 1,
+          "proposals_per_minute": 0.5123825789923142,
+          "window_fraction_above": 0.0008539709649871904
+        },
+        "hard_negative": {
+          "valid_seconds": 22.6,
+          "proposals": 4,
+          "proposals_per_minute": 10.619469026548671,
+          "window_fraction_above": 0.08849557522123894
+        }
+      },
+      "worst_calibration_proposals_per_minute": 10.619469026548671,
+      "nodes": 2250
+    },
+    {
+      "name": "forest_depth7_features45",
+      "nfeatures": 45,
+      "threshold": 0.31307188305522066,
+      "development_brackets": 54,
+      "development_hits": 54,
+      "calibration_background": {
+        "original": {
+          "valid_seconds": 117.1,
+          "proposals": 0,
+          "proposals_per_minute": 0.0,
+          "window_fraction_above": 0.0
+        },
+        "hard_negative": {
+          "valid_seconds": 22.6,
+          "proposals": 1,
+          "proposals_per_minute": 2.654867256637168,
+          "window_fraction_above": 0.035398230088495575
+        }
+      },
+      "worst_calibration_proposals_per_minute": 2.654867256637168,
+      "nodes": 2090
+    },
+    {
+      "name": "extra_depth5_features39",
+      "nfeatures": 39,
+      "threshold": 0.18681084254764385,
+      "development_brackets": 54,
+      "development_hits": 54,
+      "calibration_background": {
+        "original": {
+          "valid_seconds": 117.1,
+          "proposals": 5,
+          "proposals_per_minute": 2.561912894961571,
+          "window_fraction_above": 0.026473099914602904
+        },
+        "hard_negative": {
+          "valid_seconds": 22.6,
+          "proposals": 16,
+          "proposals_per_minute": 42.477876106194685,
+          "window_fraction_above": 0.5619469026548672
+        }
+      },
+      "worst_calibration_proposals_per_minute": 42.477876106194685,
+      "nodes": 1334
+    },
+    {
+      "name": "extra_depth5_features45",
+      "nfeatures": 45,
+      "threshold": 0.2430608421556413,
+      "development_brackets": 54,
+      "development_hits": 54,
+      "calibration_background": {
+        "original": {
+          "valid_seconds": 117.1,
+          "proposals": 3,
+          "proposals_per_minute": 1.5371477369769426,
+          "window_fraction_above": 0.015371477369769428
+        },
+        "hard_negative": {
+          "valid_seconds": 22.6,
+          "proposals": 14,
+          "proposals_per_minute": 37.16814159292035,
+          "window_fraction_above": 0.3893805309734513
+        }
+      },
+      "worst_calibration_proposals_per_minute": 37.16814159292035,
+      "nodes": 1326
+    },
+    {
+      "name": "extra_depth7_features39",
+      "nfeatures": 39,
+      "threshold": 0.29658639743816495,
+      "development_brackets": 54,
+      "development_hits": 54,
+      "calibration_background": {
+        "original": {
+          "valid_seconds": 117.1,
+          "proposals": 2,
+          "proposals_per_minute": 1.0247651579846284,
+          "window_fraction_above": 0.0017079419299743809
+        },
+        "hard_negative": {
+          "valid_seconds": 22.6,
+          "proposals": 10,
+          "proposals_per_minute": 26.54867256637168,
+          "window_fraction_above": 0.23008849557522124
+        }
+      },
+      "worst_calibration_proposals_per_minute": 26.54867256637168,
+      "nodes": 2886
+    },
+    {
+      "name": "extra_depth7_features45",
+      "nfeatures": 45,
+      "threshold": 0.3575797763844112,
+      "development_brackets": 54,
+      "development_hits": 54,
+      "calibration_background": {
+        "original": {
+          "valid_seconds": 117.1,
+          "proposals": 0,
+          "proposals_per_minute": 0.0,
+          "window_fraction_above": 0.0
+        },
+        "hard_negative": {
+          "valid_seconds": 22.6,
+          "proposals": 7,
+          "proposals_per_minute": 18.584070796460175,
+          "window_fraction_above": 0.10176991150442478
+        }
+      },
+      "worst_calibration_proposals_per_minute": 18.584070796460175,
+      "nodes": 2816
+    }
+  ],
+  "negative_time_block_checks": {
+    "original": {
+      "valid_seconds": 119.0,
+      "proposals": 0,
+      "proposals_per_minute": 0.0,
+      "window_fraction_above": 0.0
+    },
+    "hard_negative": {
+      "valid_seconds": 22.6,
+      "proposals": 0,
+      "proposals_per_minute": 0.0,
+      "window_fraction_above": 0.0
+    }
+  },
+  "previous_model_same_hard_negative_test_block": {
+    "valid_seconds": 22.6,
+    "proposals": 5,
+    "proposals_per_minute": 13.27433628318584,
+    "window_fraction_above": 0.13716814159292035
+  },
+  "hard_negative_label_seconds": 121.077,
+  "fit_original_gesture_brackets": 78,
+  "development_positive_brackets": 54,
+  "positive_fitting_windows": 390,
+  "fitting_negative_windows": 4329,
+  "uncertain_original_brackets_used": false,
+  "new_positive_independent_session_present": false,
+  "limits": [
+    "Only 23 seconds of this hard-negative recording remain in the final time-block check.",
+    "All original non-fitting positive brackets now serve model development; hit rate is not an independent recall estimate.",
+    "More background training can trade off new unseen positive gestures; live validation is necessary.",
+    "Overlapping proposals are still retained. Grouping in the UI does not conceal the raw window count."
+  ]
+}

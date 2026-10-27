@@ -1,0 +1,14 @@
+Validated 12 October 2026.
+
+ESP32 C++ compilation and linking passed for FireBeetle-ESP32, ESP32 core 3.3.11 and PubSubClient 2.8.
+Local Windows image-packaging helpers were bypassed due their sandbox runtime-extraction limitation.
+No flashable binary is supplied; upload the .ino through Arduino IDE.
+
+Python syntax and command-line interface checked.
+The plan contains exactly 5 phases and 40 seconds of recording.
+Old firmware/range messages are rejected before a test starts.
+Local Mosquitto integration capture passed with expanded-range metadata, CSV/JSON/ZIP output,
+missing-sequence reporting and clipping flags for the new ranges.
+The existing reconnect/reset recorder logic was preserved from the previously tested stress package.
+
+Physical expanded-range measurements still require the user's retest.

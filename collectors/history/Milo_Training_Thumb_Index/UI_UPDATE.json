@@ -1,0 +1,28 @@
+{
+  "status": "sequential_desktop_ui_installed_verified",
+  "collector": "C:\\Users\\nitin\\Documents\\Codex\\2026-10-06\\cod\\outputs\\Milo_Training_Thumb_Index_Package\\Milo_Training_Thumb_Index",
+  "previous_code_backup": "C:\\Users\\nitin\\Documents\\Codex\\2026-10-06\\cod\\outputs\\Milo_Training_Thumb_Index_Package\\Milo_Training_Thumb_Index\\backups\\before_sequential_gui_20261015_115100",
+  "existing_session": "20261015_113238_97866b59ea534ebc",
+  "existing_good_samples": {
+    "come": 1,
+    "sit": 1,
+    "paw": 1,
+    "spin": 1,
+    "bang": 0,
+    "throw_overhand": 1,
+    "throw_underhand": 1
+  },
+  "recording_files_preserved": 23,
+  "firmware_changed": false,
+  "class_definition_changed": false,
+  "resume_supported": true,
+  "order": [
+    "come",
+    "sit",
+    "paw",
+    "spin",
+    "bang",
+    "throw_overhand",
+    "throw_underhand"
+  ]
+}

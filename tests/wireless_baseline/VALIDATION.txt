@@ -1,0 +1,8 @@
+Validation completed 12 October 2026:
+- ESP32 C++ source compilation and linking passed for esp32:esp32:firebeetle32, ESP32 core 3.3.11, PubSubClient 2.8.
+- Local Windows image-packaging helpers were bypassed because their runtime extraction was blocked in this environment. No flashable binary is supplied; upload the .ino through Arduino IDE.
+- Real local Mosquitto/Paho integration test with a simulated glove passed: live data, guided trial commands, retry without restarting capture, CSV/JSON/ZIP creation, missing-sequence reporting and flex comparisons.
+- Reset and stale-link health checks passed.
+- Invalid IMU samples are excluded from physical-unit statistics and counted as faults.
+- Command-line help and Python syntax checks passed.
+- Physical glove, sensors and wireless radio behaviour have not been tested by the assistant.

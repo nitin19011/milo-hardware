@@ -1,0 +1,99 @@
+--- previous/MBF_v1.ino
++++ thumb_index/MBF_v1.ino
+@@ -37 +37,3 @@
+-const int FLEX_MIDDLE_PIN = 39;  // A1
++// A1 / GPIO39: middle flex sensor failed; deliberately not sampled.
++const int HAPTIC_PIN = 25; // D2 -> module IN; module VCC -> VCC, GND -> GND.
++const bool STARTUP_MOTOR_TEST = true; // Three brief pulses, once per boot, before sampling.
+@@ -42 +43,0 @@
+-const uint16_t FLEX_MIDDLE_BENT_THRESHOLD = 1800;
+@@ -46 +46,0 @@
+-const bool FLEX_MIDDLE_BEND_INCREASES = true;
+@@ -57 +57 @@
+-// Main stream keeps the existing fields; collection labels and quality are additive.
++// Main stream explicitly marks middle as disabled/null; only thumb and index are measured.
+@@ -60 +60 @@
+-const char HARDWARE_PROFILE[] = "mpu6050_16g_2000dps_21hz_flex8avg_50hz_v1";
++const char HARDWARE_PROFILE[] = "mpu6050_16g_2000dps_21hz_flex8avg_50hz_thumb_index_v2";
+@@ -85 +84,0 @@
+-  uint16_t middle;
+@@ -88 +86,0 @@
+-  bool middleBent;
+@@ -217,2 +215,2 @@
+-  char payload[1100];
+-  char extraFields[620];
++  char payload[1250];
++  char extraFields[760];
+@@ -220,0 +219 @@
++    "\"sensor_status\":{\"active_flex_mask\":3,\"middle_enabled\":false,\"motor_test_on_boot\":%s},"
+@@ -223 +222 @@
+-    bootID,HARDWARE_PROFILE,sample.imuRaw[0],sample.imuRaw[1],sample.imuRaw[2],sample.imuRaw[3],sample.imuRaw[4],sample.imuRaw[5],
++    bootID,HARDWARE_PROFILE,STARTUP_MOTOR_TEST?"true":"false",sample.imuRaw[0],sample.imuRaw[1],sample.imuRaw[2],sample.imuRaw[3],sample.imuRaw[4],sample.imuRaw[5],
+@@ -229,2 +228,2 @@
+-      ",\"flex_raw\":{\"thumb\":%u,\"index\":%u,\"middle\":%u}",
+-      unsigned(sample.thumb), unsigned(sample.index), unsigned(sample.middle));
++      ",\"flex_raw\":{\"thumb\":%u,\"index\":%u,\"middle\":null}",
++      unsigned(sample.thumb), unsigned(sample.index));
+@@ -266 +265 @@
+-    flexState(sample.middleBent),
++    "DISABLED",
+@@ -459,0 +459,14 @@
++void runStartupMotorTest() {
++  // GPIO drives only the module's IN pin; its onboard MOSFET supplies the motor current.
++  if (STARTUP_MOTOR_TEST) {
++    Serial.println("# Motor test: D2/GPIO25, three short buzzes; sampling starts after it stops.");
++    for (uint8_t pulse=0; pulse<3; ++pulse) {
++      digitalWrite(HAPTIC_PIN, HIGH); delay(150);
++      digitalWrite(HAPTIC_PIN, LOW); delay(150);
++    }
++  }
++  digitalWrite(HAPTIC_PIN, LOW);
++  delay(700); // Let motor vibration settle before calibrating/sampling the IMU.
++  Serial.println("# Motor OFF. No motor activation during calibration or gesture recording.");
++}
++
+@@ -460,0 +474,3 @@
++  // Establish LOW before enabling the output to avoid an unintended startup pulse.
++  digitalWrite(HAPTIC_PIN, LOW);
++  pinMode(HAPTIC_PIN, OUTPUT);
+@@ -465,0 +482,2 @@
++
++  runStartupMotorTest(); // No Wi-Fi/sensor tasks exist yet; vibration cannot enter training samples.
+@@ -484,4 +501,0 @@
+-  analogSetPinAttenuation(
+-    FLEX_MIDDLE_PIN,
+-    ADC_11db
+-  );
+@@ -492 +505,0 @@
+-  pinMode(FLEX_MIDDLE_PIN, INPUT);
+@@ -509,4 +522,3 @@
+-  Serial.println("# Flex pins: thumb=GPIO35 index=GPIO34 middle=GPIO39");
+-  Serial.printf("# CALIBRATE: thresholds thumb=%u index=%u middle=%u; release margin=%u\n",
+-    unsigned(FLEX_THUMB_BENT_THRESHOLD), unsigned(FLEX_INDEX_BENT_THRESHOLD),
+-    unsigned(FLEX_MIDDLE_BENT_THRESHOLD), unsigned(FLEX_HYSTERESIS));
++  Serial.println("# Flex pins: thumb=GPIO35 index=GPIO34; middle=DISABLED (failed sensor)");
++  Serial.printf("# CALIBRATE: thresholds thumb=%u index=%u; release margin=%u\n",
++    unsigned(FLEX_THUMB_BENT_THRESHOLD), unsigned(FLEX_INDEX_BENT_THRESHOLD), unsigned(FLEX_HYSTERESIS));
+@@ -515 +527 @@
+-    "thumb_raw,index_raw,middle_raw,thumb_state,index_state,middle_state; IMU units m/s^2 and rad/s"
++    "thumb_raw,index_raw,thumb_state,index_state; IMU units m/s^2 and rad/s"
+@@ -553 +565 @@
+-  bool thumbBent=false, indexBent=false, middleBent=false;
++  bool thumbBent=false, indexBent=false;
+@@ -579 +590,0 @@
+-    sample.middle = readFlex(FLEX_MIDDLE_PIN);
+@@ -582,2 +593 @@
+-                        (sample.index<=20 || sample.index>=4075 ? 2 : 0) |
+-                        (sample.middle<=20 || sample.middle>=4075 ? 4 : 0);
++                        (sample.index<=20 || sample.index>=4075 ? 2 : 0);
+@@ -588,2 +597,0 @@
+-    if (!(sample.flexRailMask & 4)) middleBent = updateFlexBent(sample.middle, FLEX_MIDDLE_BENT_THRESHOLD,
+-      FLEX_MIDDLE_BEND_INCREASES, FLEX_HYSTERESIS, middleBent);
+@@ -592 +599,0 @@
+-    sample.middleBent = middleBent;
+@@ -633,2 +639,0 @@
+-      Serial.print(sample.middle);
+-      Serial.print(",");
+@@ -638,2 +642,0 @@
+-      Serial.print(",");
+-      Serial.print(flexState(sample.middleBent));

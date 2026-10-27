@@ -1,0 +1,29 @@
+Local voice collection validation - 16 October 2026
+
+Local-only update: anonymous MQTT at laptop 172.20.10.2:1883, desktop uses the SAME 172.20.10.2 address.
+No public relay, role accounts, TLS/CA or NTP. One mic ESP; glove is not required.
+The microphone schedules a 3-second recording after its relative countdown and reports remaining time.
+Timestamp metadata explicitly declares device_monotonic_ms; desktop cue includes local network return delay.
+
+Checks passed:
+  Five production decoder/dataset tests: all 60 sequential positions, partial/complete ZIPs, resume,
+  immutable accepted takes, corruption/format/foreign/retained rejection and upload gating.
+  Actual production desktop collector against local Mosquitto with a clearly simulated microphone:
+  anonymous control/ready exchange, unrelated device uptime (no UTC sync), complete exact WAV return,
+  and post-recording upload. No glove client or external network service was present.
+  GUI Record/review/Retry/Keep flow and Python syntax checks.
+  Your running laptop broker accepted collector login/subscriptions on 127.0.0.1:1883.
+  Launcher preserves the existing broker; isolated test also verified owned-broker startup/cleanup.
+
+Local-mode firmware compiled and linked successfully for FireBeetle ESP32, core 3.3.11, ArduinoJson 7.4.3.
+Flash: 1,035,048 bytes (78%); static RAM: 57,808 bytes (17%).
+The local Windows packaging-hook workaround was used; normal IDE upload builds the flash image.
+Actual physical mic recordings and audio quality still need checking after flashing.
+Acquisition sample format, I2S wiring and gain match the demo, which remains unchanged.
+Tests use synthetic recordings in excluded test folders; none are delivered as training examples.
+
+Readiness bug fix: actual ESP status/meta were visible at 172.20.10.2:1883 but absent at 127.0.0.1:1883.
+Both addresses accepted MQTT connections, so successful connection alone masked the different brokers.
+Collector and launcher now both use mqtt_host; the stale collector_host override is ignored/removed.
+Verified corrected production collector sees the real voice-mic-01 online and ready, without requesting audio.
+Added regression test to reject routing the desktop to a stale loopback override. No firmware change needed.

@@ -1,0 +1,39 @@
+Mic PCM storage update - 18 October 2026 (demo4-packed-pcm-20261018)
+
+The latest physical mic log confirms successful Wi-Fi, clock sync, TLS and MQTT.
+The remaining failure occurs when allocating 96,000 bytes of PCM audio storage.
+
+Why 144,740 free bytes did not establish that the old buffer would fit:
+  ESP.getFreeHeap() in installed Arduino ESP32 3.3.11/Esp.cpp queries MALLOC_CAP_INTERNAL.
+  That includes internal memory which permits only aligned 32-bit accesses.
+  The old PCM allocator requested MALLOC_CAP_8BIT (byte/halfword-accessible memory).
+  The log's largest byte-accessible block (77,812) was also smaller than 96,000.
+  The old 15-block allocator already avoided a single contiguous 96k allocation,
+  so a largest-block figure alone does not explain the failure. The old log did
+  not report the total byte-accessible heap or failing block index.
+  This revision uses both compatible memory pools and reports their counts.
+
+Change:
+  Continue deferring PCM allocation until after verified TLS/MQTT setup.
+  Store two signed 16-bit PCM samples per aligned uint32_t word, exactly 96,000 bytes.
+  Prefer internal executable/32-bit RAM, then other internal 32-bit RAM.
+  Every access to stored PCM is a volatile aligned 32-bit read/write, safe for ESP32 IRAM.
+  A 1,024-byte ordinary-DRAM scratch buffer bridges packed samples to TLS during upload.
+  Never hand a byte pointer to IRAM to the TLS client. No second full-size audio copy.
+  Roll back all partially allocated blocks on failure; preserve ownership/reconnect guards.
+  Report byte-accessible/word-accessible heap and any failing block explicitly.
+
+Unchanged:
+  Exact 48,000 signed 16-bit samples, 16kHz mono, 3-second 96,044-byte WAV.
+  One MLW1/QoS1 MQTT publication per clip; same capture IDs and scheduling.
+  Open hand -> fist 2s -> start buzz 1s -> record 3s -> end buzz 1s -> upload.
+  Certificate verification, credentials, hotspot, sensor features and haptic behavior.
+
+Only reflash the MIC: MicDemo/MicDemo.ino in this Demo folder.
+The already-flashed glove demo2 preflight remains compatible.
+
+Expected serial line:
+  # Audio storage ready AFTER TLS/MQTT: 96000 PCM bytes (packed 32-bit access) ...
+Then mic/meta should advertise ready=true once healthy I2S is running.
+Physical allocation/capture/upload must be checked on the board after reflashing;
+host storage/transport tests do not establish actual on-device heap availability.

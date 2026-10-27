@@ -1,0 +1,172 @@
+Latest validation - 18 October 2026, demo7-clean-topics-20261018
+
+The shared runtime now uses MQTT client IDs hand/mic without a random suffix.
+Both normal status and broker offline last will continue to derive status/<client_id>,
+so they now resolve to milo/v1/demo/status/hand and status/mic. Internal boot IDs,
+stream IDs and capture IDs remain distinct, preserving pairing and reboot detection.
+
+Five production receiver/schema/pairing/shared-header/TLS checks passed.
+Both sketches compiled and linked for FireBeetle ESP32, Arduino core 3.3.11 and ArduinoJson 7.4.3:
+  Glove flash 1,060,436 bytes (80%); static RAM 65,232 bytes (19%).
+  Mic flash 1,045,128 bytes (79%); static RAM 58,192 bytes (17%).
+Local Windows packaging hooks were bypassed; normal Arduino IDE upload generates flash images.
+Both sketch folders' shared headers match the authoritative shared/ copies.
+GloveApp.h, MicApp.h, DemoMqtt.h and private settings are byte-identical to demo6:
+no threshold, haptic, acquisition, clip framing or timing change in this update.
+MQTT_TOPICS.txt documents the nine distinct topics sent/received by these ESPs.
+Existing remote retained statuses and MQTTX history are not modified.
+Both devices must be reflashed for their respective naming changes.
+The updated firmware's live connection/capture behavior remains to be checked on hardware.
+
+Earlier validation - 18 October 2026, demo6-flex-thresholds-20261018
+
+Replayed all 182 actual user raw flex readings through hysteresis with thresholds
+extracted from the updated GloveApp.h. Thumb 1460/1420, index 1596/1533,
+middle 3480/3460 correctly classify all selected relaxed/fist plateau samples.
+Each finger has exactly two bend/release cycles, without extra transitions.
+Every full-fist trigger decision is identical to the previous thresholds on this trace.
+The former middle state never released, and thumb incorrectly marked initial/final rest BENT.
+All five production decoder/pairing/schema/shared-header/TLS checks passed.
+Glove sketch compiled and linked for FireBeetle ESP32, Arduino core 3.3.11 and
+ArduinoJson 7.4.3: flash 1,060,480 bytes (80%); static RAM 65,232 bytes (19%).
+The local Windows packaging-hook workaround was used; Arduino IDE upload produces
+the flash image. Only the glove needs reflashing; the existing demo4 mic is compatible.
+
+The user's earlier MQTT log confirms three successful real paired captures on
+demo5 glove/demo4 mic, with zero reported capture drops/audio errors. That is evidence
+for the existing transport/rearm code, not a physical test of these new thresholds.
+Partial ball grips and other intermediate poses were not labelled in this trace.
+New captures advertise calibration_id nitin-20261018-relaxed-fist-v2 and current thresholds.
+Historical JSON examples/datasets are retained with their original calibration metadata.
+
+Earlier validation - 18 October 2026, demo5-fist-release-20261018
+
+The user MQTT log 07:43:34-07:44:19 UTC confirms the demo2 glove and demo4 mic completed
+one real paired capture: glove 150 valid rows, sensor_fault_mask=0; mic clip and capture_sent;
+mic storage ready, no audio errors. Subsequent glove status was wait_open with mic READY.
+
+Removed the all-three-NOT_BENT rearm condition. A 200ms release from FULL-fist detection
+is enough, even when all three binary model features remain BENT. Release during a
+recorded action is latched across upload completion. Continuous fist does not rearm.
+No binary thresholds, clip formats, capture timing or audio acquisition changes.
+
+Native tests of actual DemoFistRearm.h passed: partially relaxed but still BENT fingers,
+release during the action retained across upload, continuous-fist rejection, short-noise
+and sensor-fault rejection, consume/reset behavior and 32-bit millisecond timer wrap.
+All five production receiver/schema/pairing/shared-header/TLS checks passed.
+The AI handoff's complete real glove example passed the production decoder. Its mic
+decoder was checked using matching real metadata and a local synthetic silent WAV;
+that synthetic waveform is not included or represented as user audio in the handoff.
+The handoff ZIP contains only a field guide, two real JSON examples and decoder code.
+
+Glove compiled/linked for FireBeetle ESP32 (core 3.3.11; ArduinoJson 7.4.3):
+flash 1,060,464 bytes (80%); static RAM 65,232 bytes (19%).
+Mic compatibility build also passed: flash 1,045,164 bytes (79%); static RAM 58,192 bytes (17%).
+Local Windows packaging hooks were bypassed; normal Arduino IDE upload generates the flash image.
+Only the GLOVE needs reflashing. The already-working demo4 mic remains compatible.
+Repeated physical capture/rearming on demo5 still needs verification on the user's glove.
+
+Earlier validation - 18 October 2026, demo4-packed-pcm-20261018
+
+User-provided serial log confirms physical mic Wi-Fi, clock sync, TLS and MQTT login on demo3.
+It also confirms the old byte-access PCM allocation fails. The old internal-heap count did not
+measure the specific byte-accessible memory pool; see PCM_DIAGNOSIS_20261018.txt.
+
+Both updated sketches compiled/linked for FireBeetle ESP32, Arduino core 3.3.11 / ArduinoJson 7.4.3.
+  Mic: flash 1,045,148 bytes (79%); static RAM 58,192 bytes (17%).
+  Glove: flash 1,060,356 bytes (80%); static RAM 65,224 bytes (19%).
+The local Windows packaging-hook workaround was used; IDE upload generates the flash image.
+
+Native tests of the actual DemoPcmStorage.h passed: all 48,000 signed samples reproduce exact
+little-endian PCM16 bytes, opposite-half preservation, arbitrary byte/chunk boundaries, zeroed
+allocation, failure rollback at all 15 positions, short byte-only memory budget vs sufficient
+combined budget, retained contents, repeated release, and reconnect allocation.
+
+Actual updated DemoMqtt.h + DemoPcmStorage.h were compiled natively and used against local Mosquitto.
+The packed-reader upload preserved the complete MLW1 envelope and 96,044-byte WAV byte-for-byte,
+received PUBACK, and accepted fragmented controls. Oversized input was rejected. Expired publication
+and an injected reader failure closed the connection without delivering a complete audio message.
+All five production receiver/pairing/shared-header/TLS checks passed.
+
+Only the mic needs reflashing; the already-running glove demo2 is compatible.
+Physical demo4 memory allocation, capture, reconnect, cross-device timing and relay full-size
+upload remain to be verified on the actual boards. Native tests do not prove IRAM availability.
+
+Earlier validation history - 16 October 2026
+
+Both sketches compiled AND linked for esp32:esp32:firebeetle32, ESP32 Arduino core 3.3.11,
+with ArduinoJson 7.4.3. The configured TLS/network/acquisition code paths were enabled in compile-only
+copies to avoid measuring an optimized build with missing-password branches removed.
+Those copies used clearly dummy, non-working credentials/CA markers and are NOT deployed/flashed.
+Delivered configs now contain the supplied hand/mic passwords and the existing hotspot settings.
+The public CA supplied directly by the user is installed in certs/ca.crt and both generated config headers.
+CA identity: Milo Relay Development CA; validity 16 October 2026 through 13 October 2036.
+
+Connection update checks:
+  Verified TLS certificate chain and IP SAN for 140.245.52.118:8883 from this computer.
+  Also verified TLS 1.2 compatibility (not just the computer's default TLS 1.3).
+  Hand, mic and monitor MQTT logins succeeded; their required subscriptions were granted QoS 1.
+  These checks did not publish commands, fake sensor data or device status to the shared broker.
+  Production receiver tests (5) and Python syntax checks passed again after the monitor credential update.
+  No firmware acquisition/transport logic changed in this connection update.
+  Both sketches were compiled/linked again with the actual credentials and CA; no hardware was flashed.
+
+Configured code-path build:
+  GloveDemo (actual CA/settings): flash 1,056,656 bytes (80%); static RAM 65,120 bytes (19%).
+  MicDemo (actual CA/settings): flash 1,041,948 bytes (79%); static RAM 58,184 bytes (17%).
+  Mic additionally allocates 96,000 bytes in fifteen 6,400-byte heap blocks for the WAV PCM.
+  These are storage blocks, not MQTT chunks; one complete waveform is one QoS1 PUBLISH.
+  Driver queues, stacks, Wi-Fi, TLS and JSON use additional heap; live health reports free/minimum heap.
+  No external PSRAM is required by the implementation.
+
+Local build helper bypassed Windows flash-image-packaging hooks. C++ compilation/linking succeeded;
+normal Arduino IDE upload creates the final flash image. No prebuilt flash binary is distributed.
+
+Executed checks:
+1. Native Windows compilation of the ACTUAL shared/DemoMqtt.h with an Arduino/Client compatibility shim.
+   Against a real local Mosquitto broker, its eighteen-part scatter/gather QoS1 publication preserved
+   the complete MLW1 envelope and 96,044-byte WAV exactly, with a PUBACK.
+2. The same actual transport accepted deliberately fragmented incoming QoS1 control data and sent PUBACK.
+3. Oversized incoming messages were rejected; a past hard publication deadline sent no waveform.
+4. Production Python decoder/receiver tests: both arrival orders, duplicate suppression, capture-ID isolation,
+   wrong timing/source pairing, 150x9 binary features, exact WAV duration/format, corrupt/truncated bytes,
+   and rejection of old eight-feature/MLA1 profiles.
+5. Shared support headers in both sketch folders match their authoritative shared/ copies.
+6. No insecure TLS bypass in the shared runtime. Python syntax checked.
+
+Not yet physically tested:
+  Actual ESP32 flashing, device Wi-Fi/TLS/role authentication, reachable NTP,
+  true cross-device acoustic/motion alignment, motor spin-down, long-running free heap,
+  the public relay's full-size transfer, Ultra96 inference and Unity animation.
+  These depend on real provisioned settings/hardware and are not claimed as passing here.
+
+The implementation uses the requested boundary with NO extra settling delay after the first buzz.
+Its clock/DMA uncertainty fields are estimates; they do not prove sample-exact physical synchronisation.
+Missing/corrupt acquisition is rejected, not padded. A broker PUBACK is not AI/application completion.
+
+Comms must use PROTOCOL_DEMO.txt: three binary fingers, 150x9, scheduled fist/cue capture,
+MLW1 + full WAV, and required glove read access to mic/results. The old standard draft is not sufficient.
+No installed glove/collar main sketches, training datasets or frozen handoff ZIP were modified.
+
+18 October 2026 log diagnosis/preflight update:
+Native tests of the actual DemoReadiness.h passed: absent/stale/profile/clock/audio gates,
+32-bit timer wrap and distinct cancellation reasons. Five production receiver/pairing tests passed.
+Live remote role/subscription check could not obtain an MQTT response from any role during this run;
+mic/meta ACL availability has therefore NOT been verified live for this revision. It is required by the supplied standard.
+Both updated sketches compiled and linked for FireBeetle ESP32, core 3.3.11, ArduinoJson 7.4.3.
+Glove: flash 1,059,708 bytes (80%); static RAM 65,224 bytes (19%).
+Mic: flash 1,042,384 bytes (79%); static RAM 58,184 bytes (17%), plus 96,000 heap bytes for audio.
+The existing Windows packaging-hook workaround was used; normal IDE upload produces the flash image.
+Physical dual-ESP capture and full Ultra96/visualisation remain unverified.
+
+18 October TLS-memory/startup update:
+Native tests of ACTUAL DemoPcmStorage passed: lazy 96kB allocation; rollback at each of 15 failing
+allocation positions; retained contents/idempotent allocation; repeated cleanup; reconnect allocation.
+Cross-core ownership guards prevent freeing storage while the audio task is using it.
+Five production waveform/hand/pairing tests passed. No protocol, timing, thresholds or certificate bypass changes.
+Both builds passed for FireBeetle ESP32, core 3.3.11, ArduinoJson 7.4.3.
+Mic: flash 1,044,160 bytes (79%); static RAM 58,192 bytes (17%); PCM heap is deferred until connected.
+Glove: flash 1,060,224 bytes (80%); static RAM 65,224 bytes (19%).
+The local Windows packaging-hook workaround was used; normal IDE upload builds the flash image.
+Memory pressure is a possible cause addressed by this change, not a proven diagnosis from the old log.
+Physical TLS startup/reconnect/capture on the mic must be verified after reflashing.

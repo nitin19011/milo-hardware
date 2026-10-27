@@ -1,0 +1,34 @@
+Validated 15 October 2026.
+
+Automated default-target workflow checks passed:
+- exactly ten eligible examples for each of seven classes (70 total);
+- sensor rail faults, capture warnings and wearer-rejected takes do not count;
+- a stopped session produces a PARTIAL handoff, then resumes only missing examples;
+- completed-session handoff regeneration works without connecting to the glove;
+- per-class counts agree with canonical files and exported model labels;
+- full tensors [70,100,9] and channel-first tensors [70,9,100];
+- training-only roles and no invented validation/test split;
+- AI ZIP structure, per-file SHA256 verification and ZIP CRC checks;
+- the AI ZIP excludes firmware and private raw/debug attempts.
+
+A local Mosquitto MQTT integration run with simulated glove telemetry passed:
+- three independent two-second calibration captures;
+- two-second 50 Hz captures for all seven actions, GO at the same one-second cue;
+- ESP-stamped trials, quality gating, wearer confirmation and release suggestions;
+- actual CSV/JSON capture, calibration, export, reviewer and automatic ZIP creation;
+- human event annotation and subsequent exclusion of a deliberately faulted clip.
+
+Collector/export/reviewer Python syntax checks passed. Offline reviewer drawing,
+duration limits, marking and annotation downloads were checked with its JavaScript.
+Raw-stream append on resume was checked separately.
+
+The included MBF_v1.ino is byte-identical to the collection-capable main already
+in the project and compiled/linked on 12 October 2026 for FireBeetle-ESP32.
+This collector changes no ESP sensor settings or firmware behavior.
+Firmware SHA256: 8DF38E649C74F22A6244F8D52934298F59635942811CC0D1E74D950F360D7DB1
+
+No real training samples have been collected by these software checks.
+Physical gesture correctness is confirmed by the wearer during the actual run;
+the collector has no pretrained gesture or speech recogniser.
+Optional PyTorch/HDF5 conversion requires the AI teammate's additional libraries
+and was not executed here. Canonical CSV/JSON/NumPy capture does not require them.

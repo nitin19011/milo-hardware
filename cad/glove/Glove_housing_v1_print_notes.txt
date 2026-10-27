@@ -1,0 +1,39 @@
+GLOVE HOUSING V1 - MILLIMETRES
+Measured perfboard: 40 x 60. Total assembly thickness: 16.
+IMU: 16 x 20, extends 11.6 beyond left perfboard edge.
+IMU nearest top edge: 15.3 from perfboard top.
+Bare perfboard upper face: 13.5 above the assembly lowest point.
+Perfboard thickness assumed 1.6; support heights depend on this.
+
+DIMENSIONS
+Base overall: 56.2 x 64.6 x 18.8, including the local IMU pocket.
+Base main rectangle: 44.6 wide; 11.6 extra width only at IMU pocket.
+Internal vertical space: 17, giving 1 mm total allowance around 16 mm assembly.
+Nominal assembled maximum envelope including external cap: 59.7 x 68.1 x 20.4.
+Base floor: 1.8; side walls: 1.8; cap face/skirt wall: 1.6.
+Cap outer overlap: 5; lateral fit clearance: 0.15 per side.
+Four board-edge supports reach Z=14.20 from base underside.
+Four matching cap stops extend 2.80 from cap underside, leaving 0.2 above the seated board.
+Confirm contact areas are clear of wires/solder/components. Avoid forcing the fit.
+
+OPENINGS
+Separate ESP cooling opening: 18 x 20, based on 16 x 18 chip annotation.
+Separate RST opening: 20 x 20, centre 42.2 from top.
+IMU opening: 8 x 8, centred on IMU board.
+ESP side position (17 mm to chip edge; 28 mm to RST centre) is estimated from photo;
+these lateral dimensions were not supplied explicitly. Verify alignment in a slicer before printing.
+Top wire exit: 13.8 wide. Upper-left exit: 11.4 long. Bottom USB/battery exit: 27 wide.
+
+SEWING
+12 paired stitch points / 24 round 2.5 mm holes, all within the base perimeter.
+Recessed thread paths: 0.35 deep. No projecting sewing tabs.
+Sew empty base onto glove before installing electronics. Keep knots below board clearance.
+
+PRINTING
+Combined STL contains two separated parts on the bed (8 mm gap).
+Print at 100% in millimetres. Base floor and broad outer cap face already face down.
+The cap is intentionally mirrored in print view: flip it over to align the asymmetric IMU pocket.
+Review thin features, holes and skirt clearances in slicer before printing.
+This is a removable friction cap, not a snap latch. Grip remains printer-dependent.
+Mesh validation: closed edges, consistent winding, nonzero faces, positive volume.
+Physical fit and wear strength are not tested.

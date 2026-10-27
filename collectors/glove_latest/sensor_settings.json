@@ -1,0 +1,155 @@
+{
+  "version": 3,
+  "flex_diagnostics": {
+    "thumb": {
+      "poses": {
+        "open": {
+          "median": 1459.0,
+          "std": 19.004807505821606,
+          "min": 1440,
+          "max": 1489
+        },
+        "fist": {
+          "median": 1895.5,
+          "std": 33.790037979657065,
+          "min": 1866,
+          "max": 1978
+        },
+        "ball_grip": {
+          "median": 1391.0,
+          "std": 0.646907171771104,
+          "p05": 1390.0,
+          "p95": 1392.0
+        }
+      },
+      "span_counts": 436.5,
+      "bend_increases": true,
+      "bend_threshold": 1696,
+      "release_threshold": 1583,
+      "note": "23 Oct USB relaxed/fist calibration. ball_grip is historical 16 Oct data, not recalibrated."
+    },
+    "index": {
+      "poses": {
+        "open": {
+          "median": 1616.0,
+          "std": 61.56493805098989,
+          "min": 1490,
+          "max": 1631
+        },
+        "fist": {
+          "median": 2229.5,
+          "std": 48.93250382471303,
+          "min": 2156,
+          "max": 2302
+        },
+        "ball_grip": {
+          "median": 1679.0,
+          "std": 0.8379870059984358,
+          "p05": 1678.0,
+          "p95": 1680.0
+        }
+      },
+      "span_counts": 613.5,
+      "bend_increases": true,
+      "bend_threshold": 1920,
+      "release_threshold": 1762,
+      "note": "23 Oct USB relaxed/fist calibration. ball_grip is historical 16 Oct data, not recalibrated."
+    },
+    "middle": {
+      "poses": {
+        "open": {
+          "median": 3458.0,
+          "std": 2.847501341332237,
+          "min": 3451,
+          "max": 3461
+        },
+        "fist": {
+          "median": 3578.5,
+          "std": 5.626796009571818,
+          "min": 3569,
+          "max": 3595
+        },
+        "ball_grip": {
+          "median": 3455.0,
+          "std": 1.8515579025962612,
+          "p05": 3454.0,
+          "p95": 3457.0
+        }
+      },
+      "span_counts": 120.5,
+      "bend_increases": true,
+      "bend_threshold": 3520,
+      "release_threshold": 3487,
+      "note": "23 Oct USB relaxed/fist calibration. ball_grip is historical 16 Oct data, not recalibrated."
+    }
+  },
+  "open": {
+    "thumb": 1459.0,
+    "index": 1616.0,
+    "middle": 3458.0
+  },
+  "fist": {
+    "thumb": 1895.5,
+    "index": 2229.5,
+    "middle": 3578.5
+  },
+  "ball_grip": {
+    "thumb": 1391.0,
+    "index": 1679.0,
+    "middle": 3455.0
+  },
+  "span": {
+    "thumb": 436.5,
+    "index": 613.5,
+    "middle": 120.5
+  },
+  "gyro_bias_rad_s": {
+    "gx": -0.027,
+    "gy": 0.018,
+    "gz": -0.018
+  },
+  "normalisation": "Finger features are firmware binary states (0=NOT_BENT,1=BENT), unchanged by scaling. Only session gyro bias is subtracted.",
+  "pose_medians": {
+    "open": {
+      "ax": 1.858,
+      "ay": 8.878,
+      "az": 4.008,
+      "gx": -0.027,
+      "gy": 0.018,
+      "gz": -0.018,
+      "thumb": 1459.0,
+      "index": 1616.0,
+      "middle": 3458.0
+    },
+    "fist": {
+      "ax": 2.519,
+      "ay": 7.69,
+      "az": 5.914,
+      "gx": -0.027,
+      "gy": 0.015,
+      "gz": -0.016,
+      "thumb": 1895.5,
+      "index": 2229.5,
+      "middle": 3578.5
+    },
+    "ball_grip": {
+      "ax": 0.239,
+      "ay": 7.824,
+      "az": 6.139,
+      "gx": -0.027,
+      "gy": 0.015,
+      "gz": -0.018,
+      "thumb": 1391.0,
+      "index": 1679.0,
+      "middle": 3455.0
+    }
+  },
+  "source_session": "20261023_101239_756894",
+  "binary_encoding": {
+    "NOT_BENT": 0,
+    "BENT": 1
+  },
+  "calibration_id": "nitin-20261023-usb-relaxed-fist-v3",
+  "reference_pose_source_session": "Relaxed/fist: 20261023 USB. Ball grip and IMU reference bias: historical 20261016; not remeasured.",
+  "threshold_revision": "2026-10-23 USB three-round relaxed/fist calibration"
+}

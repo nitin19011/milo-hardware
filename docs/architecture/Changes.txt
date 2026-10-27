@@ -1,0 +1,9 @@
+Corrected hardware against demo7-clean-topics-20261018 ESP source.
+
+Page 1: detailed acquisition, binary fingers, GPIO motor driver, I2S mic, MQTT controls, payload formats, synchronization and haptic feedback. Fixed disconnected motor/mic edges and made mic transport bidirectional.
+Page 2: exact demo timing, readiness handshake, upload gating, re-arm and failure rules.
+
+Communications, AI/FPGA and visualiser block labels preserved from original; those implementations were not independently verified.
+Automatic intent detection is not implemented in this demo firmware.
+
+This is a revised local copy; the original Google Drive file was not changed.

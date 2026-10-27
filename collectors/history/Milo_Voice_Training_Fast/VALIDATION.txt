@@ -1,0 +1,30 @@
+Fast voice collector validation - 16 October 2026
+
+New folder/session. Removes scheduled pre-speech waiting, automatic playback and post-recording delay.
+Keeps the same six labels, ten sequential accepted samples each, 3-second PCM16 WAVs and lossless export.
+New ESP firmware maintains 300ms history and copies a valid 200ms look-back before collecting the remainder.
+All metadata uses device uptime, not a shared UTC clock.
+
+Passed:
+  Six dataset/decoder/control tests (complete 60-take export, resume, duplicate/corruption protection,
+  stale-loopback routing regression, immediate capture/upload permission, rejected takes not counted).
+  Production desktop collector against local Mosquitto with a simulated fast mic: no countdown wait,
+  upload permission granted immediately, complete exact WAV returned only after simulated acquisition.
+  GUI check: Record -> review -> Keep/Retry, with no playback API/button or forced playback state.
+  Native C++ tests of the ACTUAL VoiceHistory header: ring wrap, all DMA-frame offsets, preservation of
+  onset samples, gap rejection, exact sample conversion and saturation.
+  Python syntax checks.
+
+ESP32 compilation/linking passed: FireBeetle ESP32, core 3.3.11, ArduinoJson 7.4.3.
+Flash: 1,036,260 bytes (79%). Static RAM: 67,424 bytes (20%).
+PCM storage additionally allocates 96,000 heap bytes; the history buffer is included in static RAM.
+Normal Arduino IDE upload builds the flash image; local validation bypassed Windows packaging hooks.
+Hardware timing, microphone quality and memory behaviour need checking after flashing MicVoiceFast.
+No real recordings were made automatically during these checks. Test clips are synthetic and excluded.
+
+Desktop fix: removed incorrect rejection when readiness confirmation round trip exceeded 200ms.
+That measurement includes ESP handling and return-message delay and does not establish speech truncation.
+It is now recorded as control_confirmation_round_trip_ms in per-take quality metadata.
+Passed focused delayed-confirmation, normal capture and broker-routing regression tests.
+Production collector also passed against real local Mosquitto with a simulated 350ms-late ready reply
+and intact WAV transfer. No firmware changes; prior compilation/linking evidence remains applicable.

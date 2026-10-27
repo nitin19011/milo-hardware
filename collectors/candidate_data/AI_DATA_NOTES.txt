@@ -1,0 +1,53 @@
+MILO CANDIDATE DETECTOR DATA CONTRACT v1
+
+Goal: high-recall binary candidate detector on the glove; Ultra96 still performs
+the final gesture/voice recognition. This collector does not train the model.
+
+Continuous 50 Hz, chronological stream; six physical IMU axes + three binary
+finger states. Model feature order: ax ay az gx gy gz thumb index middle.
+Acceleration m/s^2 including gravity; gyroscope rad/s without bias subtraction.
+Raw flex values are diagnostics, not model features. Reconstructing states under
+another calibration is possible from raw ADC, but version the resulting profile.
+
+Calibration: nitin-20261023-usb-relaxed-fist-v3.
+Bend: 1696 / 1920 / 3520. Release: 1583 / 1762 / 3487. All three active.
+IMU: MPU6050, +/-16g, +/-2000 dps, DLPF 21 Hz.
+
+Labels:
+ - kind=gesture, label=one of the seven classes. All map to candidate-positive
+   for a binary detector; original class is retained for per-class recall tests.
+ - kind=background, label=ordinary activity category: candidate-negative.
+ - discarded/rejected/active events are NOT approved training labels.
+ - accepted background does not imply every window is valid: filter raw health.
+ - unlabelled data or pre/post context are NOT assumed negative.
+
+Ground truth is OPERATOR BRACKETS, not measured motion onset. A bracket can
+include reaction time and return-to-rest. Preserve this uncertainty when making
+window labels and reporting latency; inspect difficult samples before claiming
+exact onset performance. Device-time estimates use a rolling minimum of
+host_arrival_ns - device_us*1000; the raw host marks and device times remain.
+The estimator cannot determine absolute one-way delay.
+
+Use device_us per boot for regular sensor windows; never bridge boot changes,
+large gaps, invalid IMU frames, flex rail events or clipping. Sequence gaps and
+reordering are retained rather than silently interpolated. missing_samples is
+an observed forward-gap count and can include reordered packets that arrive later.
+Do not interpolate binary states. Handle each continuous valid segment explicitly.
+
+gesture_clips contain up to 1 s before/after for inspection. inside_target_bracket
+identifies the target bracket, and other_gesture_ids prevents calling neighbouring
+actions negative. Missing pre/post context at session edges is recorded in JSON.
+These variable-length clips are not the fixed 150-frame Ultra96 demo inputs.
+If an accepted background bracket spans boots, use its host monotonic bounds to
+select rows, then split by boot and quality before generating sensor windows.
+
+Suggested first experiments: overlapping ~0.8 s windows, evaluated every ~0.1 s;
+lightweight binary model versus a permissive sensor-change baseline. Tune for
+event-level recall, false triggers/minute and clip coverage, not window accuracy.
+Choose precise windows and trigger policy after examining the collected data.
+Keep whole sessions separate for training/validation/final testing. Re-wear and
+later-day sessions are more useful tests than random overlapping-window splits.
+
+Current MIC firmware does not support retrospective ring-buffer extraction.
+Develop and test the glove detector first; synchronized buffered audio capture
+will be implemented separately when the microphone is available.

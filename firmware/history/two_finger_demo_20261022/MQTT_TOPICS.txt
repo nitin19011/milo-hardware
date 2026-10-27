@@ -1,0 +1,82 @@
+Milo demo MQTT topics - 18 October 2026, demo7-clean-topics-20261018
+
+Session prefix: milo/v1/demo/
+The following nine topics cover everything the current glove/mic demo sends or receives.
+
+GLOVE PUBLISHES
+
+milo/v1/demo/status/hand
+  JSON device.status. Online/degraded health every ~5s when idle; retained.
+  Retained offline last will is published by the broker if this client disconnects unexpectedly.
+
+milo/v1/demo/hand/meta
+  JSON hand.meta. Gesture feature order, sampling rate, binary encoding and haptic capabilities.
+  Retained format/capabilities heartbeat, every ~5s while idle.
+
+milo/v1/demo/hand/clips
+  JSON hand.clip. One complete 3s gesture clip: 150 rows x 9 features, 50Hz.
+  [ax,ay,az,gx,gy,gz,thumb,index,middle]; IMU SI units and three binary finger states.
+  Consumed by AI/comms. Not retained.
+
+milo/v1/demo/mic/capture
+  JSON demo.capture_prepare / demo.capture_upload / demo.capture_cancel.
+  Glove schedules the mic, gates upload after the ending buzz, or cancels a job.
+  Read by the mic. Not retained.
+
+GLOVE SUBSCRIBES
+
+milo/v1/demo/mic/meta
+  Mic readiness/format heartbeat; live non-retained deliveries are required to arm.
+
+milo/v1/demo/mic/results
+  Mic capture-ready, upload-sent or capture-failed acknowledgements.
+
+milo/v1/demo/hand/feedback
+  JSON hand.feedback from the configured Ultra96/AI source.
+  One long vibration: voice rejected, gesture accepted.
+  Two long vibrations: voice accepted, gesture rejected.
+  This requires the AI/comms service to publish the matching capture/boot/expiry metadata.
+
+MIC PUBLISHES
+
+milo/v1/demo/status/mic
+  JSON device.status. Connection/audio/storage health; retained.
+  The broker's unexpected-disconnect last will uses this same stable topic.
+
+milo/v1/demo/mic/meta
+  JSON mic.meta. Audio format, ready flag, capture state and error count.
+  Retained format/readiness heartbeat; read by glove as fresh live deliveries.
+
+milo/v1/demo/mic/clips
+  Binary MLW1 envelope: JSON mic.clip metadata + complete 3s WAV.
+  WAV is 16kHz mono signed PCM16, 48,000 samples / 96,044 WAV bytes.
+  Consumed by AI/comms. Not retained. Keep original MQTT bytes, not a text conversion.
+
+milo/v1/demo/mic/results
+  JSON demo.capture_ready / demo.capture_sent / demo.capture_failed.
+  Device control acknowledgements, NOT voice AI classification results. Not retained.
+
+MIC SUBSCRIBES
+
+milo/v1/demo/mic/capture
+  Glove prepare/upload/cancel instructions.
+
+NAMING AND SUBSCRIPTIONS
+
+The MQTT client IDs are now "hand" and "mic". No random suffix is appended.
+Both normal status and offline last will use status/<client_id>, hence status/hand and status/mic.
+Boot IDs, stream IDs and capture IDs inside JSON remain independent identifiers for correct pairing.
+
+Monitor the whole demo:             milo/v1/demo/#
+Only both device status messages:   milo/v1/demo/status/+
+All hand namespace messages:        milo/v1/demo/hand/#
+All mic namespace messages:         milo/v1/demo/mic/#
+The last two wildcards do not include status/hand or status/mic; those are under status/.
+
+hand/meta, mic/meta and both status topics are retained. Other topics are not retained.
+Controls, clips, results and device subscriptions use QoS1; duplicate capture identities must be handled.
+Both ESPs need reflashing to adopt their new stable status topic and client ID.
+
+Old suffixed retained status messages already stored on the broker are historical records.
+This firmware stops creating new ones; it does not delete remote retained messages or MQTTX history.
+The hardware ESPs do not publish ultra96/commands: AI/comms owns the downstream visualizer result topic.

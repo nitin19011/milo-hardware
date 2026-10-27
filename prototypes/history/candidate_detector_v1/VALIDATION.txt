@@ -1,0 +1,22 @@
+25 October 2026
+
+FireBeetle-ESP32 compile/link passed: Arduino ESP32 core 3.3.11, ArduinoJson 7.4.3.
+Flash 952620 bytes (72%); static RAM 62192 bytes (18%).
+
+Native C++ comparison against the Python model on 1085 real recorded windows:
+- Maximum feature difference: 0.
+- Maximum model score difference: 1.78814e-07.
+- Decision disagreements at threshold 0.10: 0.
+
+Desktop tests: 14 passed.
+Includes telemetry parsing, actual UDP receipt, serial config acknowledgement,
+annotation cancel/discard/quality, background gaps/reboots, automatic 150-row
+overlapping clip extraction, incomplete-window rejection, live UI score/counter,
+class advance, ZIP export, and visible controls at 1280x800.
+
+Physical glove inference timing and radio behaviour still require the user's run.
+inference_us is included in every live frame to measure actual inference cost.
+No end-to-end microphone/MQTT/Ultra96 path is exercised by this package.
+
+Model metrics are SAME-SESSION DEVELOPMENT results; threshold was explored after
+viewing this data. No independent-session validation and no 99% recall claim.

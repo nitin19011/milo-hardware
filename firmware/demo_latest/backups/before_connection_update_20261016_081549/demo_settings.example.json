@@ -1,0 +1,20 @@
+{
+  "wifi_ssid": "Nitin",
+  "wifi_password": "",
+  "mqtt_host": "140.245.52.118",
+  "mqtt_port": 8883,
+  "tls": true,
+  "allow_local_plaintext_test": false,
+  "session": "demo",
+  "glove_username": "hand",
+  "glove_password": "",
+  "mic_username": "mic",
+  "mic_password": "",
+  "ca_file": "certs/ca.crt",
+  "ntp_servers": ["time.cloudflare.com", "time.google.com", "pool.ntp.org"],
+  "max_clock_error_ms": 50,
+  "max_audio_timeline_error_us": 5000,
+  "hand_source_id": "hand-01",
+  "mic_source_id": "mic-01",
+  "ultra96_source_id": "ultra96-01"
+}

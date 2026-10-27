@@ -1,0 +1,91 @@
+{
+  "created_local": "2026-10-23T10:14:13.616244+08:00",
+  "port": "COM4",
+  "samples": 240,
+  "pose_seconds": 4,
+  "rounds": 3,
+  "pins": [
+    35,
+    34,
+    39
+  ],
+  "method": "P98 relaxed / P02 fist, in bend direction; release at 25%, bend at 55% of gap",
+  "thresholds_applied": false,
+  "sensors": {
+    "thumb": {
+      "status": "separated",
+      "relaxed": {
+        "min": 1440,
+        "median": 1459.0,
+        "max": 1489
+      },
+      "fist": {
+        "min": 1866,
+        "median": 1895.5,
+        "max": 1978
+      },
+      "separation_adc": 379.0,
+      "repeat_separations_adc": [
+        440.56,
+        405.56,
+        443.34
+      ],
+      "rail_samples": 0,
+      "suggested_thresholds": {
+        "bend": 1696,
+        "release": 1583,
+        "increases": true
+      }
+    },
+    "index": {
+      "status": "separated",
+      "relaxed": {
+        "min": 1490,
+        "median": 1616.0,
+        "max": 1631
+      },
+      "fist": {
+        "min": 2156,
+        "median": 2229.5,
+        "max": 2302
+      },
+      "separation_adc": 527.38,
+      "repeat_separations_adc": [
+        771.56,
+        539.56,
+        583.56
+      ],
+      "rail_samples": 0,
+      "suggested_thresholds": {
+        "bend": 1920,
+        "release": 1762,
+        "increases": true
+      }
+    },
+    "middle": {
+      "status": "separated",
+      "relaxed": {
+        "min": 3451,
+        "median": 3458.0,
+        "max": 3461
+      },
+      "fist": {
+        "min": 3569,
+        "median": 3578.5,
+        "max": 3595
+      },
+      "separation_adc": 109.38,
+      "repeat_separations_adc": [
+        116.56,
+        109.0,
+        118.12
+      ],
+      "rail_samples": 0,
+      "suggested_thresholds": {
+        "bend": 3520,
+        "release": 3487,
+        "increases": true
+      }
+    }
+  }
+}

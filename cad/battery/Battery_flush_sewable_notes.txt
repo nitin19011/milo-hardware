@@ -1,0 +1,11 @@
+FLUSH BATTERY HOLDER WITH INTERNAL SEWING POINTS
+Base retains the original 28.2 x 39 x 9.9 mm dimensions, battery cavity, side walls, lips and detents.
+Only the floor was modified. Original wall geometry preserved to STL precision.
+8 stitch points / 16 round holes, 2 mm diameter, arranged down both long edges inside base.
+Each hole pair has a 0.4 mm-deep thread recess in the inner floor. Remaining floor below recess is 0.8 mm.
+No external sewing tabs. No holes underneath the cap overlap.
+Use thread that sits within the recess; avoid knots or loose loops protruding into the battery cavity.
+Sew the empty base to the glove before inserting the battery. Check for rough hole edges first.
+The original flush cap is unchanged: cap and base plastic undersides remain coplanar.
+Combined STL contains one sewable base and one matching cap, separated by 8 mm and oriented for printing.
+Print at 100% in millimetres. Physical fit and stitch durability still need checking.

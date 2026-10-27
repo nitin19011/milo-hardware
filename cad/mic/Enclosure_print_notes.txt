@@ -1,0 +1,29 @@
+PROTOTYPE - CHECK DIMENSIONS BEFORE PRINTING
+Units: millimetres. Models already have intended bed faces at Z=0.
+
+MIC HOUSING
+External assembled dimensions: 44.4 wide x 66.4 long x 24.6 deep.
+Internal plan: 40.8 x 62.8. Assumes approximately 2 mm ESP overhang at TOP.
+Board mic-side face sits 9 mm above the outer floor (7.4 mm clear space above inner floor).
+Assumed perfboard thickness: 1.6 mm. ESP-side clearance: 12.4 mm to cap underside.
+Edge ledges support the board; cap does not positively clamp it. Add removable spacers on unused board edges if needed.
+Circular mic opening: 10 mm diameter, centre at X=22.2, Y=54.8 from bottom-left outer corner.
+Bottom connector opening: 28.4 mm wide; starts 10.6 mm above outer floor.
+Cap top-opening slot: 35.52 mm wide (80% of cap), 34.4 mm long.
+Cap uses a locating skirt with 0.2 mm side clearance, NOT a snap latch. Retain with tape tabs along closed side sections.
+Component, microphone and connector locations have NOT been measured from the real assembly.
+
+BATTERY CAP
+Fits original 28.2 x 9.9 mm sleeve end with 0.2 mm clearance per side; overlap 8 mm.
+Two 6 mm-wide notches near opposite ends replace the previous centre notch.
+Original battery housing is unchanged and is NOT included in either combined print.
+Secure cap with tape if loose; smooth wire-contact edges before use.
+
+COMBINED FILES
+Mic_housing_and_caps_1_battery_cap.stl: 1 mic tray + 1 mic cap + 1 battery cap.
+Mic_housing_and_caps_2_battery_caps.stl: 1 mic tray + 1 mic cap + 2 battery caps.
+All parts are separate within a single STL, with 8 mm minimum planar spacing.
+Check the slicer preview, especially the internal board-support ledges; supports may be needed depending on printer settings.
+Test fit empty parts before putting electronics or the battery inside. Do not force an undersized enclosure over components.
+Mesh checks: closed edges, consistent winding, nonzero triangle areas, positive volume, parts separated and resting on bed.
+These checks do not establish physical fit or cooling performance.

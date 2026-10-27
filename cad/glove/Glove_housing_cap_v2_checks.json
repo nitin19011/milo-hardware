@@ -1,0 +1,23 @@
+{
+  "triangles": 6068,
+  "closed_consistent_mesh": true,
+  "volume_mm3": 8732.6,
+  "size_mm": [
+    59.7,
+    68.1,
+    15.6
+  ],
+  "old_overlap_mm": 5,
+  "new_overlap_mm": 14.0,
+  "overlap_ratio": 2.8,
+  "base_clearance_below_skirt_mm": 4.8,
+  "side_clearance_mm": 0.15,
+  "skirt_wall_mm": 1.6,
+  "face_thickness_mm": 1.6,
+  "stop_depth_mm": 2.8,
+  "one_connected_solid": true,
+  "existing_height_cross_sections_match_v1": true,
+  "original_base_file_unchanged": true,
+  "wire_cuts_extended_through_new_skirt": true,
+  "retention": "removable friction fit; no snap latch; physical fit/retention untested"
+}

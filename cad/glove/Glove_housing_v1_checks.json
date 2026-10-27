@@ -1,0 +1,32 @@
+{
+  "base": {
+    "triangles": 140592,
+    "closed_consistent_mesh": true,
+    "volume_mm3": 11371.0,
+    "size_mm": [
+      56.2,
+      64.6,
+      18.8
+    ]
+  },
+  "cap": {
+    "triangles": 6068,
+    "closed_consistent_mesh": true,
+    "volume_mm3": 5921.26,
+    "size_mm": [
+      59.7,
+      68.1,
+      6.6
+    ]
+  },
+  "combined": {
+    "triangles": 146660,
+    "closed_consistent_mesh": true,
+    "volume_mm3": 17292.26,
+    "size_mm": [
+      123.9,
+      68.1,
+      18.8
+    ]
+  }
+}

@@ -1,0 +1,111 @@
+{
+  "model_id": "86b674a15f5b",
+  "threshold": 0.03349183920306544,
+  "energy_floor": 212.60958862304688,
+  "calibration_positive": [
+    {
+      "file": "recordings\\cal_positive\\1789547411763850700.wav",
+      "score": 0.020311413389263733,
+      "end_ms": 1460
+    },
+    {
+      "file": "recordings\\cal_positive\\1789547416216939500.wav",
+      "score": 0.025551898912949997,
+      "end_ms": 1320
+    },
+    {
+      "file": "recordings\\cal_positive\\1789547420132349700.wav",
+      "score": 0.025499614647456578,
+      "end_ms": 1160
+    },
+    {
+      "file": "recordings\\cal_positive\\1789547423702249800.wav",
+      "score": 0.022847483839307514,
+      "end_ms": 940
+    },
+    {
+      "file": "recordings\\cal_positive\\1789547427676908200.wav",
+      "score": 0.027567891404032707,
+      "end_ms": 1220
+    },
+    {
+      "file": "recordings\\cal_positive\\1789547431621919700.wav",
+      "score": 0.029801809125476413,
+      "end_ms": 1140
+    },
+    {
+      "file": "recordings\\cal_positive\\1789547463137607800.wav",
+      "score": 0.03188746590768137,
+      "end_ms": 1180
+    },
+    {
+      "file": "recordings\\cal_positive\\1789547466796922900.wav",
+      "score": 0.03125175658394309,
+      "end_ms": 1160
+    },
+    {
+      "file": "recordings\\cal_positive\\1789547470442554400.wav",
+      "score": 0.02330956757068634,
+      "end_ms": 980
+    },
+    {
+      "file": "recordings\\cal_positive\\1789547474042978600.wav",
+      "score": 0.028533685498121308,
+      "end_ms": 1160
+    },
+    {
+      "file": "recordings\\cal_positive\\1789547477971936900.wav",
+      "score": 0.021013920505841572,
+      "end_ms": 1000
+    },
+    {
+      "file": "recordings\\cal_positive\\1789547481781551800.wav",
+      "score": 0.026533086249168884,
+      "end_ms": 1240
+    }
+  ],
+  "calibration_negative": [
+    {
+      "file": "recordings\\cal_negative\\1789547614158759900.wav",
+      "score": 0.030084470423256477,
+      "end_ms": 1340
+    },
+    {
+      "file": "recordings\\cal_negative\\1789547617982157400.wav",
+      "score": 0.050558552742004395,
+      "end_ms": 1280
+    },
+    {
+      "file": "recordings\\cal_negative\\1789547622963195100.wav",
+      "score": 0.1144007396697998,
+      "end_ms": 1280
+    },
+    {
+      "file": "recordings\\cal_negative\\1789547627477410300.wav",
+      "score": 0.09335186746385363,
+      "end_ms": 1460
+    },
+    {
+      "file": "recordings\\cal_negative\\1789547636464652200.wav",
+      "score": 0.02864048026856922,
+      "end_ms": 1300
+    },
+    {
+      "file": "recordings\\cal_negative\\1789547640557711600.wav",
+      "score": 0.04326796531677246,
+      "end_ms": 1860
+    },
+    {
+      "file": "recordings\\cal_negative\\1789547644142604100.wav",
+      "score": 0.05556725997191209,
+      "end_ms": 1360
+    },
+    {
+      "file": "recordings\\cal_negative\\1789547649497463000.wav",
+      "score": 0.03364837483355874,
+      "end_ms": 1160
+    }
+  ],
+  "calibration_misses": 0,
+  "calibration_false_trigger_clips": 2
+}

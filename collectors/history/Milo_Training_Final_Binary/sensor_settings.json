@@ -1,0 +1,152 @@
+{
+  "version": 3,
+  "flex_diagnostics": {
+    "thumb": {
+      "poses": {
+        "open": {
+          "median": 1337.0,
+          "std": 0.9175813618178803,
+          "p05": 1336.0,
+          "p95": 1338.3
+        },
+        "fist": {
+          "median": 1789.0,
+          "std": 7.827972633802161,
+          "p05": 1777.0,
+          "p95": 1801.0
+        },
+        "ball_grip": {
+          "median": 1391.0,
+          "std": 0.646907171771104,
+          "p05": 1390.0,
+          "p95": 1392.0
+        }
+      },
+      "span_counts": 452.0,
+      "bend_increases": true,
+      "bend_threshold": 1369,
+      "release_threshold": 1353,
+      "note": "Fixed firmware thresholds: 60% / 30% of measured open-to-loose-grip span; fit checked before recording."
+    },
+    "index": {
+      "poses": {
+        "open": {
+          "median": 1471.0,
+          "std": 0.9873871243505931,
+          "p05": 1469.0,
+          "p95": 1472.0
+        },
+        "fist": {
+          "median": 2021.0,
+          "std": 6.469071717711041,
+          "p05": 2012.0,
+          "p95": 2031.0
+        },
+        "ball_grip": {
+          "median": 1679.0,
+          "std": 0.8379870059984358,
+          "p05": 1678.0,
+          "p95": 1680.0
+        }
+      },
+      "span_counts": 550.0,
+      "bend_increases": true,
+      "bend_threshold": 1596,
+      "release_threshold": 1533,
+      "note": "Fixed firmware thresholds: 60% / 30% of measured open-to-loose-grip span; fit checked before recording."
+    },
+    "middle": {
+      "poses": {
+        "open": {
+          "median": 3405.0,
+          "std": 1.987248237024141,
+          "p05": 3404.0,
+          "p95": 3407.9
+        },
+        "fist": {
+          "median": 3505.0,
+          "std": 1.9798989873223327,
+          "p05": 3503.0,
+          "p95": 3508.0
+        },
+        "ball_grip": {
+          "median": 3455.0,
+          "std": 1.8515579025962612,
+          "p05": 3454.0,
+          "p95": 3457.0
+        }
+      },
+      "span_counts": 100.0,
+      "bend_increases": true,
+      "bend_threshold": 3435,
+      "release_threshold": 3420,
+      "note": "Fixed firmware thresholds: 60% / 30% of measured open-to-loose-grip span; fit checked before recording."
+    }
+  },
+  "open": {
+    "thumb": 1337.0,
+    "index": 1471.0,
+    "middle": 3405.0
+  },
+  "fist": {
+    "thumb": 1789.0,
+    "index": 2021.0,
+    "middle": 3505.0
+  },
+  "ball_grip": {
+    "thumb": 1391.0,
+    "index": 1679.0,
+    "middle": 3455.0
+  },
+  "span": {
+    "thumb": 452.0,
+    "index": 550.0,
+    "middle": 100.0
+  },
+  "gyro_bias_rad_s": {
+    "gx": -0.027,
+    "gy": 0.018,
+    "gz": -0.018
+  },
+  "normalisation": "Finger features are firmware binary states (0=NOT_BENT,1=BENT), unchanged by scaling. Only session gyro bias is subtracted.",
+  "pose_medians": {
+    "open": {
+      "ax": 1.858,
+      "ay": 8.878,
+      "az": 4.008,
+      "gx": -0.027,
+      "gy": 0.018,
+      "gz": -0.018,
+      "thumb": 1337.0,
+      "index": 1471.0,
+      "middle": 3405.0
+    },
+    "fist": {
+      "ax": 2.519,
+      "ay": 7.69,
+      "az": 5.914,
+      "gx": -0.027,
+      "gy": 0.015,
+      "gz": -0.016,
+      "thumb": 1789.0,
+      "index": 2021.0,
+      "middle": 3505.0
+    },
+    "ball_grip": {
+      "ax": 0.239,
+      "ay": 7.824,
+      "az": 6.139,
+      "gx": -0.027,
+      "gy": 0.015,
+      "gz": -0.018,
+      "thumb": 1391.0,
+      "index": 1679.0,
+      "middle": 3455.0
+    }
+  },
+  "source_session": "20261016_140826_29f7c1ac6962491c",
+  "binary_encoding": {
+    "NOT_BENT": 0,
+    "BENT": 1
+  }
+}

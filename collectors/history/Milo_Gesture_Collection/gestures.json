@@ -1,0 +1,79 @@
+{
+  "protocol_version": "milo_personal_gestures_v2",
+  "participant": "Nitin",
+  "clip_ms": 2000,
+  "lead_in_ms": 500,
+  "action_end_ms": 1500,
+  "sample_hz": 50,
+  "classes": [
+    {
+      "id": "come",
+      "instruction": "Start neutral. At GO, beckon towards yourself with your index finger once. Keep the wrist reasonably steady. Then return to neutral."
+    },
+    {
+      "id": "sit",
+      "instruction": "Start neutral. At GO, deliberately point down: index extended, thumb and middle bent. Hold briefly, then return."
+    },
+    {
+      "id": "paw",
+      "instruction": "Start neutral. At GO, present an upward-facing open palm with the three measured fingers extended. Hold briefly, then return."
+    },
+    {
+      "id": "spin",
+      "instruction": "Start neutral. At GO, point with the index finger and turn the pointed hand clockwise once, as seen by you looking at your hand. Use a comfortable rotation, then return."
+    },
+    {
+      "id": "bang",
+      "instruction": "Start neutral. At GO, form a finger gun: index and thumb extended, middle bent. Hold briefly, then return. This is the default detailed-proposal pose; change this definition if your team agrees another thumb pose."
+    },
+    {
+      "id": "throw_overhand",
+      "throw": true,
+      "instruction": "Before GO, loosely hold an imaginary ball, not a tight fist. At GO, perform one overhand throw: swing from above/behind the shoulder and extend the fingers naturally to release the imaginary ball. Keep the hand open briefly after release, then return.",
+      "lead_in_ms": 1000,
+      "action_end_ms": 1500
+    },
+    {
+      "id": "throw_underhand",
+      "throw": true,
+      "instruction": "Before GO, loosely hold an imaginary ball near the hip, not a tight fist. At GO, perform one underhand throw: swing forward from below and extend the fingers naturally to release the imaginary ball. Keep the hand open briefly after release, then return.",
+      "lead_in_ms": 1000,
+      "action_end_ms": 1500
+    },
+    {
+      "id": "background",
+      "variants": [
+        {
+          "id": "rest",
+          "instruction": "Keep a relaxed hand still; perform no command gesture."
+        },
+        {
+          "id": "fist_only",
+          "instruction": "At GO, gently make a fist and reopen it while keeping the wrist still. Do not throw."
+        },
+        {
+          "id": "overhand_without_release",
+          "instruction": "At GO, make an overhand throw-like arm swing while keeping a loose ball grip. Deliberately do not release the fingers.",
+          "lead_in_ms": 1000,
+          "action_end_ms": 1500
+        },
+        {
+          "id": "underhand_without_release",
+          "instruction": "At GO, make an underhand throw-like arm swing while keeping a loose ball grip. Deliberately do not release the fingers.",
+          "lead_in_ms": 1000,
+          "action_end_ms": 1500
+        },
+        {
+          "id": "open_hand_sweep",
+          "instruction": "At GO, move an already-open hand casually. Do not perform a deliberate throw or any command pose."
+        },
+        {
+          "id": "ordinary_motion",
+          "instruction": "At GO, casually adjust your sleeve or move your arm as in ordinary use. Avoid deliberately performing a command gesture."
+        }
+      ]
+    }
+  ],
+  "model_view_start_ms": 500,
+  "model_view_end_ms": 2000
+}

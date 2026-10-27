@@ -1,0 +1,17 @@
+Fast wrong-action collector validation
+
+15 desktop tests passed:
+- 45 wrong takes accepted for one command: no count cap or automatic advance.
+- Explicit manual Next command; undo/cancel and typing guards.
+- Actual variable-length 20-row and 30-row clips exported without padding.
+- NPZ values/row_splits reconstruction; nine model features and binary fingers.
+- Incorrect-for-target labels retained; another valid class is not relabelled background.
+- Current MILO1/MILO2/MILO3 telemetry accepted without using model decisions.
+- Gaps, restarts, faults and stale data checks remain active.
+- Real localhost UDP reception, serial config acknowledgement, async ZIP export.
+- Main controls and output path fit on 1280x800.
+
+The optional raw logger source is byte-identical to the existing logger source.
+No firmware change is required when a compatible logger/detector is already flashed.
+Physical radio behaviour and performance of human labels still need the user's run.
+No trained model is modified or retrained by this collection tool.

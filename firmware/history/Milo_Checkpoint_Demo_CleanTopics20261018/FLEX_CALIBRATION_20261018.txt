@@ -1,0 +1,53 @@
+Worn glove relaxed/fist threshold correction - 18 October 2026
+Firmware: demo6-flex-thresholds-20261018
+Calibration ID: nitin-20261018-relaxed-fist-v2
+
+Evidence: user's 182 raw readings, relaxed hand -> fist -> relaxed -> fist -> relaxed.
+Raw readings are averaged 12-bit ADC counts from the Flex_Sensors_Test sketch.
+
+Selected stable/returned pose regions (1-based line numbers):
+Pose           Lines     Thumb         Index         Middle
+Initial rest   1-25      1392-1396     1526-1530     3447-3450
+Fist 1         47-66     1909-1975     2055-2095     3566-3580
+Returned rest  76-98     1344-1401     1468-1521     3436-3442
+Fist 2         113-128   1907-1974     2072-2116     3565-3577
+Final rest     140-182   1366-1387     1442-1480     3435-3441
+
+The middle sensor responds consistently. Its old release threshold 3420 is below
+every raw middle reading in this trace, so a BENT state never released.
+The thumb's old 1369/1353 thresholds also marked the initial/final relaxed poses BENT.
+The index correctly separated the poses with its existing thresholds.
+
+Binary feature thresholds:
+Finger    Old bend/release   New bend/release
+Thumb     1369 / 1353        1460 / 1420
+Index     1596 / 1533        1596 / 1533 (unchanged)
+Middle    3435 / 3420        3480 / 3460
+
+When NOT_BENT: switch to BENT at raw >= bend.
+When BENT: switch to NOT_BENT at raw <= release.
+Between release and bend, preserve the previous state to avoid noise flicker.
+Example: middle resting at 3448 now reports 0; middle at 3570 reports 1.
+All thresholds assume the measured direction: larger value means more bend near the two target poses.
+
+Replayed all 182 readings using thresholds extracted from the updated actual source:
+  Every selected relaxed sample became [0,0,0].
+  Every selected fist sample became [1,1,1].
+  Each finger produced exactly four transitions: two bends and two releases.
+  No extra binary transitions occurred in this trace.
+  Full-fist trigger decisions were identical to the old code for every supplied reading.
+
+The separate full-fist minima remain 1676 / 1884 / 3480, with a 2-second hold.
+The demo5 relaxed-fist rearm, paired mic scheduling, buzz timing, MQTT format and
+six-axis physical IMU values are unchanged. No resistor or wiring change was made.
+
+Only reflash the GLOVE using GloveDemo/GloveDemo.ino after testing raw flex readings.
+The already-working demo4 mic is compatible and does not need reflashing.
+Check live Serial output/state and one action after upload. Replay is not a physical firmware test.
+
+Limits: these two endpoint cycles establish relaxed/fist separation for the current
+worn-glove fit. They do not determine the intended binary states of a loose throwing
+grip or every gesture. The thumb signal dips before increasing during fist closure;
+raw readings do not measure a simple angle over the complete motion.
+New clips advertise the changed calibration ID and exact thresholds. Historical AI
+examples/recordings keep their original calibration metadata; do not relabel them.

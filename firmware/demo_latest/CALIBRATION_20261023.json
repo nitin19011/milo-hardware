@@ -1,0 +1,26 @@
+{
+  "calibration_id": "nitin-20261023-usb-relaxed-fist-v3",
+  "active_flex": [
+    "thumb",
+    "index",
+    "middle"
+  ],
+  "thresholds": {
+    "thumb": [
+      1696,
+      1583
+    ],
+    "index": [
+      1920,
+      1762
+    ],
+    "middle": [
+      3520,
+      3487
+    ]
+  },
+  "trigger": "all_three_fingers_2000ms",
+  "capture_ms": 3000,
+  "mic_protocol_changed": false,
+  "source": "calibration/reference_20261023/calibration.json"
+}

@@ -1,0 +1,560 @@
+{
+  "source_session": "20261025_130244_433d4f0c",
+  "input_accepted_gestures": 141,
+  "held_aside_uncertain_ids": [
+    "1369386a91f7",
+    "14fd67887f61",
+    "2aad08db290b",
+    "365680a40fd5",
+    "3a11d3c67a00",
+    "3fed32c1ee0f",
+    "59d39ca4c701",
+    "a29572e651cc",
+    "d1b31a8dfe46"
+  ],
+  "provisionally_used_gestures": 132,
+  "positive_event_split": {
+    "fit": 78,
+    "calibration": 26,
+    "test": 28
+  },
+  "fit_windows": 4000,
+  "fit_positive_windows": 390,
+  "fit_negative_windows": 3610,
+  "selection": "Variant selected on calibration false proposals; threshold=75% of weakest calibration bracket maximum, not tuned on test.",
+  "comparisons": [
+    {
+      "name": "imu_binary",
+      "nfeatures": 39,
+      "threshold": 0.5400960867955723,
+      "calibration": {
+        "event_brackets": 26,
+        "brackets_hit": 26,
+        "bracket_hit_rate": 1.0,
+        "event_results": [
+          {
+            "id": "578f182cbc32",
+            "class": "come",
+            "max_score": 0.9441703501274462,
+            "hit": true
+          },
+          {
+            "id": "e17342f0642a",
+            "class": "come",
+            "max_score": 0.9868683337928799,
+            "hit": true
+          },
+          {
+            "id": "5c0b5604f52b",
+            "class": "come",
+            "max_score": 0.9767329644726365,
+            "hit": true
+          },
+          {
+            "id": "76ea4d3b2e6c",
+            "class": "sit",
+            "max_score": 0.8131181361543338,
+            "hit": true
+          },
+          {
+            "id": "112b777582cc",
+            "class": "sit",
+            "max_score": 0.9679331281804423,
+            "hit": true
+          },
+          {
+            "id": "87c10788b903",
+            "class": "sit",
+            "max_score": 0.9521695934172465,
+            "hit": true
+          },
+          {
+            "id": "09bda2e79adf",
+            "class": "sit",
+            "max_score": 0.9525826107811195,
+            "hit": true
+          },
+          {
+            "id": "d4f56e6a29a9",
+            "class": "paw",
+            "max_score": 0.7967944570679792,
+            "hit": true
+          },
+          {
+            "id": "c60511f2b77b",
+            "class": "paw",
+            "max_score": 0.7201281157274297,
+            "hit": true
+          },
+          {
+            "id": "5f86a19edd12",
+            "class": "paw",
+            "max_score": 0.8461247657582556,
+            "hit": true
+          },
+          {
+            "id": "841fc274b092",
+            "class": "paw",
+            "max_score": 0.885109458460177,
+            "hit": true
+          },
+          {
+            "id": "5254e0129feb",
+            "class": "spin",
+            "max_score": 0.9900501824497848,
+            "hit": true
+          },
+          {
+            "id": "1f0c2a692201",
+            "class": "spin",
+            "max_score": 0.9809356859728239,
+            "hit": true
+          },
+          {
+            "id": "11a69605fd70",
+            "class": "spin",
+            "max_score": 0.9900501824497848,
+            "hit": true
+          },
+          {
+            "id": "523935af72c8",
+            "class": "spin",
+            "max_score": 0.9875884328203751,
+            "hit": true
+          },
+          {
+            "id": "0023e54bbc44",
+            "class": "bang",
+            "max_score": 0.9710847038476333,
+            "hit": true
+          },
+          {
+            "id": "b226811f160b",
+            "class": "bang",
+            "max_score": 0.9902001028284365,
+            "hit": true
+          },
+          {
+            "id": "f8477b606195",
+            "class": "bang",
+            "max_score": 0.9592803264197931,
+            "hit": true
+          },
+          {
+            "id": "2de5b71eff47",
+            "class": "bang",
+            "max_score": 0.98899094110629,
+            "hit": true
+          },
+          {
+            "id": "a70d1776414f",
+            "class": "throw_overhand",
+            "max_score": 0.9737606017502674,
+            "hit": true
+          },
+          {
+            "id": "1fcfbee95572",
+            "class": "throw_overhand",
+            "max_score": 0.9851146783289341,
+            "hit": true
+          },
+          {
+            "id": "48e2001bc8e7",
+            "class": "throw_overhand",
+            "max_score": 0.9775291169162604,
+            "hit": true
+          },
+          {
+            "id": "4ae4ad35c192",
+            "class": "throw_underhand",
+            "max_score": 0.9475573793938996,
+            "hit": true
+          },
+          {
+            "id": "bc111eb32f3f",
+            "class": "throw_underhand",
+            "max_score": 0.9852645987075858,
+            "hit": true
+          },
+          {
+            "id": "0988fa09850f",
+            "class": "throw_underhand",
+            "max_score": 0.9860364275019259,
+            "hit": true
+          },
+          {
+            "id": "9dae5cd0b4a5",
+            "class": "throw_underhand",
+            "max_score": 0.9902001028284365,
+            "hit": true
+          }
+        ],
+        "background_valid_window_seconds": 117.1,
+        "false_candidate_proposals": 0,
+        "false_proposals_per_minute": 0.0,
+        "negative_windows_above_threshold_fraction": 0.0
+      }
+    },
+    {
+      "name": "imu_binary_raw_motion",
+      "nfeatures": 45,
+      "threshold": 0.47716404013757796,
+      "calibration": {
+        "event_brackets": 26,
+        "brackets_hit": 26,
+        "bracket_hit_rate": 1.0,
+        "event_results": [
+          {
+            "id": "578f182cbc32",
+            "class": "come",
+            "max_score": 0.9574526386465251,
+            "hit": true
+          },
+          {
+            "id": "e17342f0642a",
+            "class": "come",
+            "max_score": 0.9709594024497082,
+            "hit": true
+          },
+          {
+            "id": "5c0b5604f52b",
+            "class": "come",
+            "max_score": 0.9707248498437685,
+            "hit": true
+          },
+          {
+            "id": "76ea4d3b2e6c",
+            "class": "sit",
+            "max_score": 0.9008809120699494,
+            "hit": true
+          },
+          {
+            "id": "112b777582cc",
+            "class": "sit",
+            "max_score": 0.9837411842000426,
+            "hit": true
+          },
+          {
+            "id": "87c10788b903",
+            "class": "sit",
+            "max_score": 0.9778628434817396,
+            "hit": true
+          },
+          {
+            "id": "09bda2e79adf",
+            "class": "sit",
+            "max_score": 0.9698247679152204,
+            "hit": true
+          },
+          {
+            "id": "d4f56e6a29a9",
+            "class": "paw",
+            "max_score": 0.7916592939237678,
+            "hit": true
+          },
+          {
+            "id": "c60511f2b77b",
+            "class": "paw",
+            "max_score": 0.6362187201834373,
+            "hit": true
+          },
+          {
+            "id": "5f86a19edd12",
+            "class": "paw",
+            "max_score": 0.8795050557576928,
+            "hit": true
+          },
+          {
+            "id": "841fc274b092",
+            "class": "paw",
+            "max_score": 0.9210980733181087,
+            "hit": true
+          },
+          {
+            "id": "5254e0129feb",
+            "class": "spin",
+            "max_score": 0.9938687154294987,
+            "hit": true
+          },
+          {
+            "id": "1f0c2a692201",
+            "class": "spin",
+            "max_score": 0.9845423044663879,
+            "hit": true
+          },
+          {
+            "id": "11a69605fd70",
+            "class": "spin",
+            "max_score": 0.9932810385151307,
+            "hit": true
+          },
+          {
+            "id": "523935af72c8",
+            "class": "spin",
+            "max_score": 0.9907632312643228,
+            "hit": true
+          },
+          {
+            "id": "0023e54bbc44",
+            "class": "bang",
+            "max_score": 0.9794659278602306,
+            "hit": true
+          },
+          {
+            "id": "b226811f160b",
+            "class": "bang",
+            "max_score": 0.9932810385151307,
+            "hit": true
+          },
+          {
+            "id": "f8477b606195",
+            "class": "bang",
+            "max_score": 0.9839878938648002,
+            "hit": true
+          },
+          {
+            "id": "2de5b71eff47",
+            "class": "bang",
+            "max_score": 0.9932810385151307,
+            "hit": true
+          },
+          {
+            "id": "a70d1776414f",
+            "class": "throw_overhand",
+            "max_score": 0.9905430595684996,
+            "hit": true
+          },
+          {
+            "id": "1fcfbee95572",
+            "class": "throw_overhand",
+            "max_score": 0.9932810385151307,
+            "hit": true
+          },
+          {
+            "id": "48e2001bc8e7",
+            "class": "throw_overhand",
+            "max_score": 0.9895824499471808,
+            "hit": true
+          },
+          {
+            "id": "4ae4ad35c192",
+            "class": "throw_underhand",
+            "max_score": 0.9859469309409493,
+            "hit": true
+          },
+          {
+            "id": "bc111eb32f3f",
+            "class": "throw_underhand",
+            "max_score": 0.9895824499471808,
+            "hit": true
+          },
+          {
+            "id": "0988fa09850f",
+            "class": "throw_underhand",
+            "max_score": 0.9915510420684082,
+            "hit": true
+          },
+          {
+            "id": "9dae5cd0b4a5",
+            "class": "throw_underhand",
+            "max_score": 0.9932810385151307,
+            "hit": true
+          }
+        ],
+        "background_valid_window_seconds": 117.1,
+        "false_candidate_proposals": 0,
+        "false_proposals_per_minute": 0.0,
+        "negative_windows_above_threshold_fraction": 0.0
+      }
+    }
+  ],
+  "selected_variant": "imu_binary",
+  "selected_threshold": 0.5400960867955723,
+  "same_session_test": {
+    "event_brackets": 28,
+    "brackets_hit": 27,
+    "bracket_hit_rate": 0.9642857142857143,
+    "event_results": [
+      {
+        "id": "e81a3858d82d",
+        "class": "come",
+        "max_score": 0.9705121705506699,
+        "hit": true
+      },
+      {
+        "id": "79bf1934e855",
+        "class": "come",
+        "max_score": 0.9056686715447583,
+        "hit": true
+      },
+      {
+        "id": "db01162270ac",
+        "class": "come",
+        "max_score": 0.9767329644726365,
+        "hit": true
+      },
+      {
+        "id": "48e936f757f6",
+        "class": "come",
+        "max_score": 0.9767329644726365,
+        "hit": true
+      },
+      {
+        "id": "557e88e749db",
+        "class": "sit",
+        "max_score": 0.9134441199587515,
+        "hit": true
+      },
+      {
+        "id": "311848e217d4",
+        "class": "sit",
+        "max_score": 0.9526208220198553,
+        "hit": true
+      },
+      {
+        "id": "c0ae146be781",
+        "class": "sit",
+        "max_score": 0.8633990452043317,
+        "hit": true
+      },
+      {
+        "id": "333d671ff18b",
+        "class": "sit",
+        "max_score": 0.36287156132693305,
+        "hit": false
+      },
+      {
+        "id": "ef6662d7e381",
+        "class": "paw",
+        "max_score": 0.9246728954745297,
+        "hit": true
+      },
+      {
+        "id": "4600e15639f4",
+        "class": "paw",
+        "max_score": 0.920957466011313,
+        "hit": true
+      },
+      {
+        "id": "46c4762931ad",
+        "class": "paw",
+        "max_score": 0.883006228807863,
+        "hit": true
+      },
+      {
+        "id": "8745301fe9d5",
+        "class": "paw",
+        "max_score": 0.8792907993446463,
+        "hit": true
+      },
+      {
+        "id": "d11c07bd9cfe",
+        "class": "spin",
+        "max_score": 0.9900501824497848,
+        "hit": true
+      },
+      {
+        "id": "3d25e927a735",
+        "class": "spin",
+        "max_score": 0.9900501824497848,
+        "hit": true
+      },
+      {
+        "id": "5bc4fc49d49a",
+        "class": "spin",
+        "max_score": 0.9900501824497848,
+        "hit": true
+      },
+      {
+        "id": "2117c378228b",
+        "class": "spin",
+        "max_score": 0.9784739363434141,
+        "hit": true
+      },
+      {
+        "id": "d3407c255861",
+        "class": "bang",
+        "max_score": 0.9902001028284365,
+        "hit": true
+      },
+      {
+        "id": "07d710420a4e",
+        "class": "bang",
+        "max_score": 0.9795185792964252,
+        "hit": true
+      },
+      {
+        "id": "eec48b0467f9",
+        "class": "bang",
+        "max_score": 0.9639395902531692,
+        "hit": true
+      },
+      {
+        "id": "751cd31d0440",
+        "class": "bang",
+        "max_score": 0.9536893668433847,
+        "hit": true
+      },
+      {
+        "id": "efe926515ba3",
+        "class": "throw_overhand",
+        "max_score": 0.9851146783289341,
+        "hit": true
+      },
+      {
+        "id": "3355c6757e08",
+        "class": "throw_overhand",
+        "max_score": 0.9900501824497848,
+        "hit": true
+      },
+      {
+        "id": "1622683c9e9b",
+        "class": "throw_overhand",
+        "max_score": 0.9851146783289341,
+        "hit": true
+      },
+      {
+        "id": "f637e11fe7b3",
+        "class": "throw_underhand",
+        "max_score": 0.9902001028284365,
+        "hit": true
+      },
+      {
+        "id": "63f3080358c2",
+        "class": "throw_underhand",
+        "max_score": 0.9902762594443977,
+        "hit": true
+      },
+      {
+        "id": "0cf65e7cb8c1",
+        "class": "throw_underhand",
+        "max_score": 0.9676897382285344,
+        "hit": true
+      },
+      {
+        "id": "2faf9121ebdc",
+        "class": "throw_underhand",
+        "max_score": 0.9852645987075858,
+        "hit": true
+      },
+      {
+        "id": "b9458df9ee86",
+        "class": "throw_underhand",
+        "max_score": 0.8727830543464389,
+        "hit": true
+      }
+    ],
+    "background_valid_window_seconds": 119.0,
+    "false_candidate_proposals": 0,
+    "false_proposals_per_minute": 0.0,
+    "negative_windows_above_threshold_fraction": 0.0
+  },
+  "limits": [
+    "Single recording session only; no independent-session generalization test.",
+    "Operator brackets are weak labels; hit rate is not physical gesture recall or complete 3-second clip coverage.",
+    "Nine uncertain labels excluded, not treated as negatives.",
+    "Top-five active windows per fitting gesture selected to reduce preparation/rest label noise.",
+    "False proposals measured as repeated proposals at most once/second; later mic upload deduplication/capacity remains separate.",
+    "No claim of 99% recall; lower confidence bounds require more representative independent trials."
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "source_zip": "Milo_Candidate_Data_20261025_130244_433d4f0c.zip",
+  "zip_integrity": "passed",
+  "received_frames": 73135,
+  "recorded_host_span_s": 1471.99,
+  "accepted_counts": {
+    "come": 20,
+    "sit": 20,
+    "paw": 20,
+    "spin": 20,
+    "bang": 20,
+    "throw_overhand": 20,
+    "throw_underhand": 21
+  },
+  "accepted_gesture_total": 141,
+  "background_seconds": 603.043,
+  "imu_invalid_samples": 0,
+  "imu_clipped_samples": 0,
+  "flex_rail_samples": 0,
+  "device_queue_drops_max": 0,
+  "observed_forward_gap_samples": 21,
+  "unique_unreceived_samples_within_boot_sequence_ranges": 13,
+  "out_of_order_packets": 8,
+  "boot_segments": [
+    {
+      "boot": "06b7effc6d4dc406",
+      "received": 343,
+      "unique_missing_samples": 0,
+      "start_s": 0.0,
+      "end_s": 6.803
+    },
+    {
+      "boot": "97fb9d55b06021a8",
+      "received": 72792,
+      "unique_missing_samples": 13,
+      "start_s": 15.976,
+      "end_s": 1471.99
+    }
+  ],
+  "restart_before_first_label_s": 51.394,
+  "review_event_count": 9,
+  "provisional_unflagged_gestures": 132,
+  "review_event_ids": [
+    "1369386a91f7",
+    "3fed32c1ee0f",
+    "2aad08db290b",
+    "59d39ca4c701",
+    "d1b31a8dfe46",
+    "365680a40fd5",
+    "a29572e651cc",
+    "14fd67887f61",
+    "3a11d3c67a00"
+  ],
+  "separate_validation_session_present": false,
+  "source_data_modified": false,
+  "finding": "Sensor stream is healthy. Operator brackets need review for 4 short Come and 5 short overhand events; labels outside approved brackets must not be treated as background. No trained model or recall claim produced."
+}

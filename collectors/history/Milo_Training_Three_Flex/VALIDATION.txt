@@ -1,0 +1,26 @@
+Software validation - 16 October 2026
+
+ESP32 sketch compiled and linked successfully for esp32:esp32:firebeetle32 using ESP32 Arduino core 3.3.11.
+Flash: 953288 bytes (72%); global RAM: 48296 bytes (14%).
+Only compilation/linking was verified: local Windows image-packaging hooks were bypassed.
+Upload the .ino through Arduino IDE; no flashable binary is distributed in this package.
+
+Passed checks:
+- Complete simulated 70 accepted examples, 10 per class in sequential blocks, nine channels.
+- Middle ADC rail causes a repeat; cannot be silently accepted.
+- Calibration-only records three poses and zero gesture samples; continuation retains calibration.
+- A stable simulated 3300-to-3500 middle range produces bend 3410 / release 3390.
+- Hysteresis boundaries, both bend polarities, noisy calibration rejection and old-profile rejection.
+- Three-finger GUI: calibration summary, live states, buttons, progress, cancellation bridge and layout.
+- Real local MQTT broker with simulated 50Hz glove messages: calibration, all seven classes,
+  timing, raw capture, review, annotations, labels and nine-channel exports.
+- Offline reviewer draws three finite flex curves and saves human annotations.
+- ZIP integrity, file hashes, class folders, accepted counts and no firmware/raw debug in AI handoff.
+- Python syntax checks.
+
+No glove was flashed or physically tested by these checks. Your live calibration is still needed.
+Training retains continuous raw/calibrated flex values. Trial BENT/NOT BENT thresholds live on the laptop;
+the firmware's existing thumb/index binary thresholds do not control training, and middle binary state
+is explicitly UNCALIBRATED in its MQTT message until operational thresholds are installed separately.
+The motor is disabled at startup and during recording. Integrated rejection feedback is not implemented here.
+Previous thumb/index software, recorded datasets and the project's installed main sketch were not changed.

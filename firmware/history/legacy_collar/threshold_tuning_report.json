@@ -1,0 +1,219 @@
+{
+  "kind": "threshold_tuning_not_independent_test",
+  "previous_model_id": "86b674a15f5b",
+  "old_threshold": 0.03349183920306544,
+  "new_threshold": 0.045,
+  "scores": {
+    "cal_positive": [
+      {
+        "file": "recordings\\cal_positive\\1789547411763850700.wav",
+        "score": 0.020311413389263733,
+        "end_ms": 1460
+      },
+      {
+        "file": "recordings\\cal_positive\\1789547416216939500.wav",
+        "score": 0.025551898912949997,
+        "end_ms": 1320
+      },
+      {
+        "file": "recordings\\cal_positive\\1789547420132349700.wav",
+        "score": 0.025499614647456578,
+        "end_ms": 1160
+      },
+      {
+        "file": "recordings\\cal_positive\\1789547423702249800.wav",
+        "score": 0.022847483839307514,
+        "end_ms": 940
+      },
+      {
+        "file": "recordings\\cal_positive\\1789547427676908200.wav",
+        "score": 0.027567891404032707,
+        "end_ms": 1220
+      },
+      {
+        "file": "recordings\\cal_positive\\1789547431621919700.wav",
+        "score": 0.029801809125476413,
+        "end_ms": 1140
+      },
+      {
+        "file": "recordings\\cal_positive\\1789547463137607800.wav",
+        "score": 0.03188746590768137,
+        "end_ms": 1180
+      },
+      {
+        "file": "recordings\\cal_positive\\1789547466796922900.wav",
+        "score": 0.03125175658394309,
+        "end_ms": 1160
+      },
+      {
+        "file": "recordings\\cal_positive\\1789547470442554400.wav",
+        "score": 0.02330956757068634,
+        "end_ms": 980
+      },
+      {
+        "file": "recordings\\cal_positive\\1789547474042978600.wav",
+        "score": 0.028533685498121308,
+        "end_ms": 1160
+      },
+      {
+        "file": "recordings\\cal_positive\\1789547477971936900.wav",
+        "score": 0.021013920505841572,
+        "end_ms": 1000
+      },
+      {
+        "file": "recordings\\cal_positive\\1789547481781551800.wav",
+        "score": 0.026533086249168884,
+        "end_ms": 1240
+      }
+    ],
+    "cal_negative": [
+      {
+        "file": "recordings\\cal_negative\\1789547614158759900.wav",
+        "score": 0.030084470423256477,
+        "end_ms": 1340
+      },
+      {
+        "file": "recordings\\cal_negative\\1789547617982157400.wav",
+        "score": 0.050558552742004395,
+        "end_ms": 1280
+      },
+      {
+        "file": "recordings\\cal_negative\\1789547622963195100.wav",
+        "score": 0.1144007396697998,
+        "end_ms": 1280
+      },
+      {
+        "file": "recordings\\cal_negative\\1789547627477410300.wav",
+        "score": 0.09335186746385363,
+        "end_ms": 1460
+      },
+      {
+        "file": "recordings\\cal_negative\\1789547636464652200.wav",
+        "score": 0.02864048026856922,
+        "end_ms": 1300
+      },
+      {
+        "file": "recordings\\cal_negative\\1789547640557711600.wav",
+        "score": 0.04326796531677246,
+        "end_ms": 1860
+      },
+      {
+        "file": "recordings\\cal_negative\\1789547644142604100.wav",
+        "score": 0.05556725997191209,
+        "end_ms": 1360
+      },
+      {
+        "file": "recordings\\cal_negative\\1789547649497463000.wav",
+        "score": 0.03364837483355874,
+        "end_ms": 1160
+      }
+    ],
+    "test_positive": [
+      {
+        "file": "recordings\\test_positive\\1789548097099155700.wav",
+        "score": 0.024954344545091902,
+        "end_ms": 1340
+      },
+      {
+        "file": "recordings\\test_positive\\1789548101435925300.wav",
+        "score": 0.025456902592681175,
+        "end_ms": 1380
+      },
+      {
+        "file": "recordings\\test_positive\\1789548105124624100.wav",
+        "score": 0.027401824792226154,
+        "end_ms": 1140
+      },
+      {
+        "file": "recordings\\test_positive\\1789548108500454900.wav",
+        "score": 0.02266234002615276,
+        "end_ms": 1240
+      },
+      {
+        "file": "recordings\\test_positive\\1789548117726130400.wav",
+        "score": 0.03459863322121756,
+        "end_ms": 1140
+      },
+      {
+        "file": "recordings\\test_positive\\1789548121744974900.wav",
+        "score": 0.021425568696224327,
+        "end_ms": 1020
+      },
+      {
+        "file": "recordings\\test_positive\\1789548126019359500.wav",
+        "score": 0.031085287702494656,
+        "end_ms": 1040
+      },
+      {
+        "file": "recordings\\test_positive\\1789548129874212900.wav",
+        "score": 0.04282972297152957,
+        "end_ms": 1200
+      }
+    ],
+    "test_negative": [
+      {
+        "file": "recordings\\test_negative\\1789548161479464600.wav",
+        "score": 0.05433384009769985,
+        "end_ms": 2660
+      },
+      {
+        "file": "recordings\\test_negative\\1789548165739128000.wav",
+        "score": 1000000000.0,
+        "end_ms": 0
+      },
+      {
+        "file": "recordings\\test_negative\\1789548169759125300.wav",
+        "score": 0.12061601335352118,
+        "end_ms": 1580
+      },
+      {
+        "file": "recordings\\test_negative\\1789548173883709100.wav",
+        "score": 0.0722107972417559,
+        "end_ms": 1360
+      },
+      {
+        "file": "recordings\\test_negative\\1789548184055594100.wav",
+        "score": 0.10900140943981353,
+        "end_ms": 1200
+      },
+      {
+        "file": "recordings\\test_negative\\1789548188075820400.wav",
+        "score": 0.14506060600280762,
+        "end_ms": 1940
+      },
+      {
+        "file": "recordings\\test_negative\\1789548192424556400.wav",
+        "score": 1000000000.0,
+        "end_ms": 0
+      },
+      {
+        "file": "recordings\\test_negative\\1789548196759157800.wav",
+        "score": 0.1184695683992826,
+        "end_ms": 860
+      }
+    ]
+  },
+  "results": {
+    "cal_positive": {
+      "clips": 12,
+      "old_triggers": 12,
+      "new_triggers": 12
+    },
+    "cal_negative": {
+      "clips": 8,
+      "old_triggers": 2,
+      "new_triggers": 4
+    },
+    "test_positive": {
+      "clips": 8,
+      "old_triggers": 6,
+      "new_triggers": 8
+    },
+    "test_negative": {
+      "clips": 8,
+      "old_triggers": 0,
+      "new_triggers": 0
+    }
+  },
+  "model_id": "63aeffbdedfb"
+}

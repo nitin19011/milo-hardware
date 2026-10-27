@@ -1,0 +1,2981 @@
+[
+  {
+    "id": "3673b9782a99",
+    "class": "come",
+    "duration_s": 3.0997,
+    "frames": 155,
+    "gyro_peak_inside_rad_s": 16.629,
+    "gyro_peak_context_rad_s": 16.629,
+    "context_peak_s_from_start": 1.3656,
+    "context_peak_s_from_end": -1.7341,
+    "raw_spans": [
+      61,
+      136,
+      27
+    ],
+    "binary_transitions": [
+      0,
+      0,
+      0
+    ],
+    "review_reasons": []
+  },
+  {
+    "id": "e81a3858d82d",
+    "class": "come",
+    "duration_s": 3.3658,
+    "frames": 169,
+    "gyro_peak_inside_rad_s": 16.068,
+    "gyro_peak_context_rad_s": 16.068,
+    "context_peak_s_from_start": 1.2041,
+    "context_peak_s_from_end": -2.1618,
+    "raw_spans": [
+      95,
+      231,
+      28
+    ],
+    "binary_transitions": [
+      0,
+      0,
+      0
+    ],
+    "review_reasons": []
+  },
+  {
+    "id": "fbe62bb2316f",
+    "class": "come",
+    "duration_s": 2.6078,
+    "frames": 131,
+    "gyro_peak_inside_rad_s": 16.991,
+    "gyro_peak_context_rad_s": 16.991,
+    "context_peak_s_from_start": 1.0843,
+    "context_peak_s_from_end": -1.5236,
+    "raw_spans": [
+      80,
+      147,
+      25
+    ],
+    "binary_transitions": [
+      0,
+      0,
+      0
+    ],
+    "review_reasons": []
+  },
+  {
+    "id": "79bf1934e855",
+    "class": "come",
+    "duration_s": 2.7969,
+    "frames": 139,
+    "gyro_peak_inside_rad_s": 17.124,
+    "gyro_peak_context_rad_s": 17.124,
+    "context_peak_s_from_start": 1.5392,
+    "context_peak_s_from_end": -1.2577,
+    "raw_spans": [
+      66,
+      153,
+      25
+    ],
+    "binary_transitions": [
+      0,
+      0,
+      0
+    ],
+    "review_reasons": []
+  },
+  {
+    "id": "1369386a91f7",
+    "class": "come",
+    "duration_s": 0.803,
+    "frames": 40,
+    "gyro_peak_inside_rad_s": 0.533,
+    "gyro_peak_context_rad_s": 7.794,
+    "context_peak_s_from_start": 1.3454,
+    "context_peak_s_from_end": 0.5424,
+    "raw_spans": [
+      5,
+      2,
+      4
+    ],
+    "binary_transitions": [
+      0,
+      0,
+      0
+    ],
+    "review_reasons": [
+      "short_come_with_no_binary_transitions_and_little_raw_change"
+    ]
+  },
+  {
+    "id": "3fed32c1ee0f",
+    "class": "come",
+    "duration_s": 0.2056,
+    "frames": 10,
+    "gyro_peak_inside_rad_s": 1.196,
+    "gyro_peak_context_rad_s": 13.418,
+    "context_peak_s_from_start": -0.9507,
+    "context_peak_s_from_end": -1.1563,
+    "raw_spans": [
+      3,
+      2,
+      3
+    ],
+    "binary_transitions": [
+      0,
+      0,
+      0
+    ],
+    "review_reasons": [
+      "short_come_with_no_binary_transitions_and_little_raw_change"
+    ]
+  },
+  {
+    "id": "2aad08db290b",
+    "class": "come",
+    "duration_s": 0.3902,
+    "frames": 19,
+    "gyro_peak_inside_rad_s": 0.773,
+    "gyro_peak_context_rad_s": 14.492,
+    "context_peak_s_from_start": 1.2767,
+    "context_peak_s_from_end": 0.8864,
+    "raw_spans": [
+      4,
+      5,
+      3
+    ],
+    "binary_transitions": [
+      0,
+      0,
+      0
+    ],
+    "review_reasons": [
+      "short_come_with_no_binary_transitions_and_little_raw_change"
+    ]
+  },
+  {
+    "id": "59d39ca4c701",
+    "class": "come",
+    "duration_s": 0.2005,
+    "frames": 10,
+    "gyro_peak_inside_rad_s": 1.972,
+    "gyro_peak_context_rad_s": 15.904,
+    "context_peak_s_from_start": -0.9426,
+    "context_peak_s_from_end": -1.1431,
+    "raw_spans": [
+      3,
+      2,
+      2
+    ],
+    "binary_transitions": [
+      0,
+      0,
+      0
+    ],
+    "review_reasons": [
+      "short_come_with_no_binary_transitions_and_little_raw_change"
+    ]
+  },
+  {
+    "id": "db01162270ac",
+    "class": "come",
+    "duration_s": 2.8517,
+    "frames": 143,
+    "gyro_peak_inside_rad_s": 15.609,
+    "gyro_peak_context_rad_s": 15.609,
+    "context_peak_s_from_start": 1.2667,
+    "context_peak_s_from_end": -1.585,
+    "raw_spans": [
+      67,
+      163,
+      31
+    ],
+    "binary_transitions": [
+      0,
+      0,
+      0
+    ],
+    "review_reasons": []
+  },
+  {
+    "id": "6d92e1e883cc",
+    "class": "come",
+    "duration_s": 2.7298,
+    "frames": 137,
+    "gyro_peak_inside_rad_s": 22.24,
+    "gyro_peak_context_rad_s": 22.24,
+    "context_peak_s_from_start": 1.2052,
+    "context_peak_s_from_end": -1.5245,
+    "raw_spans": [
+      59,
+      172,
+      31
+    ],
+    "binary_transitions": [
+      0,
+      0,
+      0
+    ],
+    "review_reasons": []
+  },
+  {
+    "id": "48e936f757f6",
+    "class": "come",
+    "duration_s": 3.0999,
+    "frames": 155,
+    "gyro_peak_inside_rad_s": 19.648,
+    "gyro_peak_context_rad_s": 19.648,
+    "context_peak_s_from_start": 1.0413,
+    "context_peak_s_from_end": -2.0586,
+    "raw_spans": [
+      63,
+      227,
+      33
+    ],
+    "binary_transitions": [
+      0,
+      0,
+      0
+    ],
+    "review_reasons": []
+  },
+  {
+    "id": "3b5747d0e35c",
+    "class": "come",
+    "duration_s": 6.4464,
+    "frames": 323,
+    "gyro_peak_inside_rad_s": 17.827,
+    "gyro_peak_context_rad_s": 17.827,
+    "context_peak_s_from_start": 1.3209,
+    "context_peak_s_from_end": -5.1258,
+    "raw_spans": [
+      80,
+      183,
+      25
+    ],
+    "binary_transitions": [
+      0,
+      0,
+      0
+    ],
+    "review_reasons": []
+  },
+  {
+    "id": "2d6639b6bc45",
+    "class": "come",
+    "duration_s": 4.9366,
+    "frames": 247,
+    "gyro_peak_inside_rad_s": 20.792,
+    "gyro_peak_context_rad_s": 20.792,
+    "context_peak_s_from_start": 1.5744,
+    "context_peak_s_from_end": -3.3622,
+    "raw_spans": [
+      105,
+      221,
+      37
+    ],
+    "binary_transitions": [
+      0,
+      0,
+      0
+    ],
+    "review_reasons": []
+  },
+  {
+    "id": "578f182cbc32",
+    "class": "come",
+    "duration_s": 2.9784,
+    "frames": 149,
+    "gyro_peak_inside_rad_s": 19.896,
+    "gyro_peak_context_rad_s": 19.896,
+    "context_peak_s_from_start": 1.3087,
+    "context_peak_s_from_end": -1.6699,
+    "raw_spans": [
+      88,
+      353,
+      64
+    ],
+    "binary_transitions": [
+      0,
+      0,
+      0
+    ],
+    "review_reasons": []
+  },
+  {
+    "id": "e17342f0642a",
+    "class": "come",
+    "duration_s": 5.411,
+    "frames": 271,
+    "gyro_peak_inside_rad_s": 20.156,
+    "gyro_peak_context_rad_s": 20.156,
+    "context_peak_s_from_start": 3.9805,
+    "context_peak_s_from_end": -1.4304,
+    "raw_spans": [
+      234,
+      551,
+      176
+    ],
+    "binary_transitions": [
+      0,
+      0,
+      2
+    ],
+    "review_reasons": []
+  },
+  {
+    "id": "5c0b5604f52b",
+    "class": "come",
+    "duration_s": 6.1083,
+    "frames": 305,
+    "gyro_peak_inside_rad_s": 20.619,
+    "gyro_peak_context_rad_s": 20.619,
+    "context_peak_s_from_start": 2.2135,
+    "context_peak_s_from_end": -3.8946,
+    "raw_spans": [
+      149,
+      207,
+      50
+    ],
+    "binary_transitions": [
+      0,
+      0,
+      0
+    ],
+    "review_reasons": []
+  },
+  {
+    "id": "9244b34b6133",
+    "class": "come",
+    "duration_s": 4.6463,
+    "frames": 233,
+    "gyro_peak_inside_rad_s": 17.369,
+    "gyro_peak_context_rad_s": 17.369,
+    "context_peak_s_from_start": 2.4442,
+    "context_peak_s_from_end": -2.2022,
+    "raw_spans": [
+      62,
+      136,
+      19
+    ],
+    "binary_transitions": [
+      0,
+      0,
+      0
+    ],
+    "review_reasons": []
+  },
+  {
+    "id": "cb9c069bcc0a",
+    "class": "come",
+    "duration_s": 4.736,
+    "frames": 237,
+    "gyro_peak_inside_rad_s": 19.234,
+    "gyro_peak_context_rad_s": 19.234,
+    "context_peak_s_from_start": 2.1034,
+    "context_peak_s_from_end": -2.6327,
+    "raw_spans": [
+      144,
+      561,
+      37
+    ],
+    "binary_transitions": [
+      0,
+      2,
+      0
+    ],
+    "review_reasons": []
+  },
+  {
+    "id": "f0ba4950e89f",
+    "class": "come",
+    "duration_s": 3.8584,
+    "frames": 193,
+    "gyro_peak_inside_rad_s": 20.11,
+    "gyro_peak_context_rad_s": 20.11,
+    "context_peak_s_from_start": 1.7208,
+    "context_peak_s_from_end": -2.1375,
+    "raw_spans": [
+      80,
+      145,
+      25
+    ],
+    "binary_transitions": [
+      0,
+      0,
+      0
+    ],
+    "review_reasons": []
+  },
+  {
+    "id": "3ff59ac6cc56",
+    "class": "come",
+    "duration_s": 3.4798,
+    "frames": 174,
+    "gyro_peak_inside_rad_s": 15.566,
+    "gyro_peak_context_rad_s": 15.566,
+    "context_peak_s_from_start": 1.813,
+    "context_peak_s_from_end": -1.6667,
+    "raw_spans": [
+      99,
+      212,
+      30
+    ],
+    "binary_transitions": [
+      0,
+      0,
+      0
+    ],
+    "review_reasons": []
+  },
+  {
+    "id": "31752ae42126",
+    "class": "sit",
+    "duration_s": 2.8823,
+    "frames": 144,
+    "gyro_peak_inside_rad_s": 6.775,
+    "gyro_peak_context_rad_s": 6.775,
+    "context_peak_s_from_start": 2.1362,
+    "context_peak_s_from_end": -0.7461,
+    "raw_spans": [
+      423,
+      148,
+      203
+    ],
+    "binary_transitions": [
+      2,
+      0,
+      2
+    ],
+    "review_reasons": []
+  },
+  {
+    "id": "30f406e62e53",
+    "class": "sit",
+    "duration_s": 2.6111,
+    "frames": 130,
+    "gyro_peak_inside_rad_s": 5.041,
+    "gyro_peak_context_rad_s": 5.041,
+    "context_peak_s_from_start": 0.7947,
+    "context_peak_s_from_end": -1.8164,
+    "raw_spans": [
+      431,
+      113,
+      169
+    ],
+    "binary_transitions": [
+      2,
+      0,
+      2
+    ],
+    "review_reasons": []
+  },
+  {
+    "id": "76ea4d3b2e6c",
+    "class": "sit",
+    "duration_s": 3.3143,
+    "frames": 165,
+    "gyro_peak_inside_rad_s": 4.053,
+    "gyro_peak_context_rad_s": 4.053,
+    "context_peak_s_from_start": 0.9546,
+    "context_peak_s_from_end": -2.3598,
+    "raw_spans": [
+      441,
+      121,
+      177
+    ],
+    "binary_transitions": [
+      2,
+      0,
+      2
+    ],
+    "review_reasons": []
+  },
+  {
+    "id": "2ec4eb615942",
+    "class": "sit",
+    "duration_s": 3.2343,
+    "frames": 161,
+    "gyro_peak_inside_rad_s": 6.556,
+    "gyro_peak_context_rad_s": 6.556,
+    "context_peak_s_from_start": 0.8582,
+    "context_peak_s_from_end": -2.3761,
+    "raw_spans": [
+      367,
+      116,
+      168
+    ],
+    "binary_transitions": [
+      2,
+      0,
+      2
+    ],
+    "review_reasons": []
+  },
+  {
+    "id": "cf489368d193",
+    "class": "sit",
+    "duration_s": 4.0918,
+    "frames": 204,
+    "gyro_peak_inside_rad_s": 8.739,
+    "gyro_peak_context_rad_s": 8.739,
+    "context_peak_s_from_start": 0.8949,
+    "context_peak_s_from_end": -3.197,
+    "raw_spans": [
+      640,
+      654,
+      198
+    ],
+    "binary_transitions": [
+      2,
+      2,
+      2
+    ],
+    "review_reasons": []
+  },
+  {
+    "id": "1135d6ea4e4e",
+    "class": "sit",
+    "duration_s": 3.8889,
+    "frames": 195,
+    "gyro_peak_inside_rad_s": 5.067,
+    "gyro_peak_context_rad_s": 5.067,
+    "context_peak_s_from_start": 2.0886,
+    "context_peak_s_from_end": -1.8006,
+    "raw_spans": [
+      474,
+      157,
+      204
+    ],
+    "binary_transitions": [
+      2,
+      0,
+      2
+    ],
+    "review_reasons": []
+  },
+  {
+    "id": "47908c0e2271",
+    "class": "sit",
+    "duration_s": 2.5254,
+    "frames": 127,
+    "gyro_peak_inside_rad_s": 7.376,
+    "gyro_peak_context_rad_s": 7.376,
+    "context_peak_s_from_start": 1.8651,
+    "context_peak_s_from_end": -0.6602,
+    "raw_spans": [
+      399,
+      201,
+      207
+    ],
+    "binary_transitions": [
+      2,
+      0,
+      2
+    ],
+    "review_reasons": []
+  },
+  {
+    "id": "e6968c247975",
+    "class": "sit",
+    "duration_s": 2.5986,
+    "frames": 130,
+    "gyro_peak_inside_rad_s": 4.51,
+    "gyro_peak_context_rad_s": 4.51,
+    "context_peak_s_from_start": 0.9098,
+    "context_peak_s_from_end": -1.6887,
+    "raw_spans": [
+      627,
+      139,
+      183
+    ],
+    "binary_transitions": [
+      2,
+      0,
+      2
+    ],
+    "review_reasons": []
+  },
+  {
+    "id": "112b777582cc",
+    "class": "sit",
+    "duration_s": 3.1311,
+    "frames": 157,
+    "gyro_peak_inside_rad_s": 8.489,
+    "gyro_peak_context_rad_s": 8.489,
+    "context_peak_s_from_start": 1.8216,
+    "context_peak_s_from_end": -1.3095,
+    "raw_spans": [
+      462,
+      167,
+      198
+    ],
+    "binary_transitions": [
+      2,
+      0,
+      2
+    ],
+    "review_reasons": []
+  },
+  {
+    "id": "557e88e749db",
+    "class": "sit",
+    "duration_s": 2.5308,
+    "frames": 127,
+    "gyro_peak_inside_rad_s": 5.736,
+    "gyro_peak_context_rad_s": 5.736,
+    "context_peak_s_from_start": 1.7615,
+    "context_peak_s_from_end": -0.7694,
+    "raw_spans": [
+      383,
+      119,
+      170
+    ],
+    "binary_transitions": [
+      2,
+      0,
+      2
+    ],
+    "review_reasons": []
+  },
+  {
+    "id": "701219705b2d",
+    "class": "sit",
+    "duration_s": 3.1907,
+    "frames": 159,
+    "gyro_peak_inside_rad_s": 6.08,
+    "gyro_peak_context_rad_s": 6.08,
+    "context_peak_s_from_start": 2.1786,
+    "context_peak_s_from_end": -1.0121,
+    "raw_spans": [
+      415,
+      113,
+      183
+    ],
+    "binary_transitions": [
+      2,
+      0,
+      2
+    ],
+    "review_reasons": []
+  },
+  {
+    "id": "87c10788b903",
+    "class": "sit",
+    "duration_s": 3.1164,
+    "frames": 156,
+    "gyro_peak_inside_rad_s": 5.393,
+    "gyro_peak_context_rad_s": 5.393,
+    "context_peak_s_from_start": 1.9494,
+    "context_peak_s_from_end": -1.1671,
+    "raw_spans": [
+      407,
+      106,
+      192
+    ],
+    "binary_transitions": [
+      2,
+      0,
+      2
+    ],
+    "review_reasons": []
+  },
+  {
+    "id": "3a5c92310bf0",
+    "class": "sit",
+    "duration_s": 2.4485,
+    "frames": 122,
+    "gyro_peak_inside_rad_s": 4.596,
+    "gyro_peak_context_rad_s": 4.596,
+    "context_peak_s_from_start": 0.657,
+    "context_peak_s_from_end": -1.7915,
+    "raw_spans": [
+      432,
+      103,
+      169
+    ],
+    "binary_transitions": [
+      2,
+      0,
+      2
+    ],
+    "review_reasons": []
+  },
+  {
+    "id": "0ac82889d064",
+    "class": "sit",
+    "duration_s": 2.371,
+    "frames": 119,
+    "gyro_peak_inside_rad_s": 5.181,
+    "gyro_peak_context_rad_s": 5.181,
+    "context_peak_s_from_start": 0.9068,
+    "context_peak_s_from_end": -1.4643,
+    "raw_spans": [
+      367,
+      111,
+      171
+    ],
+    "binary_transitions": [
+      1,
+      0,
+      1
+    ],
+    "review_reasons": []
+  },
+  {
+    "id": "311848e217d4",
+    "class": "sit",
+    "duration_s": 2.9163,
+    "frames": 146,
+    "gyro_peak_inside_rad_s": 6.219,
+    "gyro_peak_context_rad_s": 6.219,
+    "context_peak_s_from_start": 2.0762,
+    "context_peak_s_from_end": -0.8402,
+    "raw_spans": [
+      397,
+      107,
+      168
+    ],
+    "binary_transitions": [
+      2,
+      0,
+      2
+    ],
+    "review_reasons": []
+  },
+  {
+    "id": "c0ae146be781",
+    "class": "sit",
+    "duration_s": 2.8031,
+    "frames": 140,
+    "gyro_peak_inside_rad_s": 4.846,
+    "gyro_peak_context_rad_s": 4.846,
+    "context_peak_s_from_start": 0.6496,
+    "context_peak_s_from_end": -2.1535,
+    "raw_spans": [
+      499,
+      97,
+      205
+    ],
+    "binary_transitions": [
+      2,
+      0,
+      2
+    ],
+    "review_reasons": []
+  },
+  {
+    "id": "09bda2e79adf",
+    "class": "sit",
+    "duration_s": 3.0539,
+    "frames": 153,
+    "gyro_peak_inside_rad_s": 5.485,
+    "gyro_peak_context_rad_s": 5.485,
+    "context_peak_s_from_start": 0.6923,
+    "context_peak_s_from_end": -2.3616,
+    "raw_spans": [
+      357,
+      99,
+      208
+    ],
+    "binary_transitions": [
+      2,
+      0,
+      2
+    ],
+    "review_reasons": []
+  },
+  {
+    "id": "bc4f7878977c",
+    "class": "sit",
+    "duration_s": 2.9089,
+    "frames": 145,
+    "gyro_peak_inside_rad_s": 4.545,
+    "gyro_peak_context_rad_s": 4.545,
+    "context_peak_s_from_start": 1.8167,
+    "context_peak_s_from_end": -1.0925,
+    "raw_spans": [
+      310,
+      91,
+      226
+    ],
+    "binary_transitions": [
+      2,
+      0,
+      2
+    ],
+    "review_reasons": []
+  },
+  {
+    "id": "333d671ff18b",
+    "class": "sit",
+    "duration_s": 3.0352,
+    "frames": 152,
+    "gyro_peak_inside_rad_s": 2.767,
+    "gyro_peak_context_rad_s": 2.767,
+    "context_peak_s_from_start": 2.0923,
+    "context_peak_s_from_end": -0.9429,
+    "raw_spans": [
+      384,
+      85,
+      210
+    ],
+    "binary_transitions": [
+      2,
+      0,
+      2
+    ],
+    "review_reasons": []
+  },
+  {
+    "id": "674b1167fbf8",
+    "class": "sit",
+    "duration_s": 3.7927,
+    "frames": 190,
+    "gyro_peak_inside_rad_s": 2.829,
+    "gyro_peak_context_rad_s": 2.829,
+    "context_peak_s_from_start": 2.1076,
+    "context_peak_s_from_end": -1.685,
+    "raw_spans": [
+      402,
+      90,
+      209
+    ],
+    "binary_transitions": [
+      2,
+      0,
+      2
+    ],
+    "review_reasons": []
+  },
+  {
+    "id": "ab1f35e48508",
+    "class": "paw",
+    "duration_s": 4.0925,
+    "frames": 205,
+    "gyro_peak_inside_rad_s": 13.05,
+    "gyro_peak_context_rad_s": 13.05,
+    "context_peak_s_from_start": 1.7497,
+    "context_peak_s_from_end": -2.3428,
+    "raw_spans": [
+      102,
+      55,
+      48
+    ],
+    "binary_transitions": [
+      0,
+      0,
+      0
+    ],
+    "review_reasons": []
+  },
+  {
+    "id": "77f68812560d",
+    "class": "paw",
+    "duration_s": 2.2527,
+    "frames": 112,
+    "gyro_peak_inside_rad_s": 14.68,
+    "gyro_peak_context_rad_s": 14.68,
+    "context_peak_s_from_start": 0.6155,
+    "context_peak_s_from_end": -1.6372,
+    "raw_spans": [
+      61,
+      11,
+      22
+    ],
+    "binary_transitions": [
+      0,
+      0,
+      0
+    ],
+    "review_reasons": []
+  },
+  {
+    "id": "1dc0d9320a0d",
+    "class": "paw",
+    "duration_s": 2.4472,
+    "frames": 122,
+    "gyro_peak_inside_rad_s": 11.482,
+    "gyro_peak_context_rad_s": 11.482,
+    "context_peak_s_from_start": 1.8543,
+    "context_peak_s_from_end": -0.5929,
+    "raw_spans": [
+      55,
+      49,
+      15
+    ],
+    "binary_transitions": [
+      0,
+      0,
+      0
+    ],
+    "review_reasons": []
+  },
+  {
+    "id": "c36e848a1edf",
+    "class": "paw",
+    "duration_s": 2.6265,
+    "frames": 131,
+    "gyro_peak_inside_rad_s": 14.354,
+    "gyro_peak_context_rad_s": 14.354,
+    "context_peak_s_from_start": 1.653,
+    "context_peak_s_from_end": -0.9734,
+    "raw_spans": [
+      69,
+      23,
+      31
+    ],
+    "binary_transitions": [
+      0,
+      0,
+      0
+    ],
+    "review_reasons": []
+  },
+  {
+    "id": "e0d8ca1837b8",
+    "class": "paw",
+    "duration_s": 2.4426,
+    "frames": 122,
+    "gyro_peak_inside_rad_s": 13.469,
+    "gyro_peak_context_rad_s": 13.469,
+    "context_peak_s_from_start": 0.7903,
+    "context_peak_s_from_end": -1.6523,
+    "raw_spans": [
+      59,
+      15,
+      19
+    ],
+    "binary_transitions": [
+      0,
+      0,
+      0
+    ],
+    "review_reasons": []
+  },
+  {
+    "id": "ef6662d7e381",
+    "class": "paw",
+    "duration_s": 2.3942,
+    "frames": 120,
+    "gyro_peak_inside_rad_s": 12.04,
+    "gyro_peak_context_rad_s": 12.04,
+    "context_peak_s_from_start": 0.5849,
+    "context_peak_s_from_end": -1.8092,
+    "raw_spans": [
+      56,
+      37,
+      22
+    ],
+    "binary_transitions": [
+      0,
+      0,
+      0
+    ],
+    "review_reasons": []
+  },
+  {
+    "id": "d4f56e6a29a9",
+    "class": "paw",
+    "duration_s": 2.8279,
+    "frames": 141,
+    "gyro_peak_inside_rad_s": 8.568,
+    "gyro_peak_context_rad_s": 8.568,
+    "context_peak_s_from_start": 1.9284,
+    "context_peak_s_from_end": -0.8995,
+    "raw_spans": [
+      59,
+      58,
+      27
+    ],
+    "binary_transitions": [
+      0,
+      0,
+      0
+    ],
+    "review_reasons": []
+  },
+  {
+    "id": "4600e15639f4",
+    "class": "paw",
+    "duration_s": 2.7581,
+    "frames": 137,
+    "gyro_peak_inside_rad_s": 13.159,
+    "gyro_peak_context_rad_s": 13.159,
+    "context_peak_s_from_start": 0.8389,
+    "context_peak_s_from_end": -1.9192,
+    "raw_spans": [
+      48,
+      12,
+      21
+    ],
+    "binary_transitions": [
+      0,
+      0,
+      0
+    ],
+    "review_reasons": []
+  },
+  {
+    "id": "00c8ba6daabd",
+    "class": "paw",
+    "duration_s": 2.1322,
+    "frames": 107,
+    "gyro_peak_inside_rad_s": 8.295,
+    "gyro_peak_context_rad_s": 10.019,
+    "context_peak_s_from_start": 2.9205,
+    "context_peak_s_from_end": 0.7885,
+    "raw_spans": [
+      50,
+      15,
+      24
+    ],
+    "binary_transitions": [
+      0,
+      0,
+      0
+    ],
+    "review_reasons": []
+  },
+  {
+    "id": "797bd289c6b5",
+    "class": "paw",
+    "duration_s": 2.8416,
+    "frames": 142,
+    "gyro_peak_inside_rad_s": 9.807,
+    "gyro_peak_context_rad_s": 9.807,
+    "context_peak_s_from_start": 0.7042,
+    "context_peak_s_from_end": -2.1374,
+    "raw_spans": [
+      43,
+      47,
+      24
+    ],
+    "binary_transitions": [
+      0,
+      0,
+      0
+    ],
+    "review_reasons": []
+  },
+  {
+    "id": "c60511f2b77b",
+    "class": "paw",
+    "duration_s": 3.4197,
+    "frames": 171,
+    "gyro_peak_inside_rad_s": 10.31,
+    "gyro_peak_context_rad_s": 10.31,
+    "context_peak_s_from_start": 0.9146,
+    "context_peak_s_from_end": -2.505,
+    "raw_spans": [
+      59,
+      82,
+      18
+    ],
+    "binary_transitions": [
+      0,
+      0,
+      0
+    ],
+    "review_reasons": []
+  },
+  {
+    "id": "108e5b4a3af2",
+    "class": "paw",
+    "duration_s": 4.115,
+    "frames": 206,
+    "gyro_peak_inside_rad_s": 12.63,
+    "gyro_peak_context_rad_s": 12.63,
+    "context_peak_s_from_start": 3.5226,
+    "context_peak_s_from_end": -0.5924,
+    "raw_spans": [
+      57,
+      35,
+      16
+    ],
+    "binary_transitions": [
+      0,
+      0,
+      0
+    ],
+    "review_reasons": []
+  },
+  {
+    "id": "46c4762931ad",
+    "class": "paw",
+    "duration_s": 3.7028,
+    "frames": 185,
+    "gyro_peak_inside_rad_s": 12.922,
+    "gyro_peak_context_rad_s": 12.922,
+    "context_peak_s_from_start": 2.5521,
+    "context_peak_s_from_end": -1.1508,
+    "raw_spans": [
+      57,
+      16,
+      15
+    ],
+    "binary_transitions": [
+      0,
+      0,
+      0
+    ],
+    "review_reasons": []
+  },
+  {
+    "id": "f2110f865813",
+    "class": "paw",
+    "duration_s": 3.2898,
+    "frames": 165,
+    "gyro_peak_inside_rad_s": 10.378,
+    "gyro_peak_context_rad_s": 10.378,
+    "context_peak_s_from_start": 1.1065,
+    "context_peak_s_from_end": -2.1833,
+    "raw_spans": [
+      40,
+      19,
+      15
+    ],
+    "binary_transitions": [
+      0,
+      0,
+      0
+    ],
+    "review_reasons": []
+  },
+  {
+    "id": "aa7a35e7f35b",
+    "class": "paw",
+    "duration_s": 3.1032,
+    "frames": 155,
+    "gyro_peak_inside_rad_s": 10.997,
+    "gyro_peak_context_rad_s": 10.997,
+    "context_peak_s_from_start": 0.8942,
+    "context_peak_s_from_end": -2.2091,
+    "raw_spans": [
+      47,
+      50,
+      18
+    ],
+    "binary_transitions": [
+      0,
+      0,
+      0
+    ],
+    "review_reasons": []
+  },
+  {
+    "id": "8745301fe9d5",
+    "class": "paw",
+    "duration_s": 3.0497,
+    "frames": 153,
+    "gyro_peak_inside_rad_s": 12.602,
+    "gyro_peak_context_rad_s": 12.602,
+    "context_peak_s_from_start": 0.8028,
+    "context_peak_s_from_end": -2.2469,
+    "raw_spans": [
+      31,
+      36,
+      29
+    ],
+    "binary_transitions": [
+      0,
+      0,
+      0
+    ],
+    "review_reasons": []
+  },
+  {
+    "id": "cae50c641067",
+    "class": "paw",
+    "duration_s": 3.2414,
+    "frames": 162,
+    "gyro_peak_inside_rad_s": 10.19,
+    "gyro_peak_context_rad_s": 10.19,
+    "context_peak_s_from_start": 2.1075,
+    "context_peak_s_from_end": -1.134,
+    "raw_spans": [
+      51,
+      29,
+      16
+    ],
+    "binary_transitions": [
+      0,
+      0,
+      0
+    ],
+    "review_reasons": []
+  },
+  {
+    "id": "5f86a19edd12",
+    "class": "paw",
+    "duration_s": 3.7734,
+    "frames": 189,
+    "gyro_peak_inside_rad_s": 14.378,
+    "gyro_peak_context_rad_s": 14.378,
+    "context_peak_s_from_start": 0.8448,
+    "context_peak_s_from_end": -2.9287,
+    "raw_spans": [
+      55,
+      15,
+      17
+    ],
+    "binary_transitions": [
+      0,
+      0,
+      0
+    ],
+    "review_reasons": []
+  },
+  {
+    "id": "3ef4c70fa24a",
+    "class": "paw",
+    "duration_s": 3.2972,
+    "frames": 165,
+    "gyro_peak_inside_rad_s": 13.125,
+    "gyro_peak_context_rad_s": 13.125,
+    "context_peak_s_from_start": 0.7406,
+    "context_peak_s_from_end": -2.5564,
+    "raw_spans": [
+      94,
+      50,
+      18
+    ],
+    "binary_transitions": [
+      0,
+      0,
+      0
+    ],
+    "review_reasons": []
+  },
+  {
+    "id": "841fc274b092",
+    "class": "paw",
+    "duration_s": 4.3994,
+    "frames": 220,
+    "gyro_peak_inside_rad_s": 14.384,
+    "gyro_peak_context_rad_s": 14.384,
+    "context_peak_s_from_start": 0.9843,
+    "context_peak_s_from_end": -3.4152,
+    "raw_spans": [
+      67,
+      15,
+      23
+    ],
+    "binary_transitions": [
+      0,
+      0,
+      0
+    ],
+    "review_reasons": []
+  },
+  {
+    "id": "5254e0129feb",
+    "class": "spin",
+    "duration_s": 3.5614,
+    "frames": 178,
+    "gyro_peak_inside_rad_s": 15.707,
+    "gyro_peak_context_rad_s": 15.707,
+    "context_peak_s_from_start": 1.4769,
+    "context_peak_s_from_end": -2.0844,
+    "raw_spans": [
+      423,
+      92,
+      236
+    ],
+    "binary_transitions": [
+      2,
+      0,
+      2
+    ],
+    "review_reasons": []
+  },
+  {
+    "id": "d11c07bd9cfe",
+    "class": "spin",
+    "duration_s": 3.1235,
+    "frames": 157,
+    "gyro_peak_inside_rad_s": 14.923,
+    "gyro_peak_context_rad_s": 14.923,
+    "context_peak_s_from_start": 1.0625,
+    "context_peak_s_from_end": -2.061,
+    "raw_spans": [
+      469,
+      92,
+      175
+    ],
+    "binary_transitions": [
+      6,
+      0,
+      2
+    ],
+    "review_reasons": []
+  },
+  {
+    "id": "d73e61b87bbd",
+    "class": "spin",
+    "duration_s": 4.024,
+    "frames": 201,
+    "gyro_peak_inside_rad_s": 11.127,
+    "gyro_peak_context_rad_s": 11.127,
+    "context_peak_s_from_start": 1.2861,
+    "context_peak_s_from_end": -2.738,
+    "raw_spans": [
+      399,
+      80,
+      202
+    ],
+    "binary_transitions": [
+      4,
+      0,
+      4
+    ],
+    "review_reasons": []
+  },
+  {
+    "id": "1f0c2a692201",
+    "class": "spin",
+    "duration_s": 3.6262,
+    "frames": 181,
+    "gyro_peak_inside_rad_s": 10.575,
+    "gyro_peak_context_rad_s": 10.575,
+    "context_peak_s_from_start": 1.0288,
+    "context_peak_s_from_end": -2.5974,
+    "raw_spans": [
+      480,
+      82,
+      160
+    ],
+    "binary_transitions": [
+      2,
+      0,
+      2
+    ],
+    "review_reasons": []
+  },
+  {
+    "id": "a63d944add55",
+    "class": "spin",
+    "duration_s": 2.7409,
+    "frames": 137,
+    "gyro_peak_inside_rad_s": 13.667,
+    "gyro_peak_context_rad_s": 13.667,
+    "context_peak_s_from_start": 1.3365,
+    "context_peak_s_from_end": -1.4045,
+    "raw_spans": [
+      290,
+      82,
+      160
+    ],
+    "binary_transitions": [
+      0,
+      0,
+      2
+    ],
+    "review_reasons": []
+  },
+  {
+    "id": "11a69605fd70",
+    "class": "spin",
+    "duration_s": 2.7215,
+    "frames": 136,
+    "gyro_peak_inside_rad_s": 13.589,
+    "gyro_peak_context_rad_s": 13.589,
+    "context_peak_s_from_start": 1.6236,
+    "context_peak_s_from_end": -1.0979,
+    "raw_spans": [
+      410,
+      83,
+      146
+    ],
+    "binary_transitions": [
+      2,
+      0,
+      2
+    ],
+    "review_reasons": []
+  },
+  {
+    "id": "fc5d952006be",
+    "class": "spin",
+    "duration_s": 2.9087,
+    "frames": 146,
+    "gyro_peak_inside_rad_s": 6.889,
+    "gyro_peak_context_rad_s": 6.889,
+    "context_peak_s_from_start": 0.6273,
+    "context_peak_s_from_end": -2.2815,
+    "raw_spans": [
+      376,
+      87,
+      166
+    ],
+    "binary_transitions": [
+      2,
+      0,
+      2
+    ],
+    "review_reasons": []
+  },
+  {
+    "id": "515d7b08bc42",
+    "class": "spin",
+    "duration_s": 3.2772,
+    "frames": 164,
+    "gyro_peak_inside_rad_s": 13.435,
+    "gyro_peak_context_rad_s": 13.435,
+    "context_peak_s_from_start": 1.6647,
+    "context_peak_s_from_end": -1.6125,
+    "raw_spans": [
+      310,
+      90,
+      165
+    ],
+    "binary_transitions": [
+      0,
+      0,
+      2
+    ],
+    "review_reasons": []
+  },
+  {
+    "id": "6cea5b2a74e7",
+    "class": "spin",
+    "duration_s": 3.0763,
+    "frames": 154,
+    "gyro_peak_inside_rad_s": 16.211,
+    "gyro_peak_context_rad_s": 16.211,
+    "context_peak_s_from_start": 1.3928,
+    "context_peak_s_from_end": -1.6834,
+    "raw_spans": [
+      234,
+      87,
+      155
+    ],
+    "binary_transitions": [
+      0,
+      0,
+      2
+    ],
+    "review_reasons": []
+  },
+  {
+    "id": "69e32d7266b7",
+    "class": "spin",
+    "duration_s": 3.0329,
+    "frames": 151,
+    "gyro_peak_inside_rad_s": 10.28,
+    "gyro_peak_context_rad_s": 10.28,
+    "context_peak_s_from_start": 1.8561,
+    "context_peak_s_from_end": -1.177,
+    "raw_spans": [
+      423,
+      78,
+      166
+    ],
+    "binary_transitions": [
+      2,
+      0,
+      2
+    ],
+    "review_reasons": []
+  },
+  {
+    "id": "3d25e927a735",
+    "class": "spin",
+    "duration_s": 2.6897,
+    "frames": 135,
+    "gyro_peak_inside_rad_s": 13.018,
+    "gyro_peak_context_rad_s": 13.018,
+    "context_peak_s_from_start": 0.9819,
+    "context_peak_s_from_end": -1.7078,
+    "raw_spans": [
+      255,
+      84,
+      162
+    ],
+    "binary_transitions": [
+      0,
+      0,
+      2
+    ],
+    "review_reasons": []
+  },
+  {
+    "id": "5bc4fc49d49a",
+    "class": "spin",
+    "duration_s": 2.9879,
+    "frames": 150,
+    "gyro_peak_inside_rad_s": 15.068,
+    "gyro_peak_context_rad_s": 15.068,
+    "context_peak_s_from_start": 0.9051,
+    "context_peak_s_from_end": -2.0828,
+    "raw_spans": [
+      351,
+      88,
+      175
+    ],
+    "binary_transitions": [
+      2,
+      0,
+      2
+    ],
+    "review_reasons": []
+  },
+  {
+    "id": "6f326ed990de",
+    "class": "spin",
+    "duration_s": 2.948,
+    "frames": 147,
+    "gyro_peak_inside_rad_s": 10.625,
+    "gyro_peak_context_rad_s": 10.625,
+    "context_peak_s_from_start": 0.8582,
+    "context_peak_s_from_end": -2.0899,
+    "raw_spans": [
+      680,
+      80,
+      131
+    ],
+    "binary_transitions": [
+      2,
+      0,
+      2
+    ],
+    "review_reasons": []
+  },
+  {
+    "id": "2117c378228b",
+    "class": "spin",
+    "duration_s": 3.1549,
+    "frames": 158,
+    "gyro_peak_inside_rad_s": 10.856,
+    "gyro_peak_context_rad_s": 10.856,
+    "context_peak_s_from_start": 0.8113,
+    "context_peak_s_from_end": -2.3435,
+    "raw_spans": [
+      582,
+      90,
+      146
+    ],
+    "binary_transitions": [
+      2,
+      0,
+      2
+    ],
+    "review_reasons": []
+  },
+  {
+    "id": "123d43280b3b",
+    "class": "spin",
+    "duration_s": 3.342,
+    "frames": 167,
+    "gyro_peak_inside_rad_s": 13.059,
+    "gyro_peak_context_rad_s": 13.059,
+    "context_peak_s_from_start": 0.9153,
+    "context_peak_s_from_end": -2.4268,
+    "raw_spans": [
+      283,
+      96,
+      145
+    ],
+    "binary_transitions": [
+      0,
+      0,
+      2
+    ],
+    "review_reasons": []
+  },
+  {
+    "id": "61807a709063",
+    "class": "spin",
+    "duration_s": 3.4694,
+    "frames": 173,
+    "gyro_peak_inside_rad_s": 13.274,
+    "gyro_peak_context_rad_s": 13.274,
+    "context_peak_s_from_start": 1.5789,
+    "context_peak_s_from_end": -1.8902,
+    "raw_spans": [
+      368,
+      92,
+      140
+    ],
+    "binary_transitions": [
+      4,
+      0,
+      2
+    ],
+    "review_reasons": []
+  },
+  {
+    "id": "523935af72c8",
+    "class": "spin",
+    "duration_s": 3.5497,
+    "frames": 178,
+    "gyro_peak_inside_rad_s": 12.524,
+    "gyro_peak_context_rad_s": 12.524,
+    "context_peak_s_from_start": 1.7064,
+    "context_peak_s_from_end": -1.8434,
+    "raw_spans": [
+      225,
+      82,
+      153
+    ],
+    "binary_transitions": [
+      0,
+      0,
+      2
+    ],
+    "review_reasons": []
+  },
+  {
+    "id": "f0a702dd36dd",
+    "class": "spin",
+    "duration_s": 3.6667,
+    "frames": 184,
+    "gyro_peak_inside_rad_s": 11.865,
+    "gyro_peak_context_rad_s": 11.865,
+    "context_peak_s_from_start": 1.5212,
+    "context_peak_s_from_end": -2.1455,
+    "raw_spans": [
+      229,
+      94,
+      160
+    ],
+    "binary_transitions": [
+      0,
+      0,
+      2
+    ],
+    "review_reasons": []
+  },
+  {
+    "id": "7f7084119f17",
+    "class": "spin",
+    "duration_s": 3.5906,
+    "frames": 180,
+    "gyro_peak_inside_rad_s": 13.384,
+    "gyro_peak_context_rad_s": 13.384,
+    "context_peak_s_from_start": 1.7701,
+    "context_peak_s_from_end": -1.8205,
+    "raw_spans": [
+      343,
+      89,
+      150
+    ],
+    "binary_transitions": [
+      2,
+      0,
+      2
+    ],
+    "review_reasons": []
+  },
+  {
+    "id": "703b8f943e0f",
+    "class": "spin",
+    "duration_s": 3.7527,
+    "frames": 188,
+    "gyro_peak_inside_rad_s": 9.696,
+    "gyro_peak_context_rad_s": 9.696,
+    "context_peak_s_from_start": 1.6471,
+    "context_peak_s_from_end": -2.1058,
+    "raw_spans": [
+      687,
+      85,
+      157
+    ],
+    "binary_transitions": [
+      2,
+      0,
+      2
+    ],
+    "review_reasons": []
+  },
+  {
+    "id": "9d3603f8df80",
+    "class": "bang",
+    "duration_s": 3.0271,
+    "frames": 151,
+    "gyro_peak_inside_rad_s": 14.133,
+    "gyro_peak_context_rad_s": 14.133,
+    "context_peak_s_from_start": 1.4081,
+    "context_peak_s_from_end": -1.6191,
+    "raw_spans": [
+      107,
+      80,
+      167
+    ],
+    "binary_transitions": [
+      0,
+      0,
+      2
+    ],
+    "review_reasons": []
+  },
+  {
+    "id": "d42bc657c60e",
+    "class": "bang",
+    "duration_s": 2.5245,
+    "frames": 126,
+    "gyro_peak_inside_rad_s": 12.607,
+    "gyro_peak_context_rad_s": 12.607,
+    "context_peak_s_from_start": 1.5497,
+    "context_peak_s_from_end": -0.9749,
+    "raw_spans": [
+      39,
+      76,
+      174
+    ],
+    "binary_transitions": [
+      0,
+      0,
+      2
+    ],
+    "review_reasons": []
+  },
+  {
+    "id": "8dd0cfe163b3",
+    "class": "bang",
+    "duration_s": 2.6423,
+    "frames": 132,
+    "gyro_peak_inside_rad_s": 12.182,
+    "gyro_peak_context_rad_s": 12.182,
+    "context_peak_s_from_start": 1.517,
+    "context_peak_s_from_end": -1.1253,
+    "raw_spans": [
+      34,
+      75,
+      191
+    ],
+    "binary_transitions": [
+      0,
+      0,
+      2
+    ],
+    "review_reasons": []
+  },
+  {
+    "id": "8d4f7aea66f3",
+    "class": "bang",
+    "duration_s": 3.168,
+    "frames": 159,
+    "gyro_peak_inside_rad_s": 11.909,
+    "gyro_peak_context_rad_s": 11.909,
+    "context_peak_s_from_start": 1.6456,
+    "context_peak_s_from_end": -1.5224,
+    "raw_spans": [
+      379,
+      83,
+      187
+    ],
+    "binary_transitions": [
+      2,
+      0,
+      2
+    ],
+    "review_reasons": []
+  },
+  {
+    "id": "d3407c255861",
+    "class": "bang",
+    "duration_s": 2.516,
+    "frames": 125,
+    "gyro_peak_inside_rad_s": 13.292,
+    "gyro_peak_context_rad_s": 13.292,
+    "context_peak_s_from_start": 1.9561,
+    "context_peak_s_from_end": -0.5599,
+    "raw_spans": [
+      59,
+      79,
+      183
+    ],
+    "binary_transitions": [
+      0,
+      0,
+      2
+    ],
+    "review_reasons": []
+  },
+  {
+    "id": "cfb921afc30c",
+    "class": "bang",
+    "duration_s": 2.6277,
+    "frames": 132,
+    "gyro_peak_inside_rad_s": 10.575,
+    "gyro_peak_context_rad_s": 10.575,
+    "context_peak_s_from_start": 1.5839,
+    "context_peak_s_from_end": -1.0438,
+    "raw_spans": [
+      45,
+      68,
+      190
+    ],
+    "binary_transitions": [
+      0,
+      0,
+      2
+    ],
+    "review_reasons": []
+  },
+  {
+    "id": "07d710420a4e",
+    "class": "bang",
+    "duration_s": 2.9332,
+    "frames": 147,
+    "gyro_peak_inside_rad_s": 10.9,
+    "gyro_peak_context_rad_s": 10.9,
+    "context_peak_s_from_start": 1.6115,
+    "context_peak_s_from_end": -1.3218,
+    "raw_spans": [
+      34,
+      80,
+      202
+    ],
+    "binary_transitions": [
+      0,
+      0,
+      2
+    ],
+    "review_reasons": []
+  },
+  {
+    "id": "eec48b0467f9",
+    "class": "bang",
+    "duration_s": 2.911,
+    "frames": 146,
+    "gyro_peak_inside_rad_s": 9.665,
+    "gyro_peak_context_rad_s": 9.665,
+    "context_peak_s_from_start": 1.301,
+    "context_peak_s_from_end": -1.61,
+    "raw_spans": [
+      28,
+      71,
+      185
+    ],
+    "binary_transitions": [
+      0,
+      0,
+      2
+    ],
+    "review_reasons": []
+  },
+  {
+    "id": "2052d53078be",
+    "class": "bang",
+    "duration_s": 3.038,
+    "frames": 152,
+    "gyro_peak_inside_rad_s": 10.684,
+    "gyro_peak_context_rad_s": 10.684,
+    "context_peak_s_from_start": 1.3009,
+    "context_peak_s_from_end": -1.7371,
+    "raw_spans": [
+      24,
+      76,
+      199
+    ],
+    "binary_transitions": [
+      0,
+      0,
+      2
+    ],
+    "review_reasons": []
+  },
+  {
+    "id": "a154f94909f7",
+    "class": "bang",
+    "duration_s": 2.7109,
+    "frames": 136,
+    "gyro_peak_inside_rad_s": 10.885,
+    "gyro_peak_context_rad_s": 10.885,
+    "context_peak_s_from_start": 1.0811,
+    "context_peak_s_from_end": -1.6299,
+    "raw_spans": [
+      28,
+      79,
+      190
+    ],
+    "binary_transitions": [
+      0,
+      0,
+      2
+    ],
+    "review_reasons": []
+  },
+  {
+    "id": "cf579a2df8c9",
+    "class": "bang",
+    "duration_s": 2.8296,
+    "frames": 141,
+    "gyro_peak_inside_rad_s": 11.308,
+    "gyro_peak_context_rad_s": 11.308,
+    "context_peak_s_from_start": 1.1949,
+    "context_peak_s_from_end": -1.6346,
+    "raw_spans": [
+      31,
+      74,
+      190
+    ],
+    "binary_transitions": [
+      0,
+      0,
+      2
+    ],
+    "review_reasons": []
+  },
+  {
+    "id": "0907d9f86dbf",
+    "class": "bang",
+    "duration_s": 2.685,
+    "frames": 134,
+    "gyro_peak_inside_rad_s": 11.014,
+    "gyro_peak_context_rad_s": 11.014,
+    "context_peak_s_from_start": 1.2864,
+    "context_peak_s_from_end": -1.3987,
+    "raw_spans": [
+      23,
+      84,
+      195
+    ],
+    "binary_transitions": [
+      0,
+      0,
+      2
+    ],
+    "review_reasons": []
+  },
+  {
+    "id": "751cd31d0440",
+    "class": "bang",
+    "duration_s": 2.5376,
+    "frames": 127,
+    "gyro_peak_inside_rad_s": 11.93,
+    "gyro_peak_context_rad_s": 11.93,
+    "context_peak_s_from_start": 1.0604,
+    "context_peak_s_from_end": -1.4772,
+    "raw_spans": [
+      74,
+      83,
+      181
+    ],
+    "binary_transitions": [
+      0,
+      0,
+      2
+    ],
+    "review_reasons": []
+  },
+  {
+    "id": "f8e36de4e08c",
+    "class": "bang",
+    "duration_s": 2.7056,
+    "frames": 136,
+    "gyro_peak_inside_rad_s": 13.285,
+    "gyro_peak_context_rad_s": 13.285,
+    "context_peak_s_from_start": 1.2219,
+    "context_peak_s_from_end": -1.4837,
+    "raw_spans": [
+      22,
+      68,
+      196
+    ],
+    "binary_transitions": [
+      0,
+      0,
+      2
+    ],
+    "review_reasons": []
+  },
+  {
+    "id": "0023e54bbc44",
+    "class": "bang",
+    "duration_s": 2.6173,
+    "frames": 131,
+    "gyro_peak_inside_rad_s": 10.566,
+    "gyro_peak_context_rad_s": 10.566,
+    "context_peak_s_from_start": 1.0024,
+    "context_peak_s_from_end": -1.615,
+    "raw_spans": [
+      31,
+      76,
+      176
+    ],
+    "binary_transitions": [
+      0,
+      0,
+      2
+    ],
+    "review_reasons": []
+  },
+  {
+    "id": "b226811f160b",
+    "class": "bang",
+    "duration_s": 2.5374,
+    "frames": 126,
+    "gyro_peak_inside_rad_s": 14.579,
+    "gyro_peak_context_rad_s": 14.579,
+    "context_peak_s_from_start": 1.1791,
+    "context_peak_s_from_end": -1.3582,
+    "raw_spans": [
+      67,
+      67,
+      169
+    ],
+    "binary_transitions": [
+      0,
+      0,
+      2
+    ],
+    "review_reasons": []
+  },
+  {
+    "id": "8f03905ff69c",
+    "class": "bang",
+    "duration_s": 2.4255,
+    "frames": 121,
+    "gyro_peak_inside_rad_s": 12.07,
+    "gyro_peak_context_rad_s": 12.07,
+    "context_peak_s_from_start": 1.1189,
+    "context_peak_s_from_end": -1.3065,
+    "raw_spans": [
+      20,
+      48,
+      184
+    ],
+    "binary_transitions": [
+      0,
+      0,
+      2
+    ],
+    "review_reasons": []
+  },
+  {
+    "id": "f8477b606195",
+    "class": "bang",
+    "duration_s": 2.5092,
+    "frames": 125,
+    "gyro_peak_inside_rad_s": 10.629,
+    "gyro_peak_context_rad_s": 10.629,
+    "context_peak_s_from_start": 1.0589,
+    "context_peak_s_from_end": -1.4503,
+    "raw_spans": [
+      28,
+      81,
+      175
+    ],
+    "binary_transitions": [
+      0,
+      0,
+      2
+    ],
+    "review_reasons": []
+  },
+  {
+    "id": "8e1d9f07ab97",
+    "class": "bang",
+    "duration_s": 2.95,
+    "frames": 147,
+    "gyro_peak_inside_rad_s": 11.078,
+    "gyro_peak_context_rad_s": 11.078,
+    "context_peak_s_from_start": 1.1911,
+    "context_peak_s_from_end": -1.7588,
+    "raw_spans": [
+      21,
+      59,
+      179
+    ],
+    "binary_transitions": [
+      0,
+      0,
+      2
+    ],
+    "review_reasons": []
+  },
+  {
+    "id": "2de5b71eff47",
+    "class": "bang",
+    "duration_s": 2.3571,
+    "frames": 118,
+    "gyro_peak_inside_rad_s": 13.546,
+    "gyro_peak_context_rad_s": 13.546,
+    "context_peak_s_from_start": 0.8719,
+    "context_peak_s_from_end": -1.4852,
+    "raw_spans": [
+      99,
+      63,
+      189
+    ],
+    "binary_transitions": [
+      0,
+      0,
+      2
+    ],
+    "review_reasons": []
+  },
+  {
+    "id": "7faf61e4db32",
+    "class": "throw_overhand",
+    "duration_s": 4.7877,
+    "frames": 240,
+    "gyro_peak_inside_rad_s": 19.158,
+    "gyro_peak_context_rad_s": 19.158,
+    "context_peak_s_from_start": 2.6205,
+    "context_peak_s_from_end": -2.1673,
+    "raw_spans": [
+      264,
+      942,
+      160
+    ],
+    "binary_transitions": [
+      0,
+      2,
+      2
+    ],
+    "review_reasons": []
+  },
+  {
+    "id": "e0cc6534ea2b",
+    "class": "throw_overhand",
+    "duration_s": 2.9214,
+    "frames": 146,
+    "gyro_peak_inside_rad_s": 17.863,
+    "gyro_peak_context_rad_s": 17.863,
+    "context_peak_s_from_start": 1.3118,
+    "context_peak_s_from_end": -1.6098,
+    "raw_spans": [
+      433,
+      950,
+      161
+    ],
+    "binary_transitions": [
+      2,
+      2,
+      2
+    ],
+    "review_reasons": []
+  },
+  {
+    "id": "d8e05987c8ee",
+    "class": "throw_overhand",
+    "duration_s": 2.6385,
+    "frames": 132,
+    "gyro_peak_inside_rad_s": 22.712,
+    "gyro_peak_context_rad_s": 22.712,
+    "context_peak_s_from_start": 1.2224,
+    "context_peak_s_from_end": -1.4161,
+    "raw_spans": [
+      471,
+      963,
+      160
+    ],
+    "binary_transitions": [
+      2,
+      2,
+      2
+    ],
+    "review_reasons": []
+  },
+  {
+    "id": "4e647c2ba553",
+    "class": "throw_overhand",
+    "duration_s": 2.6791,
+    "frames": 134,
+    "gyro_peak_inside_rad_s": 18.248,
+    "gyro_peak_context_rad_s": 18.248,
+    "context_peak_s_from_start": 1.1894,
+    "context_peak_s_from_end": -1.4897,
+    "raw_spans": [
+      626,
+      1024,
+      201
+    ],
+    "binary_transitions": [
+      2,
+      2,
+      2
+    ],
+    "review_reasons": []
+  },
+  {
+    "id": "efe926515ba3",
+    "class": "throw_overhand",
+    "duration_s": 4.2154,
+    "frames": 211,
+    "gyro_peak_inside_rad_s": 18.575,
+    "gyro_peak_context_rad_s": 18.575,
+    "context_peak_s_from_start": 1.3232,
+    "context_peak_s_from_end": -2.8923,
+    "raw_spans": [
+      701,
+      975,
+      189
+    ],
+    "binary_transitions": [
+      2,
+      2,
+      2
+    ],
+    "review_reasons": []
+  },
+  {
+    "id": "8a834057c617",
+    "class": "throw_overhand",
+    "duration_s": 2.6515,
+    "frames": 132,
+    "gyro_peak_inside_rad_s": 21.319,
+    "gyro_peak_context_rad_s": 21.319,
+    "context_peak_s_from_start": 1.194,
+    "context_peak_s_from_end": -1.4576,
+    "raw_spans": [
+      689,
+      977,
+      199
+    ],
+    "binary_transitions": [
+      2,
+      2,
+      2
+    ],
+    "review_reasons": []
+  },
+  {
+    "id": "36cbcbae463c",
+    "class": "throw_overhand",
+    "duration_s": 4.0584,
+    "frames": 203,
+    "gyro_peak_inside_rad_s": 25.117,
+    "gyro_peak_context_rad_s": 25.117,
+    "context_peak_s_from_start": 1.4037,
+    "context_peak_s_from_end": -2.6547,
+    "raw_spans": [
+      566,
+      973,
+      167
+    ],
+    "binary_transitions": [
+      2,
+      2,
+      2
+    ],
+    "review_reasons": []
+  },
+  {
+    "id": "3355c6757e08",
+    "class": "throw_overhand",
+    "duration_s": 2.8204,
+    "frames": 141,
+    "gyro_peak_inside_rad_s": 23.567,
+    "gyro_peak_context_rad_s": 23.567,
+    "context_peak_s_from_start": 1.3021,
+    "context_peak_s_from_end": -1.5184,
+    "raw_spans": [
+      760,
+      1020,
+      193
+    ],
+    "binary_transitions": [
+      2,
+      2,
+      2
+    ],
+    "review_reasons": []
+  },
+  {
+    "id": "1622683c9e9b",
+    "class": "throw_overhand",
+    "duration_s": 2.7661,
+    "frames": 138,
+    "gyro_peak_inside_rad_s": 23.253,
+    "gyro_peak_context_rad_s": 23.253,
+    "context_peak_s_from_start": 1.3334,
+    "context_peak_s_from_end": -1.4327,
+    "raw_spans": [
+      545,
+      934,
+      168
+    ],
+    "binary_transitions": [
+      2,
+      2,
+      2
+    ],
+    "review_reasons": []
+  },
+  {
+    "id": "a70d1776414f",
+    "class": "throw_overhand",
+    "duration_s": 2.1225,
+    "frames": 106,
+    "gyro_peak_inside_rad_s": 21.805,
+    "gyro_peak_context_rad_s": 21.805,
+    "context_peak_s_from_start": 0.969,
+    "context_peak_s_from_end": -1.1535,
+    "raw_spans": [
+      512,
+      943,
+      194
+    ],
+    "binary_transitions": [
+      2,
+      2,
+      2
+    ],
+    "review_reasons": []
+  },
+  {
+    "id": "ca5a6ee9960e",
+    "class": "throw_overhand",
+    "duration_s": 2.2607,
+    "frames": 114,
+    "gyro_peak_inside_rad_s": 19.234,
+    "gyro_peak_context_rad_s": 19.234,
+    "context_peak_s_from_start": 1.1203,
+    "context_peak_s_from_end": -1.1405,
+    "raw_spans": [
+      441,
+      930,
+      169
+    ],
+    "binary_transitions": [
+      2,
+      2,
+      2
+    ],
+    "review_reasons": []
+  },
+  {
+    "id": "74803c33665f",
+    "class": "throw_overhand",
+    "duration_s": 2.6928,
+    "frames": 135,
+    "gyro_peak_inside_rad_s": 20.939,
+    "gyro_peak_context_rad_s": 20.939,
+    "context_peak_s_from_start": 1.4613,
+    "context_peak_s_from_end": -1.2315,
+    "raw_spans": [
+      583,
+      943,
+      173
+    ],
+    "binary_transitions": [
+      2,
+      2,
+      2
+    ],
+    "review_reasons": []
+  },
+  {
+    "id": "58d73572109b",
+    "class": "throw_overhand",
+    "duration_s": 2.4586,
+    "frames": 123,
+    "gyro_peak_inside_rad_s": 20.789,
+    "gyro_peak_context_rad_s": 20.789,
+    "context_peak_s_from_start": 1.1185,
+    "context_peak_s_from_end": -1.3401,
+    "raw_spans": [
+      592,
+      997,
+      185
+    ],
+    "binary_transitions": [
+      2,
+      2,
+      2
+    ],
+    "review_reasons": []
+  },
+  {
+    "id": "1fcfbee95572",
+    "class": "throw_overhand",
+    "duration_s": 2.3559,
+    "frames": 117,
+    "gyro_peak_inside_rad_s": 20.457,
+    "gyro_peak_context_rad_s": 20.457,
+    "context_peak_s_from_start": 1.1186,
+    "context_peak_s_from_end": -1.2373,
+    "raw_spans": [
+      632,
+      982,
+      172
+    ],
+    "binary_transitions": [
+      2,
+      2,
+      2
+    ],
+    "review_reasons": []
+  },
+  {
+    "id": "48e2001bc8e7",
+    "class": "throw_overhand",
+    "duration_s": 2.3128,
+    "frames": 116,
+    "gyro_peak_inside_rad_s": 20.086,
+    "gyro_peak_context_rad_s": 20.086,
+    "context_peak_s_from_start": 1.3285,
+    "context_peak_s_from_end": -0.9844,
+    "raw_spans": [
+      500,
+      1019,
+      199
+    ],
+    "binary_transitions": [
+      2,
+      2,
+      2
+    ],
+    "review_reasons": []
+  },
+  {
+    "id": "d1b31a8dfe46",
+    "class": "throw_overhand",
+    "duration_s": 1.0145,
+    "frames": 51,
+    "gyro_peak_inside_rad_s": 8.884,
+    "gyro_peak_context_rad_s": 22.181,
+    "context_peak_s_from_start": 1.4422,
+    "context_peak_s_from_end": 0.4272,
+    "raw_spans": [
+      394,
+      893,
+      191
+    ],
+    "binary_transitions": [
+      1,
+      1,
+      1
+    ],
+    "review_reasons": [
+      "strongest_nearby_motion_outside_operator_bracket"
+    ]
+  },
+  {
+    "id": "365680a40fd5",
+    "class": "throw_overhand",
+    "duration_s": 0.8256,
+    "frames": 41,
+    "gyro_peak_inside_rad_s": 1.682,
+    "gyro_peak_context_rad_s": 10.798,
+    "context_peak_s_from_start": 1.4158,
+    "context_peak_s_from_end": 0.5902,
+    "raw_spans": [
+      2,
+      3,
+      11
+    ],
+    "binary_transitions": [
+      0,
+      0,
+      0
+    ],
+    "review_reasons": [
+      "strongest_nearby_motion_outside_operator_bracket"
+    ]
+  },
+  {
+    "id": "a29572e651cc",
+    "class": "throw_overhand",
+    "duration_s": 0.6918,
+    "frames": 34,
+    "gyro_peak_inside_rad_s": 0.719,
+    "gyro_peak_context_rad_s": 11.024,
+    "context_peak_s_from_start": 1.3542,
+    "context_peak_s_from_end": 0.6624,
+    "raw_spans": [
+      4,
+      3,
+      5
+    ],
+    "binary_transitions": [
+      0,
+      0,
+      0
+    ],
+    "review_reasons": [
+      "strongest_nearby_motion_outside_operator_bracket"
+    ]
+  },
+  {
+    "id": "14fd67887f61",
+    "class": "throw_overhand",
+    "duration_s": 1.0182,
+    "frames": 51,
+    "gyro_peak_inside_rad_s": 1.197,
+    "gyro_peak_context_rad_s": 9.732,
+    "context_peak_s_from_start": 1.5407,
+    "context_peak_s_from_end": 0.5224,
+    "raw_spans": [
+      9,
+      6,
+      5
+    ],
+    "binary_transitions": [
+      0,
+      0,
+      0
+    ],
+    "review_reasons": [
+      "strongest_nearby_motion_outside_operator_bracket"
+    ]
+  },
+  {
+    "id": "3a11d3c67a00",
+    "class": "throw_overhand",
+    "duration_s": 1.1951,
+    "frames": 60,
+    "gyro_peak_inside_rad_s": 1.445,
+    "gyro_peak_context_rad_s": 4.94,
+    "context_peak_s_from_start": -0.9945,
+    "context_peak_s_from_end": -2.1896,
+    "raw_spans": [
+      4,
+      9,
+      7
+    ],
+    "binary_transitions": [
+      0,
+      0,
+      0
+    ],
+    "review_reasons": [
+      "strongest_nearby_motion_outside_operator_bracket"
+    ]
+  },
+  {
+    "id": "44bdc0ecc7df",
+    "class": "throw_underhand",
+    "duration_s": 2.5832,
+    "frames": 129,
+    "gyro_peak_inside_rad_s": 13.372,
+    "gyro_peak_context_rad_s": 13.372,
+    "context_peak_s_from_start": 1.0557,
+    "context_peak_s_from_end": -1.5275,
+    "raw_spans": [
+      662,
+      1040,
+      220
+    ],
+    "binary_transitions": [
+      2,
+      2,
+      2
+    ],
+    "review_reasons": []
+  },
+  {
+    "id": "4ae4ad35c192",
+    "class": "throw_underhand",
+    "duration_s": 3.6692,
+    "frames": 184,
+    "gyro_peak_inside_rad_s": 12.641,
+    "gyro_peak_context_rad_s": 12.641,
+    "context_peak_s_from_start": 1.0672,
+    "context_peak_s_from_end": -2.6019,
+    "raw_spans": [
+      641,
+      1042,
+      199
+    ],
+    "binary_transitions": [
+      2,
+      2,
+      2
+    ],
+    "review_reasons": []
+  },
+  {
+    "id": "0b5f01aef9c9",
+    "class": "throw_underhand",
+    "duration_s": 2.0189,
+    "frames": 101,
+    "gyro_peak_inside_rad_s": 16.156,
+    "gyro_peak_context_rad_s": 16.156,
+    "context_peak_s_from_start": 0.7658,
+    "context_peak_s_from_end": -1.253,
+    "raw_spans": [
+      597,
+      1035,
+      204
+    ],
+    "binary_transitions": [
+      2,
+      2,
+      2
+    ],
+    "review_reasons": []
+  },
+  {
+    "id": "aca6cf900359",
+    "class": "throw_underhand",
+    "duration_s": 2.3633,
+    "frames": 118,
+    "gyro_peak_inside_rad_s": 14.299,
+    "gyro_peak_context_rad_s": 14.299,
+    "context_peak_s_from_start": 0.867,
+    "context_peak_s_from_end": -1.4963,
+    "raw_spans": [
+      705,
+      1058,
+      213
+    ],
+    "binary_transitions": [
+      2,
+      2,
+      2
+    ],
+    "review_reasons": []
+  },
+  {
+    "id": "f637e11fe7b3",
+    "class": "throw_underhand",
+    "duration_s": 2.5023,
+    "frames": 125,
+    "gyro_peak_inside_rad_s": 16.526,
+    "gyro_peak_context_rad_s": 16.526,
+    "context_peak_s_from_start": 0.9957,
+    "context_peak_s_from_end": -1.5067,
+    "raw_spans": [
+      555,
+      1046,
+      208
+    ],
+    "binary_transitions": [
+      2,
+      2,
+      2
+    ],
+    "review_reasons": []
+  },
+  {
+    "id": "06a34ccf817d",
+    "class": "throw_underhand",
+    "duration_s": 2.5284,
+    "frames": 126,
+    "gyro_peak_inside_rad_s": 14.69,
+    "gyro_peak_context_rad_s": 14.69,
+    "context_peak_s_from_start": 0.9935,
+    "context_peak_s_from_end": -1.535,
+    "raw_spans": [
+      618,
+      1018,
+      197
+    ],
+    "binary_transitions": [
+      2,
+      2,
+      2
+    ],
+    "review_reasons": []
+  },
+  {
+    "id": "ba8ba0ac28c1",
+    "class": "throw_underhand",
+    "duration_s": 2.7078,
+    "frames": 136,
+    "gyro_peak_inside_rad_s": 14.468,
+    "gyro_peak_context_rad_s": 14.468,
+    "context_peak_s_from_start": 1.2607,
+    "context_peak_s_from_end": -1.4471,
+    "raw_spans": [
+      318,
+      1028,
+      198
+    ],
+    "binary_transitions": [
+      0,
+      2,
+      2
+    ],
+    "review_reasons": []
+  },
+  {
+    "id": "fb735d4e950c",
+    "class": "throw_underhand",
+    "duration_s": 4.1083,
+    "frames": 206,
+    "gyro_peak_inside_rad_s": 11.764,
+    "gyro_peak_context_rad_s": 11.764,
+    "context_peak_s_from_start": 1.1662,
+    "context_peak_s_from_end": -2.942,
+    "raw_spans": [
+      500,
+      1002,
+      179
+    ],
+    "binary_transitions": [
+      2,
+      2,
+      2
+    ],
+    "review_reasons": []
+  },
+  {
+    "id": "63f3080358c2",
+    "class": "throw_underhand",
+    "duration_s": 2.4661,
+    "frames": 124,
+    "gyro_peak_inside_rad_s": 14.424,
+    "gyro_peak_context_rad_s": 14.424,
+    "context_peak_s_from_start": 1.0632,
+    "context_peak_s_from_end": -1.4029,
+    "raw_spans": [
+      641,
+      1004,
+      214
+    ],
+    "binary_transitions": [
+      2,
+      2,
+      2
+    ],
+    "review_reasons": []
+  },
+  {
+    "id": "0cf65e7cb8c1",
+    "class": "throw_underhand",
+    "duration_s": 2.6904,
+    "frames": 135,
+    "gyro_peak_inside_rad_s": 13.891,
+    "gyro_peak_context_rad_s": 13.891,
+    "context_peak_s_from_start": 1.0809,
+    "context_peak_s_from_end": -1.6096,
+    "raw_spans": [
+      341,
+      1047,
+      207
+    ],
+    "binary_transitions": [
+      2,
+      2,
+      2
+    ],
+    "review_reasons": []
+  },
+  {
+    "id": "48568743e18e",
+    "class": "throw_underhand",
+    "duration_s": 2.5711,
+    "frames": 129,
+    "gyro_peak_inside_rad_s": 14.632,
+    "gyro_peak_context_rad_s": 14.632,
+    "context_peak_s_from_start": 1.1035,
+    "context_peak_s_from_end": -1.4676,
+    "raw_spans": [
+      418,
+      832,
+      120
+    ],
+    "binary_transitions": [
+      2,
+      2,
+      2
+    ],
+    "review_reasons": []
+  },
+  {
+    "id": "2faf9121ebdc",
+    "class": "throw_underhand",
+    "duration_s": 2.4589,
+    "frames": 123,
+    "gyro_peak_inside_rad_s": 14.063,
+    "gyro_peak_context_rad_s": 14.063,
+    "context_peak_s_from_start": 0.9607,
+    "context_peak_s_from_end": -1.4983,
+    "raw_spans": [
+      319,
+      774,
+      131
+    ],
+    "binary_transitions": [
+      2,
+      2,
+      2
+    ],
+    "review_reasons": []
+  },
+  {
+    "id": "054422b8941e",
+    "class": "throw_underhand",
+    "duration_s": 2.4153,
+    "frames": 121,
+    "gyro_peak_inside_rad_s": 14.99,
+    "gyro_peak_context_rad_s": 14.99,
+    "context_peak_s_from_start": 1.0133,
+    "context_peak_s_from_end": -1.4021,
+    "raw_spans": [
+      639,
+      989,
+      205
+    ],
+    "binary_transitions": [
+      2,
+      2,
+      2
+    ],
+    "review_reasons": []
+  },
+  {
+    "id": "ae06d01e46e0",
+    "class": "throw_underhand",
+    "duration_s": 2.9334,
+    "frames": 147,
+    "gyro_peak_inside_rad_s": 15.992,
+    "gyro_peak_context_rad_s": 15.992,
+    "context_peak_s_from_start": 1.5245,
+    "context_peak_s_from_end": -1.4089,
+    "raw_spans": [
+      750,
+      893,
+      161
+    ],
+    "binary_transitions": [
+      2,
+      2,
+      2
+    ],
+    "review_reasons": []
+  },
+  {
+    "id": "bc111eb32f3f",
+    "class": "throw_underhand",
+    "duration_s": 2.4689,
+    "frames": 124,
+    "gyro_peak_inside_rad_s": 17.679,
+    "gyro_peak_context_rad_s": 17.679,
+    "context_peak_s_from_start": 1.1222,
+    "context_peak_s_from_end": -1.3467,
+    "raw_spans": [
+      655,
+      825,
+      156
+    ],
+    "binary_transitions": [
+      2,
+      2,
+      2
+    ],
+    "review_reasons": []
+  },
+  {
+    "id": "5d1b60d249a8",
+    "class": "throw_underhand",
+    "duration_s": 2.659,
+    "frames": 133,
+    "gyro_peak_inside_rad_s": 17.207,
+    "gyro_peak_context_rad_s": 17.207,
+    "context_peak_s_from_start": 1.1293,
+    "context_peak_s_from_end": -1.5294,
+    "raw_spans": [
+      767,
+      975,
+      187
+    ],
+    "binary_transitions": [
+      2,
+      2,
+      2
+    ],
+    "review_reasons": []
+  },
+  {
+    "id": "e40bd4095211",
+    "class": "throw_underhand",
+    "duration_s": 2.5836,
+    "frames": 130,
+    "gyro_peak_inside_rad_s": 22.231,
+    "gyro_peak_context_rad_s": 22.231,
+    "context_peak_s_from_start": 0.9625,
+    "context_peak_s_from_end": -1.6212,
+    "raw_spans": [
+      792,
+      980,
+      182
+    ],
+    "binary_transitions": [
+      2,
+      2,
+      2
+    ],
+    "review_reasons": []
+  },
+  {
+    "id": "0988fa09850f",
+    "class": "throw_underhand",
+    "duration_s": 2.436,
+    "frames": 122,
+    "gyro_peak_inside_rad_s": 13.989,
+    "gyro_peak_context_rad_s": 13.989,
+    "context_peak_s_from_start": 0.9545,
+    "context_peak_s_from_end": -1.4815,
+    "raw_spans": [
+      810,
+      1022,
+      204
+    ],
+    "binary_transitions": [
+      2,
+      2,
+      2
+    ],
+    "review_reasons": []
+  },
+  {
+    "id": "9dae5cd0b4a5",
+    "class": "throw_underhand",
+    "duration_s": 2.3413,
+    "frames": 117,
+    "gyro_peak_inside_rad_s": 14.931,
+    "gyro_peak_context_rad_s": 14.931,
+    "context_peak_s_from_start": 1.016,
+    "context_peak_s_from_end": -1.3254,
+    "raw_spans": [
+      893,
+      980,
+      177
+    ],
+    "binary_transitions": [
+      2,
+      2,
+      2
+    ],
+    "review_reasons": []
+  },
+  {
+    "id": "e85cf56a2318",
+    "class": "throw_underhand",
+    "duration_s": 2.5391,
+    "frames": 127,
+    "gyro_peak_inside_rad_s": 17.413,
+    "gyro_peak_context_rad_s": 17.413,
+    "context_peak_s_from_start": 1.1651,
+    "context_peak_s_from_end": -1.3741,
+    "raw_spans": [
+      820,
+      1049,
+      205
+    ],
+    "binary_transitions": [
+      2,
+      2,
+      2
+    ],
+    "review_reasons": []
+  },
+  {
+    "id": "b9458df9ee86",
+    "class": "throw_underhand",
+    "duration_s": 4.8196,
+    "frames": 241,
+    "gyro_peak_inside_rad_s": 12.5,
+    "gyro_peak_context_rad_s": 12.5,
+    "context_peak_s_from_start": 3.4319,
+    "context_peak_s_from_end": -1.3872,
+    "raw_spans": [
+      772,
+      972,
+      182
+    ],
+    "binary_transitions": [
+      2,
+      2,
+      2
+    ],
+    "review_reasons": []
+  }
+]

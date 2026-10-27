@@ -1,0 +1,28 @@
+Milo final binary training package - validated 16 October 2026
+
+ESP32 sketch compiled and linked for esp32:esp32:firebeetle32, Arduino ESP32 core 3.3.11.
+Flash 953328 bytes (72%); global RAM 48296 bytes (14%).
+Local Windows image-packaging hooks were bypassed; this checks C++ compilation/linking.
+Use Arduino IDE to upload the included .ino. No prebuilt flash binary is included.
+
+Passed:
+- Replayed the user's final recorded open/fist/loose-grip calibration poses through the fixed thresholds.
+  Every finger had the expected state in at least 99% of steady samples for all three poses.
+- Checked firmware thresholds exactly match sensor_settings.json and all three states are enabled.
+- Simulated full 70 accepted clips, sequential 10 per class, including middle rail fault and missing-throw-release retries.
+- Stop/resume preserves accepted data and checks the fit again.
+- Model arrays are N x 100 x 9; three finger channels contain only 0/1.
+- State resampling preserves the previous sample; never linearly interpolates finger states.
+- Throw release must be an actual 1->0 transition after GO; opening before GO does not pass.
+- Real local MQTT broker + simulated 50Hz glove messages: fit checks, all seven actions, export, review and annotations.
+- Three-curve offline waveform review and annotation download.
+- GUI buttons, progress, cancellation bridge, middle fault names and preferred layout 926 x 661.
+- Python syntax and software ZIP integrity/hashes.
+
+This does not constitute a physical test of the newly flashed sketch or a gesture-model accuracy result.
+The two short fit checks are still required with the actual glove.
+Use firmware BENT/NOT_BENT states for live inference with these same thresholds and hysteresis.
+Binary state history runs continuously on ESP32, not separately for each inference window.
+Raw ADC is local troubleshooting evidence only; model features are six IMU axes and three binary states.
+Motor is off. Voice/audio rejection haptics are outside this training-only package.
+Old packages, captured datasets and the installed project main were not changed.

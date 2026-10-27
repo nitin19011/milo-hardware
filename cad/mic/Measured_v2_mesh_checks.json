@@ -1,0 +1,42 @@
+{
+  "Mic_housing_MEASURED_v2.stl": {
+    "triangles": 5904,
+    "closed_consistent_mesh": true,
+    "volume_mm3": 10308.26,
+    "size_mm": [
+      44.85,
+      66.6,
+      19.6
+    ]
+  },
+  "Mic_cap_MEASURED_v2.stl": {
+    "triangles": 404,
+    "closed_consistent_mesh": true,
+    "volume_mm3": 3235.13,
+    "size_mm": [
+      44.85,
+      66.6,
+      2.8
+    ]
+  },
+  "combined_one": {
+    "triangles": 6536,
+    "closed_consistent_mesh": true,
+    "volume_mm3": 15024.83,
+    "size_mm": [
+      137.5,
+      66.6,
+      19.6
+    ]
+  },
+  "combined_two": {
+    "triangles": 6764,
+    "closed_consistent_mesh": true,
+    "volume_mm3": 16506.27,
+    "size_mm": [
+      137.5,
+      66.6,
+      19.6
+    ]
+  }
+}

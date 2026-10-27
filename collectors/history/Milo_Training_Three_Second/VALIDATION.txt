@@ -1,0 +1,24 @@
+Three-second glove collector - 18 October 2026
+
+New profile binary_flex_v5, session protocol v7_3s, calibration nitin-20261018-relaxed-fist-v2.
+Thresholds: thumb 1460/1420, index 1596/1533, middle 3480/3460.
+Old collector and old datasets remain unchanged.
+
+Passed: six backend tests, including all 70 accepted 150-frame samples, binary
+state resampling, sensor faults, missing throw-release rejection, stop/resume,
+rejection of old profiles/sessions, current firmware/settings parity and real
+worn-glove trace replay. Three GUI tests passed for three-second progress and buttons.
+Fit checks remain 2s; they now use relaxed hand and comfortable fist.
+Throws require at least one BENT-to-NOT-BENT transition after GO, plus human confirmation.
+
+Physical hardware acquisition and fit on the recipient are not established by software tests.
+
+Local Mosquitto integration passed using the production collector and a simulated
+50Hz glove: all seven 3s clips exported as (7,150,9), including index-only release
+for both throws, 2.9s annotations, and rejection of faulty re-admitted recordings.
+Reviewer JavaScript passed waveform drawing, marking/clamping to 3000ms and annotation export.
+
+Firmware compilation/linking passed for FireBeetle ESP32, core 3.3.11:
+flash 953,332 bytes (72%); static RAM 48,296 bytes (14%).
+The established local Windows packaging-hook workaround was used; Arduino IDE
+upload produces the flash image. Existing Wi-Fi/broker settings are unchanged.

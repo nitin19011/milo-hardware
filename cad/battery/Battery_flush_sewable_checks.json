@@ -1,0 +1,26 @@
+{
+  "base": {
+    "triangles": 7840,
+    "closed_consistent_mesh": true,
+    "volume_mm3": 2507.98,
+    "size_mm": [
+      28.2,
+      39.0,
+      9.9
+    ]
+  },
+  "combined": {
+    "triangles": 8012,
+    "closed_consistent_mesh": true,
+    "volume_mm3": 3485.68,
+    "size_mm": [
+      68.0,
+      39.0,
+      9.9
+    ]
+  },
+  "stitch_points": 8,
+  "sewing_holes": 16,
+  "diameter_mm": 2,
+  "thread_recess_depth_mm": 0.4
+}

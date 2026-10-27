@@ -1,0 +1,88 @@
+Milo checkpoint hardware demo profile v1 (16 Oct 2026)
+
+This DEMO profile overrides the old COMMUNICATIONS_STANDARD_V1 draft's eight raw features,
+100-frame shape, generic motion trigger and MLA1/PCM envelope. It is not silently labelled as that old profile.
+
+Prefix: milo/v1/<session>/, default session demo.
+MQTT 3.1.1, cleanSession true, QoS1 for controls/clips/results, clips not retained.
+Metadata/status retained; requests/results/feedback must not be retained.
+
+COMMON JSON:
+version=1, type, source_id, boot_id (32 lowercase hex), stream_id (32 lowercase hex),
+seq (per topic), timestamp_ms (UTC), capture_us (source-local monotonic), clock_uncertainty_ms, data.
+Pair by session + data.capture_id (32 lowercase hex), not arrival order or boot-local capture_us.
+
+CONTROL SEQUENCE (small JSON messages):
+1. hand -> mic/capture, type demo.capture_prepare
+   data: capture_id, trigger_source_id, trigger_boot_id, target_source_id, capture_start_ms,
+         duration_ms=3000, expires_at_ms, upload_not_before_ms, requested_profile_id.
+   Sent when the fist begins. capture_start_ms is the scheduled end of the future 1-second buzz,
+   3 seconds after first detecting the held fist. Upload boundary is capture_start_ms+4000.
+2. mic -> mic/results, type demo.capture_ready
+   Same capture_id/trigger_boot_id/capture_start_ms; response includes clock uncertainty/profile.
+   The mic has actually armed the local audio task before this response.
+3. Glove only buzzes if that readiness response arrives before the 2-second fist deadline.
+   Motor on at start-1000ms, off at start; both devices capture [start,start+3000ms).
+   Motor on at start+3000ms, off at start+4000ms.
+4. hand -> mic/capture, type demo.capture_upload, only after ending buzz switches OFF.
+   Same capture_id and trigger_boot_id. This gates upload; a frozen mic clip is not uploaded earlier.
+5. hand -> hand/clips (JSON) and mic -> mic/clips (MLW1 binary), either arrival order.
+6. mic -> mic/results, type demo.capture_sent, after broker PUBACK for the complete WAV message.
+   Failure uses demo.capture_failed with reason. Cancellation uses demo.capture_cancel on mic/capture.
+
+Requests/ready are broker QoS1 plus an application readiness response; PUBACK alone is not mic readiness.
+A readiness acknowledgement lost/late prevents the glove cue. The orphan mic reservation expires without upload.
+One mic job at a time. Duplicate identities do not create another recording; finite recent-ID caches are used.
+The original deadline is not refreshed on retry. Capture storage expires during network/clock outages too.
+
+HAND:
+type hand.clip, data.profile_id=glove-mpu6050-three-binary-demo-v1
+sample_rate_hz=50, sample_count=150, duration_ms=3000
+feature_names=[ax,ay,az,gx,gy,gz,thumb,index,middle]
+samples=[150][9], sample_offsets_us=[150] actual acquisition offsets from first sample.
+Units: ax/ay/az m/s^2 including gravity; gx/gy/gz rad/s, bias NOT already subtracted.
+thumb/index/middle: exactly 0 or 1; no ADC inputs or finger normalisation in this wire profile.
+Includes scheduled capture_start_ms, actual first-sample timestamp, first/last sample counters,
+calibration_id, binary thresholds, optional reference gyro bias, mounting/acquisition revision, valid/faults.
+trigger_time_ms marks the end of the two-second fist hold (start of cue); capture_start_ms marks recording start.
+Invalid clips are not model inputs. The hardware never pretends the 150-frame interval is a 100-frame model input.
+
+MIC:
+type mic.clip, data.profile_id=audio-wav-pcm16-mono-16k-demo-v1
+MQTT binary payload = ASCII MLW1 + uint32 BIG-ENDIAN JSON byte length H + H UTF-8 JSON bytes + FULL WAV.
+WAV bytes are EXACTLY 96044: RIFF/WAVE PCM header44 + 48000 mono PCM16 samples96000.
+This is MLW1/WAV, NOT the draft's MLA1/PCM; receivers must explicitly select the new profile.
+Header fields: common identity; capture_id, trigger_source_id, trigger_boot_id, capture_start_ms,
+trigger_time_ms, duration_ms, profile_id, encoding=wav_pcm_s16le, sample_rate_hz=16000, channels=1,
+bits_per_sample=16, sample_count=48000, wav_byte_length=96044, pcm_byte_length=96000,
+actual_start_ms, actual_end_ms (exclusive), alignment_error_ms, dma_timeline_jitter_us,
+estimated_timing_uncertainty_ms, valid=true, faults=[].
+Extract everything after byte 8+H as voice.wav. Do not strip another WAV header or interpret JSON as PCM.
+Any network/TLS segmentation still belongs to ONE MQTT publish; there are no application chunk topics.
+
+MANDATORY ACLs for this demo:
+hand: write hand/meta, hand/clips, mic/capture, own status; READ mic/results and hand/feedback.
+mic: write mic/meta, mic/clips, mic/results, own status; read mic/capture.
+ultra96: read hand/clips, mic/clips, mic/results; write ultra96/commands, hand/feedback, own status.
+visualizer: read ultra96/commands. Monitor: read required session topics.
+Complete audio payload is about 97kB including envelope; allow at least 128KiB across broker/relay/client.
+Glove JSON should fit 64KiB. Incoming device controls are limited to 2047 bytes and MQTT receive packets to 8192.
+Larger incoming application messages must be rejected rather than overflowing firmware buffers.
+
+18 October demo5 glove rearm: all-three-NOT_BENT is no longer required. A 200ms release
+from the separate full-fist trigger is sufficient and may happen during recording.
+Only one capture runs at a time; the next fist starts after the previous transfer finishes.
+The 150x9 features and audio profile are unchanged. AI_PAYLOAD_GUIDE.txt documents every clip field.
+
+The existing action.command and hand.feedback schemas can remain unchanged; no inference is performed on ESPs.
+Capture cue haptics are local and not AI-acceptance feedback. Real Ultra96/Unity integration is separate.
+
+18 October mic readiness preflight:
+Hand subscribes QoS1 to mic/meta, in addition to mic/results and hand/feedback.
+Only live, non-retained mic.meta messages from configured MIC_ID count as a heartbeat.
+Expected profile is audio-wav-pcm16-mono-16k-demo-v1, with healthy/idle audio and bounded clock uncertainty.
+Metadata heartbeat interval remains 5 seconds while idle; glove readiness expires at 15 seconds.
+No compatible live heartbeat: capture=waiting_for_mic, no capture request/buzz is started.
+Glove status health adds firmware_revision, capture_requires_mic, mic_ready, mic_readiness,
+mic_heartbeat_age_ms and last_capture_error. Mic health adds audio_ready/audio_errors_total/capture_mode.
+demo.capture_cancel data.reason now contains a diagnostic code/string; waveform and clip schemas are unchanged.

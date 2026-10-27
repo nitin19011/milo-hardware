@@ -1,0 +1,115 @@
+MILO GLOVE TRAINING DATA - PERSONAL MODEL FOR NITIN
+Protocol: milo_spoken_gesture_training_thumb_index_v4. This is gesture training, not paired audio.
+
+LABELS AND TASK
+Seven labels, ten clean wearer-confirmed clips each in a completed handoff (70 total):
+come, sit, paw, spin, bang, throw_overhand, throw_underhand.
+Both throws pair with the phrase "Milo fetch"; their motion class distinguishes
+the throw variants. Spin is point then clockwise turn, not roll-over.
+Bang uses index AND thumb extended, middle bent. Come uses one beckon.
+Background/no-command examples are not included in this requested positive set.
+
+FILES AND INPUT SHAPES
+manifest.csv: one row per eligible clip, paths, action, participant, wear session,
+sample rate, duration and prompted spoken phrase. speech_recorded is FALSE.
+clips/ACTION/ACTION_01.csv etc.: canonical readings with actual ESP timestamps,
+sequence numbers, IMU values, raw flex ADC, quality counters, raw IMU and RSSI.
+Matching JSON: prompt label, acceptance, timing, unannotated event boundaries,
+optional heuristic release candidate and human confirmation of finger release.
+session.json and calibration.json: acquisition protocol, actual counts and per-wear calibration.
+export/dataset.npz: NumPy arrays (load allow_pickle=False).
+  X_raw: float32 [70,100,8] when complete, time-major.
+  X_session_calibrated: [70,100,8].
+  X_raw_channels_first / X_calibrated_channels_first: [70,8,100].
+  y: int64 [70], classes[y[i]] gives the label; labels also contains strings.
+  feature_names, clip_ids, session_ids, split_roles, train/validation/test indices.
+  X_action_* aliases the full two-second view in v4; no label-dependent crop.
+Independent .npy arrays, all_samples.csv, clips.jsonl, labels.txt and UEA/sktime .ts
+are also supplied. Optional converter can create .pt/.h5 if torch/h5py is available:
+  py export_optional_formats.py export/dataset.npz --torch
+  py export_optional_formats.py export/dataset.npz --hdf5
+SHA256SUMS.json records hashes of the handoff files (excluding itself).
+No firmware, Wi-Fi credentials or raw rejected examples belong to the teammate ZIP.
+
+FEATURES, UNITS AND PREPROCESSING
+Eight features, in order: ax, ay, az, gx, gy, gz, thumb, index.
+MIDDLE SENSOR FAILED: it is omitted entirely, not set to zero, reconstructed or
+used during quality checks/calibration/release suggestions. Feature order/shape
+has changed; models trained on nine channels cannot consume this dataset unchanged.
+Acceleration: m/s^2, including gravity. Angular velocity: rad/s.
+Raw flex: averaged 12-bit ADC counts. GPIO thumb35/index34. GPIO39 is deliberately not read.
+MPU6050: +/-16 g and +/-2000 deg/s, 21 Hz filter, 50 Hz sampling.
+Per-session calibration uses three TWO-second poses, discarding the first 0.5 s.
+Calibrated arrays subtract stationary open-pose gyro bias; flex is
+(raw - open median) / (fist median - open median), with no clipping to [0,1].
+Loose ball grip can be much less bent than a fist. Learn continuous bend and IMU
+trajectories; binary BENT state thresholds are not model features.
+Runtime inference must use the same feature order, sampling/ranges and calibration
+as training. Fit any additional global scaler on training data only.
+Labels, prompted phrases, trial IDs, counters and RSSI are metadata, NOT features.
+
+TIMING AND SPOKEN-COMMAND MATCHING
+Every class uses the SAME two-second capture: one second prepare, GO cue at 1 s,
+then action/follow-through within the remaining second. A throw itself is about
+0.5 s of arm swing AND finger release; the following 0.5 s preserves follow-through.
+For other classes: one deliberate gesture or short held pose, then relax naturally.
+The user is prompted to say the matching Milo phrase around the motion. This is
+not recorded audio or proof that a phrase was spoken at a particular instant.
+The GO cue is NOT a measured movement onset or speech timestamp. Release candidates
+are heuristics, not event ground truth; exact onset/release/end remain unannotated.
+
+In the final project glove acquisition should continue while voice is processed;
+do not start collecting glove data only after recognising the spoken command.
+Keep recent glove samples so an inference window can include motion before and
+after a voice event. Both fetch commands need the motion classifier to resolve
+overhand versus underhand. The final voice-event timestamp definition and matching
+window still need integration agreement; this dataset does not establish them.
+Start from the full 100-frame sequence. Training-only temporal shifts/crops that
+preserve the complete gesture can help avoid relying on the scripted cue location;
+evaluate on naturally timed speech-plus-gesture use rather than reporting only
+performance on the same scripted alignment. Do not require runtime gestures to
+start at exactly the GO index used during collection.
+Collar audio clip duration and the gesture classifier's input duration are separate.
+
+QUALITY AND LIMITS
+Each counted clip has complete/consecutive 50 Hz samples, valid IMU reads, no flex
+rail flags, no IMU clipping, no queue drops and no capture warnings. The wearer
+must also confirm the intended movement and (for throws) finger opening occurred
+within the clip. This is not automatic semantic verification of gesture correctness.
+The failed middle sensor is disabled. Thumb/index faults still reject takes.
+Paw and bang now share extended measured fingers, so use wrist/IMU orientation
+and movement to separate them. Paw is palm-up, bang points forward. Evaluate
+their confusion explicitly; missing middle measurements reduce available information.
+The wearer still performs the same full-hand gesture definitions.
+All eligible examples in this requested collection are marked TRAIN. No internal
+random split or held-out accuracy is claimed. Collect separate re-wear sessions
+later for validation/test, and keep all windows from the same recording together.
+Ten examples/class is the requested starter training set, not proof of adequate
+generalisation. To reject mismatched/absent gestures during voice-triggered use,
+the final model or fusion rule will also need negative examples/rejection evaluation.
+
+REVIEW
+Original local session/review.html offers waveform inspection after collection;
+it is not a required pilot step. Human event annotations are optional. If metadata
+is edited later, regenerate the handoff by resuming the saved session; a previously
+created ZIP does not change automatically. Warning/fault clips stay ineligible.
+Do not silently merge older protocols; feature count/hardware profile changed.
+
+MOTOR SELF-CHECK AND DATA SEPARATION
+New firmware gives three 150 ms pulses at power-on/reset, then turns D2/GPIO25
+LOW and waits 700 ms before starting sampling/network tasks. There are no motor
+activation commands during data collection. session.json motor_check records
+the user's report, not electrical feedback or automatic proof of motor movement.
+This result is metadata only, not a classifier feature. A reset during a take
+still causes normal boot/sequence quality rejection. Do not reset while recording.
+Normal telemetry preserves a middle key as null / state DISABLED for clarity;
+this is NOT a ninth feature. AI CSV/arrays contain only the eight listed inputs.
+
+COLLECTION ORDER / DESKTOP UI UPDATE
+The collector now completes ten accepted examples of each gesture sequentially
+in class_order. It does not shuffle classes. The v4 sensor profile, feature order,
+two-second windows, calibration and class definitions are unchanged. Existing
+examples collected with the earlier interleaved UI are kept on resume; their
+timestamps and metadata are not rewritten. collection_order_history records the
+transition for a resumed session. Temporal grouping by class is not a model input
+and adjacent recordings are not independent held-out evaluation examples.

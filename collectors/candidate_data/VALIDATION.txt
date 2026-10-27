@@ -1,0 +1,22 @@
+25 October 2026
+
+Firmware compiled and linked for esp32:esp32:firebeetle32 using ESP32 core 3.3.11
+and ArduinoJson 7.4.3. Flash: 932248 bytes (71%). Static RAM: 48624 bytes (14%).
+
+Desktop automated checks:
+- Valid telemetry parsing; non-finite / malformed / out-of-range values rejected.
+- Continuous CSV and ZIP export, context and neighbouring gesture annotations.
+- Faulty gesture rejection, raw data preservation, explicit negative labels.
+- Sequence gaps, restart/stale markers and background quality filtering.
+- Cancel/discard, progress counts, automatic class advance, typing shortcut guard.
+- Wi-Fi configuration acknowledgement with a fake serial device; no credentials echoed.
+- Real localhost UDP packets received by the actual connection worker.
+- Tk UI controls, asynchronous ZIP export and Wi-Fi dialog geometry tested.
+- Main controls and saved ZIP path fit on a 1280x800 desktop.
+
+Run: py -3 test_collector.py
+10 tests passed. Test fixtures and caches are excluded from the package ZIP.
+
+No physical glove was flashed or operated by the assistant. Real USB adapter,
+Wi-Fi authentication, radio loss and worn-sensor behaviour still need your run.
+No trained detector is included, and 99% event recall has not been measured yet.

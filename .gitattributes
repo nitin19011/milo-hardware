@@ -1,0 +1,8 @@
+* text=auto
+*.stl binary
+*.makerbot binary
+*.png binary
+*.wav binary
+*.zip binary
+*.npz binary
+*.npy binary

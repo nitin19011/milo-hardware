@@ -1,0 +1,52 @@
+{
+  "Mic_housing_PROTOTYPE.stl": {
+    "triangles": 6580,
+    "closed_consistent_mesh": true,
+    "volume_mm3": 12308.82,
+    "size_mm": [
+      44.4,
+      66.4,
+      23.0
+    ]
+  },
+  "Mic_open_cap_PROTOTYPE.stl": {
+    "triangles": 404,
+    "closed_consistent_mesh": true,
+    "volume_mm3": 3254.8,
+    "size_mm": [
+      44.4,
+      66.4,
+      4.6
+    ]
+  },
+  "Battery_cap_two_wire_notches.stl": {
+    "triangles": 228,
+    "closed_consistent_mesh": true,
+    "volume_mm3": 1481.44,
+    "size_mm": [
+      31.8,
+      13.5,
+      9.6
+    ]
+  },
+  "combined_one_battery_cap": {
+    "triangles": 7212,
+    "closed_consistent_mesh": true,
+    "volume_mm3": 17045.06,
+    "size_mm": [
+      136.6,
+      66.4,
+      23.0
+    ]
+  },
+  "combined_two_battery_caps": {
+    "triangles": 7440,
+    "closed_consistent_mesh": true,
+    "volume_mm3": 18526.5,
+    "size_mm": [
+      136.6,
+      66.4,
+      23.0
+    ]
+  }
+}

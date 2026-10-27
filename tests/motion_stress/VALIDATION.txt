@@ -1,0 +1,13 @@
+Validated 12 October 2026.
+
+Python syntax and command-line interface checked.
+Counter logic checked across missing sequences and boot/counter resets.
+Local Mosquitto integration test passed with a simulated glove:
+- three guided phases completed;
+- a 3.5-second data outage did not stop recording;
+- the new boot was recorded and the next phase resumed;
+- failed IMU reads, ADC rail values, missing sequences and gyro clipping were reported separately;
+- CSV/JSON/event files and the result ZIP were created successfully.
+
+The motion sequence itself has not been performed on the user's physical glove by the assistant.
+No firmware changes were made. Uses the existing diagnostic sketch and measurement ranges.

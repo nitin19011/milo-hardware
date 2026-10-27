@@ -1,0 +1,18 @@
+BATTERY HOLDER - FLUSH UNDERSIDE
+One continuous mounting plane: both base underside and cap underside are at Z=0 when assembled.
+The cap wraps around the two sides and top, with no plastic skirt beneath the base.
+The cap front face extends down to the same mounting plane as the base.
+
+Base is a byte-for-byte copy of the original LiPo_600mAh_slide_sleeve.stl.
+Original dimensions 28.2 x 39 x 9.9 mm, original battery cavity and retaining details unchanged.
+Compatible with the same battery as the original housing; no cap feature projects into battery space.
+Cap overlap: 8 mm. Cap walls/end plate: 1.6 mm. Side/top clearance: 0.2 mm per side.
+Assembled maximum dimensions: 31.8 wide x 40.6 long x 11.7 high.
+Only underside is flush; cap still projects beyond the sides/top.
+Two 6 mm-wide wire notches near opposite ends retain the preceding wire routing.
+
+Combined file: one base + one cap, with 8 mm spacing, already placed on print bed.
+Cap is printed on its end face; rotate into position when assembling.
+Print at 100% in millimetres. Physical fit and retention remain printer-dependent.
+This three-sided cap is a slip fit, not a locking latch. Secure with a tape tab across top/side if needed,
+keeping the underside clear if it is used as the mounting surface.

@@ -1,0 +1,196 @@
+Milo hardware -> AI payload guide
+18 October 2026 | demo7 glove/mic; clip formats unchanged from demo6 glove/demo4 mic
+
+WHAT AI RECEIVES
+
+Subscribe to these MQTT topics for session "demo":
+  milo/v1/demo/hand/clips : plain UTF-8 JSON, type "hand.clip"
+  milo/v1/demo/mic/clips  : binary MLW1 envelope containing JSON metadata + full WAV
+
+Both are QoS1, not retained. Messages can arrive in either order and may be repeated.
+Pair using the session + data.capture_id. Also verify trigger_source_id,
+trigger_boot_id and capture_start_ms agree between the two messages.
+Do not pair by message arrival order, seq, stream_id, boot_id, or capture_us alone.
+Each ESP has its own boot/stream identifiers and monotonic clock.
+Process each capture ID once. A PUBACK confirms broker delivery, not inference completion.
+
+One capture is the same scheduled THREE-SECOND action/voice interval:
+  full fist 2s -> motor 1s -> capture 3s -> motor 1s -> upload
+The fist trigger and first buzz are outside the captured interval.
+After an action, straight fingers are no longer required for rearming. A short
+release from the full-fist trigger (any one finger, 200ms) is enough and can be
+observed during recording. This does not change the transmitted finger features.
+
+COMMON TOP-LEVEL JSON FIELDS
+
+version              1; wire/schema version
+type                 "hand.clip" or "mic.clip"
+source_id            "hand-01" for glove; "mic-01" for microphone
+boot_id              32 lowercase hex characters; changes on that ESP's reboot
+stream_id            32 lowercase hex; changes on MQTT reconnection
+seq                  counter for this outgoing topic/stream, NOT a sensor sample counter
+timestamp_ms         UTC Unix milliseconds of actual acquisition start; glove's first sample
+                     or mic's selected first audio sample, truncated to milliseconds
+capture_us           actual start in THIS device's monotonic microseconds; NOT UTC and
+                     NOT comparable directly between glove and mic
+clock_uncertainty_ms  estimated device clock error; firmware capture limit is 50ms per device
+data                 actual clip fields below
+
+COMMON data FIELDS IN BOTH CLIPS
+
+capture_id           shared 32-character capture identity; primary pairing key
+trigger_source_id    glove source ID, currently "hand-01"
+trigger_boot_id      boot ID of the glove that requested this recording
+capture_start_ms     scheduled UTC recording start, same on both devices
+duration_ms          3000
+expires_at_ms        original job/transfer deadline; not an AI inference timeout requirement
+trigger_time_ms      start of the first motor buzz, 1000ms BEFORE recording starts;
+                     this is after the 2-second fist hold, NOT the beginning of the hold
+profile_id           identifies the exact feature/audio contract
+valid                true for usable data; reject false clips
+faults               list of fault descriptions; empty for a valid clip
+
+GLOVE JSON: data
+
+profile_id           "glove-mpu6050-three-binary-demo-v1"
+sample_rate_hz       50
+sample_count         150 for valid clips
+feature_names        ["ax","ay","az","gx","gy","gz","thumb","index","middle"]
+samples              150 rows x 9 columns, IN THAT ORDER
+
+Column    Meaning                        Units/encoding
+0 ax      accelerometer X                 m/s^2, includes gravity
+1 ay      accelerometer Y                 m/s^2, includes gravity
+2 az      accelerometer Z                 m/s^2, includes gravity
+3 gx      angular velocity X              rad/s
+4 gy      angular velocity Y              rad/s
+5 gz      angular velocity Z              rad/s
+6 thumb   thumb bend state                0=NOT_BENT, 1=BENT
+7 index   index bend state                0=NOT_BENT, 1=BENT
+8 middle  middle bend state               0=NOT_BENT, 1=BENT
+
+The final three columns are BINARY STATES, not raw ADC, resistance, angles or
+normalised flex values. Do not threshold these numbers again. The separate full-fist
+threshold controls recording and is not the finger-state threshold used in samples.
+
+sample_offsets_us    150 actual timestamps relative to the first sample, starting at 0;
+                     nominal spacing is 20,000us. Use these to inspect timing/jitter.
+                     UTC sample time = timestamp_ms + offset_us/1000, to millisecond precision.
+first_sample_seq     device-local continuously increasing sensor acquisition counter
+last_sample_seq      first_sample_seq + 149 for an accepted contiguous clip
+sensor_fault_mask    bit flags: 1 thumb ADC rail, 2 index ADC rail, 4 middle ADC rail,
+                     8 IMU failure, 16 IMU clipping. Must be 0 for a usable clip.
+calibration_id       "nitin-20261018-relaxed-fist-v2" in current demo6/demo7 messages;
+                     the real-log example retains its earlier calibration ID
+mounting_id          "nitin-sewn-glove"
+acquisition_revision "mpu16g-2000dps-21hz-flex8avg-demo1"
+imu_representation   "SI units; gyro bias not subtracted"
+calibration.binary_thresholds
+                     thumb/index/middle metadata: bend/release/increases per finger;
+                     provenance only, not extra model feature columns
+                     Current thumb: bend >=1460, release <=1420
+                     Current index: bend >=1596, release <=1533
+                     Current middle: bend >=3480, release <=3460
+calibration.reference_gyro_bias_rad_s
+                     reference [-0.027,0.018,-0.018]; NOT already subtracted from gx/gy/gz
+
+MPU6050 acquisition uses +/-16g, +/-2000 deg/s and 21Hz DLPF. Values sent are already
+converted into the physical units above, not raw sensor counts. No quaternion,
+orientation estimate, gravity removal or gesture prediction is sent by the ESP.
+
+For the gesture model, the raw input matrix is data.samples with shape (150,9).
+If a model needs a batch dimension, add it on the AI side: (1,150,9).
+Use the same scaling/axis conventions/preprocessing as training. A model expecting
+100 frames/two seconds needs an explicit agreed preprocessing change; the firmware
+does not silently crop or resample this three-second input.
+
+MIC PAYLOAD: BINARY FRAMING FIRST
+
+Byte range                Contents
+0..3                      ASCII "MLW1"
+4..7                      unsigned 32-bit BIG-ENDIAN JSON byte length H
+8..8+H-1                  H UTF-8 JSON metadata bytes, type "mic.clip"
+8+H..end                  COMPLETE WAV file, including its RIFF/WAVE header
+
+Read the original MQTT msg.payload bytes. This is one complete MQTT message,
+not application chunks. TCP/TLS segmentation does not need application reassembly.
+Do not json.loads the whole mic payload, decode the WAV as text, use an MQTTX text
+export as the audio source, expect base64, or look for a path/filename in the JSON.
+WAV samples are LITTLE-ENDIAN; only the envelope's H field is big-endian.
+
+MIC JSON: extra data FIELDS
+
+profile_id           "audio-wav-pcm16-mono-16k-demo-v1"
+encoding             "wav_pcm_s16le"
+sample_rate_hz       16000
+channels             1 (mono)
+bits_per_sample      16
+sample_count         48000 audio samples, not 150 motion frames
+wav_byte_length      96044: 44-byte WAV header + 96,000 PCM bytes
+pcm_byte_length      96000
+actual_start_ms      actual selected first audio sample's UTC time; same as timestamp_ms
+actual_end_ms        actual_start_ms + 3000, exclusive end
+alignment_error_ms   actual audio start minus scheduled capture_start_ms; signed milliseconds
+dma_timeline_jitter_us
+                     maximum DMA sample-timeline residual during the recording
+estimated_timing_uncertainty_ms
+                     mic clock error + DMA timeline residual + 2ms timing margin
+
+The supplied log's mic JSON reported 48,000 samples, valid=true, faults=[],
+alignment_error_ms=0.028 and estimated_timing_uncertainty_ms=21.711.
+These estimates do NOT prove sample-accurate synchronisation between the two ESPs.
+
+Use the extracted WAV for the voice model. If converting to numeric PCM with NumPy:
+  pcm = np.frombuffer(wav_bytes[44:], dtype="<i2")   # this firmware's fixed 44-byte header
+  audio = pcm.astype(np.float32) / 32768.0
+A WAV reader is preferable if supporting other audio profiles with different headers.
+No transcript, voice class, gesture class, confidence, or predicted action is included.
+Those are outputs of AI, not input fields from hardware.
+
+MINIMAL PYTHON USE (no broker credentials included in the handoff)
+
+from decode_payloads import decode_hand, decode_audio
+
+# In the hand/clips callback:
+hand = decode_hand(msg.payload)
+features = hand["data"]["samples"]     # 150x9; optionally np.asarray(..., dtype=np.float32)
+key = hand["data"]["capture_id"]
+
+# In the mic/clips callback:
+mic, wav_bytes = decode_audio(msg.payload)
+key = mic["data"]["capture_id"]
+# Save wav_bytes directly as voice.wav, or pass it to a WAV reader.
+# Pair with the hand message under the same session/key and verify the trigger/time fields.
+
+decode_payloads.py contains the same validation functions as Demo/tools/demo_monitor.py.
+The latter also provides PairSaver, which pairs both streams, checks identity/timing,
+deduplicates and saves voice.wav, glove.csv, hand.json and mic.json.
+The supplied decoder uses only Python's standard library. Your live MQTT integration
+must keep msg.payload binary for the mic and allow at least 128KiB MQTT payloads.
+
+OTHER TOPICS ARE NOT MODEL INPUT
+
+hand/meta, mic/meta : device format/capabilities/readiness heartbeats
+status/<client_id>  : online/degraded/offline state and diagnostic health
+                     IDs are now hand and mic: status/hand and status/mic.
+                     Read MQTT_TOPICS.txt for the full device topic inventory.
+mic/capture        : prepare/upload/cancel control JSON from glove
+mic/results        : capture_ready/capture_sent/capture_failed transport state;
+                     not a voice-recognition result or AI prediction
+
+HANDOFF CONTENTS
+
+hand.clip.real_log.example.json : complete real 150x9 glove message from 18 Oct capture
+mic.clip.real_log.metadata.json : matching REAL mic JSON header from that capture
+decode_payloads.py             : production input validation/extraction functions
+AI_PAYLOAD_GUIDE.txt           : this description
+
+Examples share capture_id 2d13c85686ff46f635b886833b4a1914.
+These are historical real-log examples recorded before the demo6 thumb/middle
+threshold correction; retain their original calibration metadata when comparing.
+Current thresholds were checked against two relaxed/fist cycles, not labelled
+intermediate ball-grip poses. Check partial-grip feature states against training
+before treating old and new calibration versions as interchangeable.
+The original binary WAV is not included: the MQTTX text export is unsuitable for
+recovering its arbitrary sample bytes. Receive original mic/clips bytes to save audio.
+This is an integration example, not a labelled training dataset.

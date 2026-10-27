@@ -1,0 +1,29 @@
+GLOVE CAP V2 - DEEP OUTER SKIRT - MILLIMETRES
+
+Replacement cap ONLY, for your already-printed Glove_housing_base_v1.
+No new base is needed. The original base STL was not changed.
+
+WHAT CHANGED
+Outside overlap is now 14 mm (previously 5 mm): 2.8 times the engagement depth.
+Skirt covers about 74% of the base height along closed wall sections.
+When seated, the skirt stops 4.8 mm above the base underside, leaving clearance
+for the sewn base and glove rather than reaching underneath them.
+Cap printed height is 15.6 mm including its 1.6 mm face (previously 6.6 mm).
+Cap XY envelope is unchanged: 59.7 x 68.1 mm, including the IMU pocket.
+Assembled overall enclosure height remains 20.4 mm; the extra skirt extends down.
+
+FIT AND OPENINGS
+Same outside-fitting geometry, 0.15 mm clearance per side and 1.6 mm skirt walls.
+Same 2.8 mm internal anti-tilt stops and original component clearance.
+ESP cooling opening, 20 x 20 mm reset access and 8 x 8 mm IMU opening retained.
+All top/side wire exits and the bottom USB/battery opening continue through the
+full skirt depth. Sewing points remain in the existing base.
+
+PRINT
+Print only Glove_housing_cap_v2_deep_skirt.stl at 100%, in millimetres.
+Broad outside face is already on the bed; the deeper skirt points upward.
+Flip the cap over after printing to align the asymmetric IMU pocket with the base.
+Keep the print orientation and fit settings that worked for your first cap.
+Check the fit gently on the sewn case before vigorous movement.
+This has longer friction engagement, not a positive latch. Actual grip and impact
+retention depend on the print/material and have not been physically tested.

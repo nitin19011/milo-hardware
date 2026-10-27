@@ -1,0 +1,2 @@
+{'triangles': 244, 'closed_consistent_mesh': True, 'volume_mm3': np.float64(4998.15), 'size_mm': [48.35, 70.1, 6.6]}
+5 mm external overlap; opening and stopper geometry pending actual reset/PCB measurements.

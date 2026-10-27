@@ -1,0 +1,6 @@
+voice_settings.local.json
+MicVoiceTraining/DemoConfig.h
+datasets/
+__pycache__/
+.test_output/
+local_broker.log

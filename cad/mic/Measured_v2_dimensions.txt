@@ -1,0 +1,30 @@
+MEASURED ENCLOSURE V2 - MILLIMETRES
+Replaces the earlier prototype microphone housing and cap.
+Module: width 40.25, length 62, thickness approximately 17.
+Cavity: width 41.25, length 63, depth 18 (0.5 mm nominal clearance per side).
+Assembled exterior: width 44.85, length 66.6, depth 21.2.
+Tray height: 19.6. Floor and cap face: 1.6 thick. Main side walls: 1.8.
+Cap uses a 0.6 mm locating tongue in a recessed rim, with 0.2 mm lateral clearance.
+It is not a locking snap fit: retain cap using tape tabs on the closed side portions.
+No ledges at an assumed perfboard height: previous ledges removed to avoid component collisions.
+
+POSITION REFERENCES
+Top is the small-overhang end; bottom is the connector end.
+All side measurements use the SAME physical reference edge for both faces. Do not mirror the reference when turning the assembly over.
+Offsets supplied are to nearest component edges.
+Module nominal location in tray: X=2.3 to 42.55, Y=2.3 to 64.3.
+Chip: 16 wide x 18 along module length; nearest edge 11.1 from side, 7.45 from top.
+Chip footprint in tray: X=13.4 to 29.4, Y=38.85 to 56.85.
+Cap opening: X=4.485 to 40.365 (35.88 wide, 80% of cap); from Y=37.85 to top edge.
+Microphone: diameter 14; nearest edge 13.7 from side and 7.5 from top.
+Mic centre relative to module: 20.7 from side, 14.5 from top.
+Mic opening: diameter 14.6; centre in tray X=23, Y=49.8.
+Bottom connector access: 28.85 wide, open from the inner floor upwards.
+Exact connector outlines were not supplied, so broad access is retained.
+
+PRINT AND FIT
+STLs are in bed orientation, separated by at least 8 mm in combined files.
+Print at 100% scale, millimetres. Inspect thin locating tongues in slicer preview.
+Test empty parts and check opening alignment before securing electronics. Physical fit remains untested.
+Battery caps are unchanged from the prior two-end-notch revision; no battery housing is included.
+Combined options contain one mic tray, one mic cap, and either one or two battery caps.

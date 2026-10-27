@@ -1,0 +1,301 @@
+--- MBF_v1 original
+
++++ MBF_v1 updated
+
+@@ -1,10 +1,9 @@
+
+ #include <Arduino.h>
+ #include <Wire.h>
+-#include <Adafruit_MPU6050.h>
+-#include <Adafruit_Sensor.h>
+ 
+ #include <WiFi.h>
+ #include <PubSubClient.h>
+ #include <esp_timer.h>
++#include <esp_system.h>
+ 
+ // ============================================================
+@@ -31,5 +30,4 @@
+
+ 
+ 
+-Adafruit_MPU6050 mpu;
+ 
+ const uint8_t MPU_ADDRESS = 0x68;
+@@ -40,5 +38,5 @@
+
+ 
+ // Thresholds are 12-bit raw ADC counts
+-const uint16_t FLEX_THUMB_BENT_THRESHOLD  = 1600;
++const uint16_t FLEX_THUMB_BENT_THRESHOLD  = 1500; // Mounted-glove fist low was 1612; straight releases stayed below 1401.
+ const uint16_t FLEX_INDEX_BENT_THRESHOLD  = 1800;
+ const uint16_t FLEX_MIDDLE_BENT_THRESHOLD = 1800;
+@@ -57,4 +55,18 @@
+
+ // ============================================================
+ 
++// Main stream keeps the existing fields; collection labels and quality are additive.
++const char COLLECTION_CONTROL_TOPIC[] = "collection/glove/control";
++const char COLLECTION_ACK_TOPIC[] = "collection/glove/ack";
++const char HARDWARE_PROFILE[] = "mpu6050_16g_2000dps_21hz_flex8avg_50hz_v1";
++struct CollectionState {
++  char session[17];
++  uint16_t trial;
++  uint64_t startUs, endUs;
++};
++CollectionState collectionState = {};
++portMUX_TYPE collectionMux = portMUX_INITIALIZER_UNLOCKED;
++char bootID[9];
++bool imuConfigured = false;
++
+ struct SensorSample {
+   uint32_t sequence;
+@@ -77,5 +89,52 @@
+
+ 
+   bool mpuValid;
++  int16_t imuRaw[6];
++  uint8_t flexRailMask;
++  uint32_t imuErrors, queueDropped;
++  char collectionSession[17];
++  uint16_t collectionTrial;
++  uint32_t collectionElapsedMs;
+ };
++
++uint32_t imuErrorCount = 0;
++uint32_t queueDropCount = 0;
++
++bool readMPURegisters(uint8_t reg, uint8_t *buffer, uint8_t count) {
++  Wire.beginTransmission(MPU_ADDRESS); Wire.write(reg);
++  if (Wire.endTransmission(false) != 0) return false;
++  if (Wire.requestFrom(MPU_ADDRESS, count, true) != count) {
++    while (Wire.available()) Wire.read();
++    return false;
++  }
++  for (uint8_t i = 0; i < count; ++i) buffer[i] = Wire.read();
++  return true;
++}
++bool writeMPURegister(uint8_t reg, uint8_t value) {
++  Wire.beginTransmission(MPU_ADDRESS); Wire.write(reg); Wire.write(value);
++  return Wire.endTransmission()==0;
++}
++bool configureMPU() {
++  uint8_t who;
++  if (!readMPURegisters(0x75,&who,1) || who!=0x68) return false;
++  // Checked writes avoid an unbounded library reset-poll on a failing I2C bus.
++  // +/-16 g, +/-2000 deg/s, 21 Hz DLPF; output data is sampled by this sketch at 50 Hz.
++  if (!(writeMPURegister(0x6B,0x01) && writeMPURegister(0x6C,0x00) &&
++        writeMPURegister(0x1A,0x04) && writeMPURegister(0x19,0x04) &&
++        writeMPURegister(0x1B,0x18) && writeMPURegister(0x1C,0x18))) return false;
++  uint8_t ranges[2];
++  return readMPURegisters(0x1B,ranges,2) && (ranges[0]&0x18)==0x18 && (ranges[1]&0x18)==0x18;
++}
++bool readCheckedIMU(SensorSample &sample) {
++  uint8_t bytes[14];
++  if (!imuConfigured || !readMPURegisters(0x3B, bytes, sizeof(bytes))) return false;
++  int16_t values[7];
++  for (int i = 0; i < 7; ++i) values[i] = (int16_t)((uint16_t(bytes[2*i]) << 8) | bytes[2*i+1]);
++  sample.imuRaw[0]=values[0]; sample.imuRaw[1]=values[1]; sample.imuRaw[2]=values[2];
++  sample.imuRaw[3]=values[4]; sample.imuRaw[4]=values[5]; sample.imuRaw[5]=values[6];
++  sample.ax=values[0]*9.80665f/2048.0f; sample.ay=values[1]*9.80665f/2048.0f; sample.az=values[2]*9.80665f/2048.0f;
++  sample.gx=values[4]*0.01745329252f/16.4f; sample.gy=values[5]*0.01745329252f/16.4f; sample.gz=values[6]*0.01745329252f/16.4f;
++  return true;
++}
++
+ 
+ QueueHandle_t sampleQueue;
+@@ -89,4 +148,33 @@
+
+ WiFiClient wifiClient;
+ PubSubClient mqtt(wifiClient);
++
++void collectionCommand(char *, byte *payload, unsigned int length) {
++  if (length == 0 || length >= 100) return;
++  char text[100], session[17], extra;
++  memcpy(text,payload,length);text[length]='\0';
++  unsigned int trial,duration;
++  if (sscanf(text,"GO %16s %u %u %c",session,&trial,&duration,&extra)==3 &&
++      strlen(session)==16 && trial>=1 && trial<=60000 && duration>=1000 && duration<=30000) {
++    for (char *p=session;*p;++p) if (!isxdigit((unsigned char)*p)) return;
++    uint64_t now=esp_timer_get_time();bool accepted;
++    CollectionState snapshot;
++    portENTER_CRITICAL(&collectionMux);
++    if (!strcmp(session,collectionState.session) && trial==collectionState.trial) accepted=true;
++    else if (now<collectionState.endUs) accepted=false;
++    else {strcpy(collectionState.session,session);collectionState.trial=trial;
++      collectionState.startUs=now;collectionState.endUs=now+uint64_t(duration)*1000;accepted=true;}
++    snapshot=collectionState;
++    portEXIT_CRITICAL(&collectionMux);
++    char ack[230];
++    snprintf(ack,sizeof(ack),"{\"boot\":\"%s\",\"session\":\"%s\",\"trial\":%u,\"accepted\":%s,\"start_us\":%llu,\"end_us\":%llu}",
++      bootID,snapshot.session,snapshot.trial,accepted?"true":"false",
++      (unsigned long long)snapshot.startUs,(unsigned long long)snapshot.endUs);
++    mqtt.publish(COLLECTION_ACK_TOPIC,ack,false);
++  } else if (sscanf(text,"STOP %16s %c",session,&extra)==1) {
++    portENTER_CRITICAL(&collectionMux);
++    if (!strcmp(session,collectionState.session)) collectionState.endUs=esp_timer_get_time();
++    portEXIT_CRITICAL(&collectionMux);
++  }
++}
+ 
+ void forceMqttReconnect() {
+@@ -127,5 +215,13 @@
+
+ 
+ bool publishSensorSample(const SensorSample &sample) {
+-  char payload[512];
++  char payload[1100];
++  char extraFields[620];
++  snprintf(extraFields,sizeof(extraFields),
++    ",\"boot_id\":\"%s\",\"hardware_profile\":\"%s\",\"sample_hz\":50,\"accel_range_g\":16,\"gyro_range_deg_s\":2000,"
++    "\"imu_raw\":[%d,%d,%d,%d,%d,%d],\"quality\":{\"flex_rail_mask\":%u,\"imu_errors\":%lu,\"queue_dropped\":%lu},"
++    "\"collection\":{\"session\":\"%s\",\"trial\":%u,\"elapsed_ms\":%lu},\"rssi_dbm\":%d",
++    bootID,HARDWARE_PROFILE,sample.imuRaw[0],sample.imuRaw[1],sample.imuRaw[2],sample.imuRaw[3],sample.imuRaw[4],sample.imuRaw[5],
++    sample.flexRailMask,(unsigned long)sample.imuErrors,(unsigned long)sample.queueDropped,sample.collectionSession,
++    sample.collectionTrial,(unsigned long)sample.collectionElapsedMs,WiFi.RSSI());
+   char rawFields[100] = "";
+   if (PUBLISH_FLEX_RAW) {
+@@ -155,5 +251,5 @@
+
+         "\"index\":\"%s\","
+         "\"middle\":\"%s\""
+-      "}%s"
++      "}%s%s"
+     "}",
+     (unsigned long)sample.sequence,
+@@ -169,5 +265,6 @@
+
+     flexState(sample.indexBent),
+     flexState(sample.middleBent),
+-    rawFields
++    rawFields,
++    extraFields
+   );
+ 
+@@ -206,5 +303,6 @@
+
+ 
+   mqtt.setServer(MQTT_BROKER_IP, MQTT_BROKER_PORT);
+-  if (!mqtt.setBufferSize(768)) {
++  mqtt.setCallback(collectionCommand);
++  if (!mqtt.setBufferSize(1536)) {
+     Serial.println("# ERROR: MQTT buffer allocation failed");
+     while (true) vTaskDelay(pdMS_TO_TICKS(1000));
+@@ -301,5 +399,5 @@
+
+                 CONNECTION_OFFLINE_PAYLOAD)) {
+ 
+-            if (mqtt.publish(
++            if (mqtt.subscribe(COLLECTION_CONTROL_TOPIC,1) && mqtt.publish(
+                   CONNECTION_TOPIC,
+                   CONNECTION_ONLINE_PAYLOAD,
+@@ -369,4 +467,6 @@
+
+   Wire.begin(21, 22); // starts I2C
+   Wire.setClock(100000); // i2c digital bus speed 100k
++  Wire.setTimeOut(20);
++  snprintf(bootID,sizeof(bootID),"%08lx",(unsigned long)esp_random());
+ 
+   analogReadResolution(12); // adc using 12 bits, counter from 0 to 4095
+@@ -392,16 +492,6 @@
+
+   pinMode(FLEX_MIDDLE_PIN, INPUT);
+ 
+-  if (!mpu.begin(MPU_ADDRESS, &Wire)) {
+-    Serial.println("# ERROR: MPU-6050 not detected");
+-
+-    while (true) {
+-      delay(100);
+-    }
+-  }
+-
+-  // mpu configuration
+-  mpu.setAccelerometerRange(MPU6050_RANGE_4_G);
+-  mpu.setGyroRange(MPU6050_RANGE_500_DEG);
+-  mpu.setFilterBandwidth(MPU6050_BAND_21_HZ);
++  imuConfigured=configureMPU();
++  if (!imuConfigured) Serial.println("# MPU unavailable; publishing invalid readings and retrying without blocking Wi-Fi.");
+ 
+   sampleQueue =
+@@ -462,4 +552,5 @@
+
+   // State belongs to this task and travels with its sampled readings in the queue.
+   bool thumbBent=false, indexBent=false, middleBent=false;
++  uint32_t lastMPURetry=millis();
+   TickType_t lastWakeTime = xTaskGetTickCount();
+   const TickType_t samplePeriod =
+@@ -469,44 +560,31 @@
+
+     vTaskDelayUntil(&lastWakeTime, samplePeriod);
+ 
+-    sensors_event_t accel;
+-    sensors_event_t gyro;
+-    sensors_event_t temperature;
+-
+-    // Adafruit getEvent() returns true unconditionally in the installed library.
+-    // Existing valid flag does NOT detect I2C transport failures; see SPLIT_NOTES.md.
+-    bool mpuReadOk =
+-        mpu.getEvent(&accel, &gyro, &temperature);
+-
+-    SensorSample sample;
+-
+-    sample.sequence = sequenceNumber++;
+-    sample.timestampUs = esp_timer_get_time();
+-
+-    if (mpuReadOk) {
+-      sample.ax = accel.acceleration.x;
+-      sample.ay = accel.acceleration.y;
+-      sample.az = accel.acceleration.z;
+-
+-      sample.gx = gyro.gyro.x;
+-      sample.gy = gyro.gyro.y;
+-      sample.gz = gyro.gyro.z;
+-    } else {
+-      sample.ax = 0.0f;
+-      sample.ay = 0.0f;
+-      sample.az = 0.0f;
+-
+-      sample.gx = 0.0f;
+-      sample.gy = 0.0f;
+-      sample.gz = 0.0f;
++    SensorSample sample = {};
++    sample.sequence=sequenceNumber++;
++    sample.timestampUs=esp_timer_get_time();
++    CollectionState capture;
++    portENTER_CRITICAL(&collectionMux);capture=collectionState;portEXIT_CRITICAL(&collectionMux);
++    memcpy(sample.collectionSession,capture.session,sizeof(sample.collectionSession));
++    if (capture.trial && sample.timestampUs>=capture.startUs && sample.timestampUs<capture.endUs) {
++      sample.collectionTrial=capture.trial;sample.collectionElapsedMs=(sample.timestampUs-capture.startUs)/1000;
+     }
++    if (!imuConfigured && millis()-lastMPURetry>=2000) {lastMPURetry=millis();imuConfigured=configureMPU();}
++    // Checked burst read replaces the old unconditional Adafruit getEvent valid flag.
++    bool mpuReadOk=readCheckedIMU(sample);
++    if (!mpuReadOk) {++imuErrorCount;imuConfigured=false;}
++    sample.imuErrors=imuErrorCount;sample.queueDropped=queueDropCount;
+ 
+     sample.thumb  = readFlex(FLEX_THUMB_PIN);
+     sample.index  = readFlex(FLEX_INDEX_PIN);
+     sample.middle = readFlex(FLEX_MIDDLE_PIN);
+-    thumbBent = updateFlexBent(sample.thumb, FLEX_THUMB_BENT_THRESHOLD,
++    // Preserve raw fault evidence. Do not turn an ADC rail spike into a bend transition.
++    sample.flexRailMask=(sample.thumb<=20 || sample.thumb>=4075 ? 1 : 0) |
++                        (sample.index<=20 || sample.index>=4075 ? 2 : 0) |
++                        (sample.middle<=20 || sample.middle>=4075 ? 4 : 0);
++    if (!(sample.flexRailMask & 1)) thumbBent = updateFlexBent(sample.thumb, FLEX_THUMB_BENT_THRESHOLD,
+       FLEX_THUMB_BEND_INCREASES, FLEX_HYSTERESIS, thumbBent);
+-    indexBent = updateFlexBent(sample.index, FLEX_INDEX_BENT_THRESHOLD,
++    if (!(sample.flexRailMask & 2)) indexBent = updateFlexBent(sample.index, FLEX_INDEX_BENT_THRESHOLD,
+       FLEX_INDEX_BEND_INCREASES, FLEX_HYSTERESIS, indexBent);
+-    middleBent = updateFlexBent(sample.middle, FLEX_MIDDLE_BENT_THRESHOLD,
++    if (!(sample.flexRailMask & 4)) middleBent = updateFlexBent(sample.middle, FLEX_MIDDLE_BENT_THRESHOLD,
+       FLEX_MIDDLE_BEND_INCREASES, FLEX_HYSTERESIS, middleBent);
+     sample.thumbBent = thumbBent;
+@@ -521,5 +599,6 @@
+
+ 
+       // Real-time motion data should keep the newest sample.
+-      xQueueReceive(sampleQueue, &discarded, 0);
++      if (xQueueReceive(sampleQueue, &discarded, 0)==pdTRUE) ++queueDropCount;
++      sample.queueDropped=queueDropCount;
+       xQueueSend(sampleQueue, &sample, 0);
+     }

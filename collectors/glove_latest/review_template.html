@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Milo gesture review</title>
+<style>
+body{font:16px system-ui,sans-serif;max-width:1000px;margin:24px auto;padding:0 16px;color:#17344a;background:#f5f8fb}h1{font-size:26px}label{display:inline-block;margin:8px 14px 8px 0}select,input,button{font:inherit;padding:6px}button{cursor:pointer}svg{display:block;width:100%;height:210px;background:white;margin:12px 0}#quality{padding:10px;background:#e2ebf1}.bad{color:#ad2727}small{color:#496276}.legend{display:flex;gap:20px;flex-wrap:wrap}.legend span{border-bottom:3px solid;padding-bottom:3px}input[type=number]{width:90px}a{color:#12699a}
+</style>
+<h1>Milo gesture waveform review</h1>
+<label>Recording <select id="clip"></select></label>
+<div id="quality"></div>
+<p>Click a plot to mark the selected event. Exact release timing is a human annotation; a detected candidate is only a suggestion.</p>
+<label><input name="mark" type="radio" value="action_onset_ms" checked>Action starts</label>
+<label><input name="mark" type="radio" value="release_ms">Finger release (throws)</label>
+<label><input name="mark" type="radio" value="action_end_ms">Action ends</label>
+<div class="legend"><span style="border-color:#d77715">Thumb</span><span style="border-color:#167ca3">Index</span><span style="border-color:#328750">Middle</span></div>
+<svg id="flex" role="img" aria-label="Binary finger states: 0 not bent, 1 bent"></svg>
+<small>Finger scale: 0 = this session's straight hand; 1 = this session's comfortable fist. Values are not clipped.</small>
+<svg id="gyro" role="img" aria-label="Session-bias-corrected gyroscope in radians per second"></svg>
+<svg id="accel" role="img" aria-label="Acceleration in metres per second squared"></svg>
+<div>
+<label>Start ms <input id="onset" type="number" min="0" max="3000" step="20"></label>
+<label>Release ms <input id="release" type="number" min="0" max="3000" step="20"></label>
+<label>End ms <input id="end" type="number" min="0" max="3000" step="20"></label>
+</div>
+<label><input id="accepted" type="checkbox">Keep this correctly performed gesture</label>
+<label><input id="reviewed" type="checkbox">I reviewed the signals (capture warnings still require a repeat)</label>
+<p><button id="save">Download annotations.json</button></p>
+<small>Apply your downloaded annotations with: <code>py review_session.py SESSION_FOLDER --annotations ANNOTATIONS_FILE</code>. Fault/warning clips remain quarantined. The reviewer shows all saved attempts, including rejected ones.</small>
+<script>
+const clips=__CLIP_DATA__;
+const selector=document.getElementById('clip'),colors=['#d77715','#167ca3','#328750'];
+let active=0;
+const ids={action_onset_ms:'onset',release_ms:'release',action_end_ms:'end'};
+for(let i=0;i<clips.length;i++){const o=document.createElement('option');o.value=i;o.textContent=`${clips[i].meta.clip_id} — ${clips[i].meta.class_id} / ${clips[i].meta.variant}`;selector.appendChild(o);}
+function updateForm(){if(!clips.length)return;const m=clips[active].meta;for(const [key,id] of Object.entries(ids)){document.getElementById(id).value=m.annotations[key]??'';document.getElementById(id).max=m.duration_ms;}document.getElementById('accepted').checked=m.accepted;document.getElementById('reviewed').checked=!!m.signal_reviewed;const q=document.getElementById('quality');q.textContent=`${m.quality.usable?'Usable':'QUARANTINED'} | ${m.quality.errors.join(', ')} | ${m.quality.warnings.join(', ')} | Release candidate: ${m.release_candidate?.elapsed_ms??'none'} ms`;q.className=m.quality.usable?'':'bad';drawAll();}
+function svgEl(tag,attrs,text){const e=document.createElementNS('http://www.w3.org/2000/svg',tag);for(const [k,v]of Object.entries(attrs))e.setAttribute(k,v);if(text!==undefined)e.textContent=text;return e;}
+function draw(id,columns,title){const s=document.getElementById(id);s.replaceChildren();if(!clips.length)return;const w=s.clientWidth||800,h=210,left=50,right=15,top=28,bottom=28;const duration=clips[active].meta.duration_ms/1000;const pts=clips[active].points;const vals=pts.flatMap(p=>columns.map(c=>p[c]));let lo=vals.length?Math.min(...vals):0,hi=vals.length?Math.max(...vals):1;if(id==='flex'){lo=Math.min(-.1,lo);hi=Math.max(1.1,hi);}if(hi-lo<.05){lo-=.05;hi+=.05;}const xx=x=>left+x/duration*(w-left-right),yy=y=>top+(hi-y)/(hi-lo)*(h-top-bottom);s.setAttribute('viewBox',`0 0 ${w} ${h}`);s.appendChild(svgEl('text',{x:left,y:18,fill:'#17344a','font-size':13},title));for(let tick=0;tick<=4;tick++){const i=duration*tick/4;s.appendChild(svgEl('line',{x1:xx(i),x2:xx(i),y1:top,y2:h-bottom,stroke:'#d5dfe8'}));s.appendChild(svgEl('text',{x:xx(i),y:h-7,fill:'#526878','text-anchor':'middle','font-size':12},`${i}s`));}for(let i=0;i<4;i++){const v=lo+(hi-lo)*i/3;s.appendChild(svgEl('text',{x:left-7,y:yy(v)+4,fill:'#526878','text-anchor':'end','font-size':11},v.toFixed(1)));}columns.forEach((c,j)=>s.appendChild(svgEl('path',{d:pts.map((p,i)=>`${i?'L':'M'}${xx(p[0]).toFixed(1)},${yy(p[c]).toFixed(1)}`).join(' '),fill:'none',stroke:colors[j],'stroke-width':1.7})));for(const [key,v]of Object.entries(clips[active].meta.annotations)){if(typeof v!=='number')continue;s.appendChild(svgEl('line',{x1:xx(v/1000),x2:xx(v/1000),y1:top,y2:h-bottom,stroke:'#69348c','stroke-dasharray':'4 3'}));}s.onclick=e=>{const box=s.getBoundingClientRect();const x=(e.clientX-box.left)*w/box.width;const ms=Math.max(0,Math.min(duration*1000,Math.round(((x-left)/(w-left-right)*duration*1000)/20)*20));const key=document.querySelector('input[name=mark]:checked').value;clips[active].meta.annotations[key]=ms;document.getElementById(ids[key]).value=ms;drawAll();};}
+function drawAll(){draw('flex',[7,8,9],'Finger states (0 = not bent, 1 = bent)');draw('gyro',[4,5,6],'Gyroscope x / y / z · rad/s');draw('accel',[1,2,3],'Acceleration x / y / z · m/s²');}
+selector.onchange=()=>{active=Number(selector.value);updateForm();};for(const [key,id]of Object.entries(ids))document.getElementById(id).onchange=e=>{if(!clips.length)return;clips[active].meta.annotations[key]=e.target.value===''?null:Number(e.target.value);drawAll();};document.getElementById('accepted').onchange=e=>{if(clips.length)clips[active].meta.accepted=e.target.checked;};document.getElementById('reviewed').onchange=e=>{if(clips.length)clips[active].meta.signal_reviewed=e.target.checked;};document.getElementById('save').onclick=()=>{const data=clips.map(c=>({clip_id:c.meta.clip_id,annotations:c.meta.annotations,accepted:c.meta.accepted,signal_reviewed:c.meta.signal_reviewed}));const u=URL.createObjectURL(new Blob([JSON.stringify(data,null,2)],{type:'application/json'}));const a=document.createElement('a');a.href=u;a.download='annotations.json';a.click();setTimeout(()=>URL.revokeObjectURL(u),1000);};window.addEventListener('resize',drawAll);updateForm();
+</script></html>

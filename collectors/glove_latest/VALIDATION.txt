@@ -1,0 +1,6 @@
+23 OCTOBER PACKAGE VALIDATION
+See docs/VALIDATION_20261023.json at the repository root.
+Updated firmware compiled for FireBeetle ESP32; real 240-frame flex trace replay and middle release/fault checks passed.
+Private credentials were removed from the package.
+No physical hardware was flashed, and full AI recognition was not re-tested.
+Historical dated diagnostic notes describe earlier versions.

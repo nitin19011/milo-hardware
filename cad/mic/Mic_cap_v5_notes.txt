@@ -1,0 +1,29 @@
+REPLACEMENT CAP V5 - CAP ONLY
+Fits existing necklace housing (nominal exterior 44.85 x 66.6 mm).
+External skirt: 5 mm overlap, 0.15 mm clearance per side, 1.6 mm walls.
+Overall printed cap: 48.35 x 70.10 x 13.20 mm including inward stops.
+Outer face is already on print bed, Z=0; print at 100% in millimetres.
+
+OPENINGS
+Two separate openings divided by a 4.55 mm-wide solid crossbar.
+Upper opening: 35.88 mm wide (80% of housing width), reaching 26.45 mm from module top.
+It retains clearance over the measured chip, plus top wire access.
+Lower RST opening: 20 x 20 mm, centre 41 mm from module top.
+RST opening is centred across housing width because button lateral position was not supplied.
+Check lateral access before printing; the button may require an offset opening.
+
+ANTI-TILT STOPS
+Two 2.3 x 6 mm contact faces over the left/right perfboard edge regions near the top.
+Inward projection: 11.6 mm from the cap underside, using measured 11.8 mm rim-to-board distance.
+Nominal gap above seated perfboard: 0.2 mm. Stops limit lift instead of preloading the board.
+Contact regions in existing case coordinates:
+left X=2.0..4.3, right X=40.55..42.85, both Y=54..60.
+Their positions assume these narrow perfboard edge strips are clear of wires/components.
+Before seating, confirm both stops land on bare perfboard. Do not force the cap over an obstruction.
+
+FIT
+Cap wraps outside the existing printed housing; no new bottom case is required.
+The bottom connector relief and the two necklace holes remain accessible.
+External fit is printer-dependent and not physically tested; verify grip before wearing.
+This is a friction sleeve, not a positive-locking latch. Add tape tabs if needed.
+Mesh checked for closed edges, consistent winding, positive volume and nondegenerate triangles.

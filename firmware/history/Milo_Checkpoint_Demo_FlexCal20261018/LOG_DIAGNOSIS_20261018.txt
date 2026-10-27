@@ -1,0 +1,33 @@
+Diagnosis of milo-mqtt-log-2026-10-16T09-12-02-144Z.json
+
+The log shows hand-01 online with a synchronised clock and one stable boot ID.
+At 17:11:04.842 Singapore time it publishes demo.capture_prepare for capture
+76d865eb20c11840b0fa71269eec54ba. This proves the full-fist trigger was detected.
+At 17:11:06.995 it publishes demo.capture_cancel for that same capture, about 2.15s later.
+There are no mic.meta, mic status, demo.capture_ready, mic.clips or hand.clips records.
+The final glove status reports one dropped capture.
+
+The old cancellation omitted its reason, so the log cannot distinguish a released/unstable fist
+from a readiness timeout by itself. It does establish that no mic readiness reply is present.
+A normal paired capture cannot start its buzz without that reply.
+
+Required action: flash Demo/MicDemo/MicDemo.ino onto the mic ESP and power BOTH devices.
+The voice-collection firmware uses a different broker/session/source and cannot serve the demo handshake.
+Both demo devices must use the same public broker and demo session, and have working clocks.
+Look for source_id mic-01 on milo/v1/demo/mic/meta before attempting a fist.
+
+Updated code:
+  Glove subscribes to live mic/meta and checks its format, audio readiness and clock uncertainty.
+  While no suitable live heartbeat has arrived, it reports capture=waiting_for_mic rather than armed.
+  Retained metadata is ignored for liveness; expect up to 5 seconds for the next live heartbeat.
+  The gate expires after 15 seconds without a live update.
+  health.mic_readiness reports MIC_NOT_SEEN, MIC_HEARTBEAT_EXPIRED, MIC_PROFILE_MISMATCH,
+  MIC_CLOCK_UNSYNCED, MIC_NOT_READY or READY.
+  Cancellation includes data.reason; health.last_capture_error preserves the last reason.
+  Reasons distinguish missing mic acknowledgement, fist release, sensor fault, lost MQTT/clock,
+  and failed request publication.
+  Mic advertises ready only when its audio is healthy and it is idle.
+
+No thresholds, pin wiring, sensor format, capture duration or haptic timing were changed.
+Both sketches remain a paired demo: fist 2s -> buzz 1s -> capture 3s -> buzz 1s -> upload.
+The fix does not manufacture a missing mic or bypass the pairing requirement.

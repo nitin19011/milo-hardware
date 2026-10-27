@@ -1,0 +1,39 @@
+Mic startup diagnosis - 18 October 2026
+
+Observed serial output:
+  Wi-Fi starts at 15:15:49; clock synchronises at 15:15:52 with 30.6ms estimated uncertainty.
+  Connection attempts fail roughly eight seconds later, matching the old TLS handshake timeout.
+  The text "MQTT connection failed: offline" was the transport's initial default message.
+  It did not identify the real secure-socket failure, and no successful MQTT login was shown.
+
+The supplied log identifies failure in TCP/TLS connection setup, but does NOT establish its exact cause.
+The old mic also allocated all 96,000 PCM bytes before Wi-Fi/TLS, reducing available handshake memory.
+That resource difference from the working glove is addressed, without asserting it was proven causal.
+
+Update:
+  Keep PCM unallocated during the initial TCP/TLS/MQTT connection.
+  Allocate the existing fifteen 6,400-byte blocks only after MQTT connects/subscribes.
+  Only advertise mic readiness after the storage allocation and healthy audio checks pass.
+  Release idle PCM storage before reconnecting. Keep active/frozen recordings until completion or deadline.
+  Audio-task ownership and the ready flag are protected by a cross-core critical section before freeing.
+  Partial allocation failures roll back completely and are retried while idle.
+  Increase TLS handshake allowance from eight to twenty seconds for a slow hotspot/relay connection.
+  Print actual TLS lastError code/text, RSSI, total free heap and largest free block.
+  Distinguish transport failure from MQTT login/subscription failure.
+
+Only the MIC needs reflashing for this change. Existing glove demo2 preflight is compatible.
+Open MicDemo/MicDemo.ino in this Demo folder, then upload to the mic ESP.
+Keep certificate verification enabled; no insecure fallback was introduced.
+
+Expected startup lines:
+  # PCM allocation deferred: preserving 96000 bytes for the TLS handshake.
+  # Clock synchronized ...
+  # TLS connect ... free heap=... largest block=...
+  # Audio storage ready AFTER TLS/MQTT: 96000 PCM bytes ...
+  # MQTT online: mic-01
+
+If it still fails, the important NEW line is:
+  # TLS connection failed: code=... (-0x....), ...
+Send that line and its preceding heap/RSSI line; they distinguish the remaining transport failure.
+If MQTT connects but storage fails, health.audio_buffers_ready=false and capture=audio_memory_wait.
+The waveform length/format, sensor features, thresholds, capture scheduling and haptics remain unchanged.

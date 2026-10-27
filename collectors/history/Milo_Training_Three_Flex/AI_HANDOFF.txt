@@ -1,0 +1,18 @@
+Milo personal glove training data: three flex sensors
+Feature order: ax, ay, az, gx, gy, gz, thumb, index, middle.
+50 Hz; full clip 2 seconds / 100 frames; N x 100 x 9 time-major or N x 9 x 100 channel-major.
+10 human-confirmed clean examples of each of 7 actions; sequential class blocks. No automatic semantic validation.
+Classes: come, sit, paw, spin, bang, throw_overhand, throw_underhand. Both throws prompt Milo fetch.
+The first second is preparation; the second includes motion and follow-through. Throws include loose grip and finger release.
+Raw flex ADC counts and IMU physical units (m/s^2, rad/s) are retained. Per-wear normalisation uses open/fist medians.
+Flex normalisation is continuous and not clipped, not BENT/NOT_BENT; binary thresholds are diagnostic only.
+calibration.json and calibration_report.txt contain all three fingers' baseline, span, noise and trial thresholds.
+Class folders contain accepted CSV/JSON pairs; manifest.csv maps labels to files.
+export/dataset.npz has raw/calibrated arrays, channel-major alternatives, integer/string labels and session grouping.
+CSV, JSONL, NPY and .ts exports are included; export_optional_formats.py can make PyTorch/HDF5 if installed.
+These are personal positive TRAIN examples only, with no independent validation/test or background/negative examples.
+Group by clip/wear session for any later split; never split overlapping windows from one clip across train/evaluation.
+Only glove sensors were captured. Spoken phrases were prompts, not recorded audio or measured alignment.
+Release candidates are heuristic review aids, not ground truth timestamps. Review annotations remain explicitly unannotated.
+Do not merge with previous thumb/index-only sessions: those have no measured middle channel.
+Motor remains off throughout this firmware, including startup.
